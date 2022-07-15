@@ -1,0 +1,155 @@
+*{
+    font-family: 'nyala.ttf';
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/*Comeco - Estilização do menu*/
+#icone{
+    position: fixed;
+    cursor: pointer;
+    padding: 15px;
+    width: 40px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+}
+
+.barra{
+    position: fixed;
+    top: 0px;
+    background: rgba(40, 31, 28, 0.742);
+    width: 15vw;
+    height: 100%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+    transition: all .2s linear;
+    left: -15vw;
+    z-index: 1;    
+}
+
+#check{
+    display: none;
+    z-index: 2;
+}
+
+#check:checked ~ .barra{
+    transform: translateX(15vw);
+}
+
+.menu{
+    position: relative;
+    background: linear-gradient(to right, rgb(255, 235, 212), rgba(40, 31, 28, 0.742));
+    box-shadow: -5px 5px 35px rgba(0, 0, 0, 0.425);
+    text-align: center;
+    width: 100%;
+    top: 7%;
+    left: 0%;  
+    z-index: 1;
+}
+
+.menu ul{
+    position: relative;
+    list-style: none;
+    text-align: center;
+    z-index: 1;
+}
+
+.menu ul li{
+    position: relative;
+    width: 15vw;
+    float: left;
+    text-align: center;
+    z-index: 1;
+}
+
+.menu a {
+    color:rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.34);
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+    transition: all .2s linear;
+    z-index: 1;
+}
+
+.menu li a:hover{
+    opacity: 1px;
+    color: rgb(90, 57, 35);
+    background: rgba(255, 252, 252);
+    font-size: 25px;
+    text-align: center;
+    transition: all .2s radial;
+    z-index: 1;
+}
+
+.menu li ul{
+    text-align: center;
+    display:none;
+    top: 0px;
+    z-index: 1;
+}
+
+.menu li:hover ul, .menu li.over ul {
+    position: absolute;
+    text-align: center;
+    display:block;
+    left: 15vw;
+    z-index: 1;
+}
+
+.subMenu{
+    background: rgb(0, 0, 0);
+    position: relative;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.361);
+    text-align: center;
+    bottom:-60pv;
+    left: 0px;
+    z-index: 1;
+}
+/*Fim - Estilização do menu*/
+
+/* TITULOS */
+h1{
+    width: 30vw;
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: white;
+}
+
+h2{
+    position: relative;
+    margin-left: 50px;
+    color: rgb(165, 165, 165);
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+}
+
+h3{
+    text-align: justify;
+    font-size: 18px;
+    padding: 10px;
+    margin: 35px;   
+}
+
+h2::before{
+    content: '';
+    background: linear-gradient(to right, white, rgb(26, 26, 26));
+    position: absolute;
+    width: 30vw;
+    height: 1px;
+}
+
+/* CONTEÚDO */
+main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
