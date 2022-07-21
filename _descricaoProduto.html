@@ -1,70 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" type="text/css" href="slide/style_slide.css" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_produtos.css">
-    <link rel="stylesheet" href="nyala.ttf">
-    <title>Free From ⋆ Um Sabor Seguro</title>
+    <link rel="stylesheet" type="text/css" href="slide/demo.css" />
+    <link rel="stylesheet" href="style_desc.css">
+    <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
 </head>
 <body>
-    <!--Menu-->
-    <header>
+    <article class="container">
 
-        <input type="checkbox" id="check">
-        <label id="icone" for="check">
-            <img src="Imagem/iconeMenu.png">
-        </label>
-
-        <div class="barra">
-            <nav class="menu">
-                <ul>   
-                    <li><div class="menu"><a href="_Index.html">Início</a></div></li>
-    
-                    <li><div class="menu"><a href="_Produtos.html">Produtos</a></div></li>
+        <section class="slide" id="box">
+            <div class="wrapper">
+                <div id="ei-slider" class="ei-slider">
+                    <ul class="ei-slider-large">
+                        <li>
+                            <img src="Imagem/PomeloMiniPizza.jpg" alt="image01" />
+                            <div class="ei-title">
+                                <h3>Sabor</h3>
+                                <h2>Criativo</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloAlmocoPanqueca.jpg" alt="image02" />
+                            <div class="ei-title">
+                                <h3>Maior</h3>
+                                <h2>Praticidade</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloOvos.jpg" alt="image03"/>
+                            <div class="ei-title">
+                                <h3>Na Hora de comprar,</h3>
+                                <h2>Tranquiliade</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloMacarrons.jpg" alt="image04"/>
+                            <div class="ei-title">
+                                <h3>Subítulo</h3>
+                                <h2>Título</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloFolhado.jpg" alt="image05"/>
+                            <div class="ei-title">
+                                <h3>Subítulo</h3>
+                                <h2>Título</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloCereal.jpg" alt="image06"/>
+                            <div class="ei-title">
+                                <h3>Subítulo</h3>
+                                <h2>Título</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="Imagem/PomeloBolinho.jpg" alt="image07"/>
+                            <div class="ei-title">
+                                <h3>Subítulo</h3>
+                                <h2>Título</h2>
+                            </div>
+                        </li>
+                    </ul>
                     
-                    <li><div class="menu"><a href="#">Receitas</a></div></li>
+                    <!-- ei-slider-large -->
+                    <ul class="ei-slider-thumbs">
+                        <li class="ei-slider-element">Current</li>
+                        <li><a href="#">Slide 1</a></li>
+                        <li><a href="#">Slide 2</a></li>
+                        <li><a href="#">Slide 3</a></li>
+                        <li><a href="#">Slide 4</a></li>
+                        <li><a href="#">Slide 5</a></li>
+                        <li><a href="#">Slide 6</a></li>
+                        <li><a href="#">Slide 7</a></li>
+                        
+                    </ul>
+                    <!-- ei-slider-thumbs -->
+                </div>
+            </div><!-- wrapper -->
+            <script type="text/javascript" src="slide/slide.min.js"></script>
+            <script type="text/javascript" src="slide/eiSlideShow.js"></script>
+            <script type="text/javascript" src="slide/slide.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('#ei-slider').eislideshow({
+                        easing		: 'easeOutExpo',
+                        titleeasing	: 'easeOutExpo',
+                        titlespeed	: 1200
+                    });
+                });
+            </script>
+        </section>
 
-                    <li>
-                        <div class="menu"><a href="#">Categorias▾</a></div>
-                        <ul>
-                            <li class="subMenu"><a href="#">Tudo</a></li>
-                            <li class="subMenu"><a href="#">Granel</a></li>
-                            <li class="subMenu"><a href="#">Frutas Secas</a></li>
-                            <li class="subMenu"><a href="#">Oleaginosas</a></li>
-                            <li class="subMenu"><a href="#">Farinhas</a></li>
-                            <li class="subMenu"><a href="#">Adoçantes</a></li>
-                            <li class="subMenu"><a href="#">Temperos</a></li>
-                            <li class="subMenu"><a href="#">Suplementos</a></li>
-                        </ul>
-                    </li>
-
-                    <li><div class="menu"><a href=#>Carrinho</a></div></li>
-
-                    <li>
-                        <div class="menu"><a href="#">Mais▾</a></div>
-                        <ul>
-                            <li class="subMenu"><a href="#">Vender</a></li>
-                            <li class="subMenu"><a href="#">Frete</a></li>
-                            <li class="subMenu"><a href="_Sobre.html">Sobre Nós</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <div class="menu"><a href="#">Conta▾</a></div>
-                        <ul>
-                            <li class="subMenu"><a href="_Cadastro.html" target="_blank">Cadastrar</a></li>
-                            <li class="subMenu"><a href="_Login.html" target="_blank">Entrar</a></li>
-                        </ul>
-                    </li>
+        <section class="info" id="box">
+            <h3>Kit 10 Sequilhos Leite Sem Lactose E Sem Glúten 100g Nazinha</h3>
+            <h3 class="valor"><b> R$34,76</b></h3>
+            <div class="star">
+                <ul class="avaliacao" id="info">
+                    <li class="star-icon ativo" data-avaliacao="1"></li>
+                    <li class="star-icon" data-avaliacao="2"></li>
+                    <li class="star-icon" data-avaliacao="3"></li>
+                    <li class="star-icon" data-avaliacao="4"></li>
+                    <li class="star-icon" data-avaliacao="5"></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <h1>Nome do Produto</h1>
+            </div>
+            <p>0 Avaliações</p>
+            <p>0 Vendidos</p>
+            <input type="button" value="Adicionar ao Carrinho">
+            <input type="button" value="Comprar">
+            <button id="like">
+                <div class="label">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.4 5.25C5.61914 5.25 3.25 7.3293 3.25 10.0298C3.25 11.8927 4.12235 13.4612 5.27849 14.7604C6.43066 16.0552 7.91714 17.142 9.26097 18.0516L11.5796 19.6211C11.8335 19.793 12.1665 19.793 12.4204 19.6211L14.739 18.0516C16.0829 17.142 17.5693 16.0552 18.7215 14.7604C19.8777 13.4612 20.75 11.8927 20.75 10.0298C20.75 7.3293 18.3809 5.25 15.6 5.25C14.1665 5.25 12.9052 5.92214 12 6.79183C11.0948 5.92214 9.83347 5.25 8.4 5.25Z" fill="black"/>
+                  </svg>
+                </div>
+                <div class="number" id="number">50</div>
+              </button>
+              <div class="compartilha">
+                <div class="whats"><a href="https://api.whatsapp.com" target="_blank">whats</a></div>
+                <div class="face"><a href="https://www.facebook.com" target="_blank">face</a></div>
+                <div class="insta"><a href="https://www.instagram.com" target="_blank">Insta</a></div>
+                <div class="pint"><a href="https://br.pinterest.com" target="_blank">Pin</a></div>
+              </div>
+            
+        </section>
+        
+        <section class="loja" id="box">
+            <img class="mini-ft-perfil" src="Imagem/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+            <h5><b>Nome Da Loja</b></h5>
+            <img src="" alt=""><!--COLOCAR ICONE DE ESTRELA - avaliação da loja-->
+            <p>Seguidores</p>
+            <p>Seguindo</p>
+            <ul class="avaliacao" id="loja">
+                <li class="star-icon ativo" data-avaliacao="1"></li>
+                <li class="star-icon" data-avaliacao="2"></li>
+                <li class="star-icon" data-avaliacao="3"></li>
+                <li class="star-icon" data-avaliacao="4"></li>
+                <li class="star-icon" data-avaliacao="5"></li>
+            </ul>
+            <input class="seguir" type="button" value="Seguir">
+            <input class="cv" type="button" value="Conversar agora">
+        </section>
+
+        <section class="detalhe" id="box">
+            <h4>Detalhes do Produto</h4>
+            <div class="box">
+                    <table> 
+                        <tr>    
+                            <th class="a">Fabricante</th>  
+                            <td class="a">Nazinha</td>     
+                        </tr>
+                        <tr>     
+                            <th class="b">Marca</th>  
+                            <td class="b">Nazinha</td>     
+                        </tr>
+                        <tr>     
+                            <th class="a">Nome</th>  
+                            <td class="a">Sequilhos Leite</td>     
+                        </tr>
+                        <tr>     
+                            <th class="b">Sabor</th>  
+                            <td class="b">Leite</td>     
+                        </tr>
+                        <tr>     
+                            <th class="a">Peso líquido</th>  
+                            <td class="a">1kg</td>     
+                        </tr>
+                        <tr>     
+                            <th class="b">Formato de venda</th>  
+                            <td class="b">Kit</td>     
+                        </tr>
+                        <tr>     
+                            <th class="a">Unidades por kit</th>  
+                            <td class="a">10</td>     
+                        </tr>
+                        <tr>     
+                            <th>Peso da unidade</th>  
+                            <td>100g</td>     
+                        </tr>
+                    </table>
+            </div>
+        </section>
+
+        <section class="desc" id="box">
+            <h4>Descrição do Produto</h4>
+            <div class="box">
+                <p></p>
+            </div>
+        </section>
+
+        <section class="avlic" id="box">
+            <h4>Avaliações do Produto</h4>
+            <section class="clasfc">
+                <ul class="avaliacao" id="produto">
+                    <li class="star-icon ativo" data-avaliacao="1"></li>
+                    <li class="star-icon" data-avaliacao="2"></li>
+                    <li class="star-icon" data-avaliacao="3"></li>
+                    <li class="star-icon" data-avaliacao="4"></li>
+                    <li class="star-icon" data-avaliacao="5"></li>
+                </ul>
+                <script type="text/javascript" src="z.js"></script>
+                <div class="box">
+                    <p>a</p>
+                </div>
+            </section>
+        </section>
+        
+    </article>
+
+    <footer>
+
+    </footer>
+
     </main>
 </body>
 </html>

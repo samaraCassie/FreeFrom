@@ -1,3 +1,5 @@
+@import url('reset.css');
+
 body{
     background-color: rgb(48, 48, 48);
     background-attachment: fixed;

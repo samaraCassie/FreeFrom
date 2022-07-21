@@ -1,6 +1,7 @@
+
 html{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     font-size: 60%;
 }
 
@@ -18,7 +19,7 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 50vw;
+    width: 50%;
 }
 
 .cont h2{
@@ -26,8 +27,8 @@ body{
 }
 
 .cont p{
-    font-size: 2rem;
-    margin-bottom: 7rem;
+    font-size: 3vmin    ;
+    margin-bottom: 7vmin;
     color: white;
 }
 
@@ -35,31 +36,28 @@ h2::before{
     content: '';
     background: linear-gradient(to right, white, rgb(26, 26, 26));
     position: absolute;
-    width: 35vw;
+    width: 35%;
     height: 1px;
-    border-radius: 90px;
+    border-radius: 90%;
 }
 
 /*botões*/
 .btn{
+    position: relative;
     display: flex;
     justify-content: center;
-    gap: 20px;
-}
-
-.btn button a{
-    color: white;
+    gap: 5%;
 }
 
 .btn button {
     position: relative;
-    width: 250px;
-    height: 60px;
+    width: 50vmin;
+    height: 9vmin;
     cursor: pointer;
-    border: 1px solid white;
+    border: .1vmin solid white;
     text-transform: uppercase;
     background-color: transparent;
-    border-radius: 20px;
+    border-radius: 2vmax;
     transition: 1.5s;
 }
 
@@ -74,13 +72,18 @@ h2::before{
     left: 0;
     width: 0;
     height: 0;
-    height: 60px;
-    border-radius: 20px;
+    height: 9vmin;
+    border-radius: 2vmax;
     background-color: rgba(129, 127, 125, 0.842);
     z-index: -1;
-    transition: .8s;
+    transition: .7s;
 }
 
 .btn button:hover:before{
     width: 100%;
+}
+
+.btn button a{
+    font-size: 2vmin;
+    color: white;
 }

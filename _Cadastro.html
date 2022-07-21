@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_Cadst.css">
+        <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>
+
+    </head>
+
+    <body>
+        <!--Conteúdo do FORMULÁRIO-->
+        <main class="container">
+            <form> 
+                <h2>Cadastrar</h2> 
+                <section class="campo">
+                    <input type="text" name="email" id="email"
+                        placeholder="E-mail*" required>
+                    <div class="underline"></div>
+                </section>  
+
+                <section class="campo">
+                    <input type="text" name="usuario" id="usuario"
+                        placeholder="Usuário*" required>
+                    <div class="underline"></div>
+                </section>
+
+                <section class="campo">
+                    <input type="password" name="senha" id="senha"
+                        placeholder="Senha*" required>
+                    <div class="underline"></div>
+                </section> 
+
+                <div class="calendario">
+                    <h3>Data de Nascimento:</h3>
+                    <input type="date"/>
+                </div>
+
+                <div class="radio">
+                    <h3>Sexo:</h3>
+                    <input class="F" type="radio" name="sexo" value="F">
+                    <label class="F" for="Feminino"> Feminino</label>
+
+                    <input class="M" type="radio" name="sexo" value="M">
+                    <label class="M" for="Mascolino">Masculino</label>
+                </div>
+                            
+                <section class="campo">
+                    <input type="text" name="Endereço" 
+                    placeholder="Endereço*" required>
+                    <div class="underline"></div>
+                </section>
+
+                <section class="campo">
+                    <input type="text" name="Numero" 
+                    placeholder="Número*" required>
+                    <div class="underline"></div>
+                </section>
+
+                <section class="campo">
+                    <input type="text" name="Cidade" 
+                    placeholder="Cidade*" required>
+                    <div class="underline"></div>                           
+                </section>
+
+                <div class="select-uf">
+                    <select  nome = " Unidade Federal " >
+                        <option label="UF"></option >
+                        <option  value = " AC " > Acre </option >
+                        <option  value = " AL " > Alagoas </option >
+                        <option  value = " AP " > Amapá </option >
+                        <option  value = " AM " > Amazonas </option >
+                        <option  value = " BA " > Bahia </option >
+                        <option  value = " CE " > Ceará </option >
+                        <option  value = " DF " > Distrito Federal </option >
+                        <option  value = " ES " > Espírito Santo </option >
+                        <option  value = " GO " > Goiás </option >
+                        <option  value = " MA " > Maranhão </option >
+                        <option  value = " MT " > Mato Grosso </option >
+                        <option  value = " MS " > Mato Grosso do Sul </option >
+                        <option  value = " MG " > Minas Gerais </option >
+                        <option  value = " PA " > Pará </option >
+                        <option  value = " PB " > Paraíba </option >
+                        <option  value = " PR " > Paraná </option >
+                        <option  value = " PE " > Pernambuco </option >
+                        <option  value = " PI " > Piauí </option >
+                        <option  value = " RJ " > Rio de Janeiro </option >
+                        <option  value = " RN " > Rio Grande do Norte </option >
+                        <option  value = " RS " > Rio Grande do Sul </option >
+                        <option  value = " RO " > Rondônia </option >
+                        <option  value = " RR " > Roraima </option >
+                        <option  value = " SC " > Santa Catarina </option >
+                        <option  value = " SP " > São Paulo </option >
+                        <ption  value = " SE " > Sergipe </option >
+                        <option  value = " TO " > Tocantins </option >
+                    </select>
+                </div>    
+
+                <input type="reset" value="Resetar">
+                <input type="submit" value="Enviar">
+            
+                <p class="pp">Ou</p>
+                <a class="google" href="#">Continue com Google</a>
+                <a class="facebook" href="#">Continue com Facebook</a>
+                <p class="pp">Já se cadastrou?<a class="link" href="_Login.html">Entre</a></p>
+            </form>
+        </main>
+
+        <!--Rodapé-->
+        <footer>
+            <span>Desenvolvido pela discente Samara Cassie Dos Santos com finalidade educativa sob orientações da docente Marina  Carradore Sérgio do Instituto Federal de Santa Catarina ©</span>
+        </footer>
+    </body>
+</html>
