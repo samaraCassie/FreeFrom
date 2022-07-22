@@ -16,9 +16,9 @@ body{
   margin-top: 10%;
   margin-right: 5%;
   margin-left: 5%;
-  margin-bottom: 15%;
-  height: 300vh;
+  margin-bottom: 10%;
 }
+
 section{
   background: rgb(212, 185, 152);
   position: absolute;
@@ -28,15 +28,16 @@ section{
   text-align: center;
   top: 450px;
   width: 100%;
-  margin-bottom: 50%;
+  margin-bottom: 37.15%;
 }
 section .box{
-  position: absolute;
+  position: relative;
   background: #ffff;
   color: #2c2c2c;
   border-radius: 1vmin;
   top: 75px;
   width: 90%;
+  margin-bottom: 15vmin;
 }
 .container .slide{
   top: 0;
@@ -53,68 +54,142 @@ section .box{
   width: 50%;
   padding: 20px;
 }
-  .container .loja{
+  .container .loja{ 
     border-end-end-radius: 2vmin;
     top: 450px;
     margin-right: 50%;
     width: 50%;
-    min-height: 8%;
   }
-  .loja h5{
-      position: absolute;
-      top: 25%;
-      left: 0%;
-      margin-left: 15vmin;
-      font-size: 25px;
-
+    .loja .idem{
+      position: relative;
+      top: 5px;
+      right: 29%;
+      width: 40%;
+    }
+      .idem h5{
+        position: absolute;
+        font-weight: bold;
+        margin-top: 7%;
+        margin-left: 15vmin;
+        font-size: 25px;
+      }
+      .idem h6{
+        position: absolute;
+        margin-top: 0%;
+        margin-left: 15vmin;
+        margin-top: 20%;
+        font-size: 18px;
+      }
+  .loja .btn{
+    position: absolute;
+    top: 5px;
+    -bottom: 40px;
+    right: 3vmin; 
+    width: 30%;
   }
-  .loja input.seguir{
-      position: absolute;
-      right: 3vmin;
-      top: 2vmin;
-  }
-  .loja input.cv{
-      position: absolute;
-      right: 3vmin;
+  .loja .reputação{
+    position: absolute;
+    margin-top: 5px;
+    width: 30%;
   }
 
 .container .detalhe{
   margin-top: 15%;
-  height: 50vmin;
   padding: 10px;
 }
 
 .container .desc{
   top: 450px;
-  margin-top: 45%;
-  height: 65vmin;
-  padding: 10%;
+  margin-top: 50%;
 }
-
-.container .avlic{
-  top: 450px;    
-  margin-top: 85%;
-  height: 70vmin;
-  padding: 10%;
-}
-  .container .avlic .clasfc{
-    position: absolute;
-    background: #fff8f0;
-    box-shadow: 0px 2px 10px rgba(54, 46, 42, 0.183);
-    top: 10vmin;
-    left: 3%;
-    width: 94%;
-    height: 15vmin;
-  }
-  .avlic .box{
-    margin-top: 5%;
-  }
 
 /***** TABELA *****/
 table{
-  margin: 20px
+  margin: 20px;
+  align-items: center ;
+  font-size: 20px;
+  width: 50%;
+
+}
+th{
+  text-align: end;
+}
+td{
+  position: absolute;
+  margin-left: 2%;
 }
 /***** End TABELA *****/
+
+
+.container .avlic{
+  position: relative;
+  margin-top: 108%;
+}
+  .container .avlic .clasfc{
+    position: relative;
+    background: #ffff;
+    box-shadow: 0px 2px 10px rgba(54, 46, 42, 0.183);
+    color: rgb(83, 59, 49);
+    top: 10vmin;
+    width: 94%;
+    height: 15vmin;
+    margin: 1%;
+  }
+  .clasfc h6{
+    position: absolute;
+    text-align: left;
+    font-size: 60px;
+    left: 30%;
+    margin-top: 1vmin;
+  }
+  .clasfc p{
+    position: absolute;
+    text-align: right;
+    font-size: 15px;
+    right: 30%;
+    margin-top: 4vmin;
+  }
+
+  .avlic .box{
+    margin-bottom: 25vmin;
+  }
+    .box .comentario{
+      position: relative;
+    }
+      .comentario .user{
+        position: relative;
+        top: 1vmin;
+        margin: 1%;
+        width: 98%;
+        z-index: 1;
+      }
+        .user a{
+          position: absolute;
+          font-weight: bold ;
+          font-size: 16px;
+          text-align: left;
+          left: 11vmin ;
+          margin-top: 4vmin;
+        }
+    .comentario .txt{
+      position: relative;
+      width: 98%;
+      margin: 1%;
+      margin-top: 10vmin;
+      bottom: 5vmin;
+    }
+      .txt h6{
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 11vmin;
+      }
+      .txt p{
+        font-size: 16px;
+        text-align: left;
+        margin-left: 9vmin;
+        margin-right: 5vmin;
+      }
 
 
 /***** AVALIAÇÃO *****/
@@ -125,7 +200,7 @@ table{
     list-style-type: none;
     cursor: pointer;
     color: rgb(83, 59, 49);
-    font-size: 45px;/* alterar o tamanho das estrelas */
+    font-size: 65px;/* alterar o tamanho das estrelas */
   }
   .star-icon::before{
     content: "\2605";
@@ -144,6 +219,14 @@ table{
   }
   .loja .star-icon{
     font-size: 20px;
+    margin-bottom: 15%;
+  }
+  .comentario .star-icon{
+    font-size: 20px;
+  }
+  .comentario .avaliacao{
+    margin-top: 0;
+    margin-left: 11vmin;
   }
 /***** End AVALIAÇÃO *****/
 
@@ -199,6 +282,7 @@ button, input {
   cursor: pointer;
   border: none;
   border-radius: 8vmin;
+  margin-top: 3vmin;
   height: 2.2rem;
   font-size: 2vmin;
   padding: 0.5vmax 1vmax;
@@ -206,8 +290,6 @@ button, input {
 }
 
 input{
-  bottom: 1.5vh;
-  margin-bottom: 1%;
 }
 
 input:hover{
@@ -224,6 +306,16 @@ button:hover{
   border-radius: 10vmin;
   top: 5px;
   left: 5px;
+}
+
+.mini-ft-perfil-user{
+  position: absolute;
+  width: 9vmin;
+  height: 9vmin;
+  border-radius: 9vmin;
+  top: 5px;
+  left: 5px;
+  
 }
 
 .info h3{
@@ -250,11 +342,14 @@ h4{
   top: 15px;
   width: 90%;
 }
-p{
-  font-size: 18px;
+p, table{  
+  font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
+  font-size: 16px;
+  font-weight: 30;
+  line-height: 1.35;
   padding: 10px;
 }
-
+ 
 footer{
 background: rgba(40, 31, 28);
 position: absolute;

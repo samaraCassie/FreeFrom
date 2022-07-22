@@ -223,6 +223,18 @@ nav{
         left: 0px;
         z-index: 1;
     }
+
+    .aq a{
+        color: rgb(90, 57, 35);
+        background: rgba(255, 252, 252);
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 5vmin;
+        padding: 1vmin;
+        transition: all .2s linear;
+        z-index: 1;
+    }
 /*}*/
     /***** End ESTILIZAÇÃO DO MENU *****/
 
