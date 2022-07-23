@@ -61,15 +61,6 @@ section.card img {
     height: 100%;
 }
 
-section.card h3 {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 50%;
-}
-
 section.card span{
     position: absolute;
     font-size: 3vmin;
