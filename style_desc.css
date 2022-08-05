@@ -9,10 +9,10 @@ body{
 }
 
 .container{
+  position: relative;
   background: transparent;
   box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
   border: .5px solid rgba(83, 59, 49, 0.46);
-  position: relative;
   margin-top: 10%;
   margin-right: 5%;
   margin-left: 5%;
@@ -54,18 +54,22 @@ section .box{
   width: 50%;
   padding: 20px;
 }
-  .container .loja{ 
-    border-end-end-radius: 2vmin;
-    top: 450px;
-    margin-right: 50%;
-    width: 50%;
+  .info #like{
+    width:15%;
   }
-    .loja .idem{
-      position: relative;
-      top: 5px;
-      right: 29%;
-      width: 40%;
-    }
+
+.container .loja{ 
+  border-end-end-radius: 2vmin;
+  top: 450px;
+  margin-right: 50%;
+  width: 50%;
+}
+  .loja .idem{
+    position: relative;
+    top: 5px;
+    right: 29%;
+    width: 40%;
+  }
       .idem h5{
         position: absolute;
         font-weight: bold;
@@ -86,7 +90,6 @@ section .box{
   .loja .btn{
     position: absolute;
     top: 5px;
-    -bottom: 40px;
     right: 3vmin; 
     width: 30%;
   }
@@ -99,11 +102,6 @@ section .box{
 .container .detalhe{
   margin-top: 15%;
   padding: 10px;
-}
-
-.container .desc{
-  top: 450px;
-  margin-top: 50%;
 }
 
 /***** TABELA *****/
@@ -123,10 +121,22 @@ td{
 }
 /***** End TABELA *****/
 
+.container .desc{
+  top: 450px;
+  margin-top: 50%;
+}
+
+.ingrd{
+  margin-top: 1.5vmax;
+  margin-bottom: 1.5vmax;
+  margin-left: 10%;
+  border-top: .5px solid rgba(83, 59, 49, 0.46);
+  width: 80%;
+}
 
 .container .avlic{
   position: relative;
-  margin-top: 108%;
+  margin-top: 115%;
 }
   .container .avlic .clasfc{
     position: relative;
@@ -275,29 +285,33 @@ button.like path {
 }
 /***** End FAVORITAR *****/
 
-button, input {
+button {
   background: #2c2c2c;
   color: rgb(255, 255, 255);
+  text-transform: uppercase;
   display: flex;
   justify-content: space-between;
-  text-transform: uppercase;
   align-items: center;
+  align-self: center;
   cursor: pointer;
   border: none;
   border-radius: 8vmin;
-  margin-top: 3vmin;
+  margin-top: 1.5vmin;
+  margin-bottom: 1.5vmin;
   height: 2.2rem;
+  width: 100%;
   font-size: 2vmin;
   padding: 0.5vmax 1vmax;
   transition: all .2s ease-in-out;
 }
-input:hover{
-  box-shadow: 0px 6px 9px rgba(31, 26, 24, 0.633);
-}
 button:hover{
   box-shadow: 0px 6px 9px rgba(31, 26, 24, 0.633);
 }
-
+.btn a{
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 2vmin;
+}
 .mini-ft-perfil{
   position: absolute;
   width: 13vmin;
@@ -341,7 +355,7 @@ h4{
   top: 15px;
   width: 90%;
 }
-p, table{  
+dl, p, table{  
   font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
   font-size: 16px;
   font-weight: 30;
@@ -349,10 +363,3 @@ p, table{
   padding: 10px;
 }
  
-footer{
-  background: rgba(40, 31, 28);
-  position: absolute;
-  width: 100%;
-  height: 20%;
-  margin-bottom: 0;
-  }
