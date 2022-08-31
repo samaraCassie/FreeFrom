@@ -14,29 +14,35 @@
         <main class="container">
             <form> 
                 <h2>Cadastrar</h2> 
+
+                <!--CAMPO PARA PREENCHER COM E-MAIL-->
                 <section class="campo">
                     <input type="text" name="email" id="email"
                         placeholder="E-mail*" required>
                     <div class="underline"></div>
                 </section>  
 
+                <!--CAMPO PARA PREENCHER COM NOME DO USUÁRIO-->
                 <section class="campo">
                     <input type="text" name="usuario" id="usuario"
                         placeholder="Usuário*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM A SENHA-->
                 <section class="campo">
                     <input type="password" name="senha" id="senha"
                         placeholder="Senha*" required>
                     <div class="underline"></div>
                 </section> 
 
+                <!--CAMPO PARA PREENCHER COM A DATA DE NASCIMENTO-->
                 <div class="calendario">
                     <h3>Data de Nascimento:</h3>
                     <input type="date"/>
                 </div>
 
+                <!--CAMPO PARA ESCOLHER SEXO-->
                 <div class="radio">
                     <h3>Sexo:</h3>
                     <input class="F" type="radio" name="sexo" value="F">
@@ -45,25 +51,29 @@
                     <input class="M" type="radio" name="sexo" value="M">
                     <label class="M" for="Mascolino">Masculino</label>
                 </div>
-                            
+
+                <!--CAMPO PARA PREENCHER COM ENDEREÇO-->
                 <section class="campo">
                     <input type="text" name="Endereço" 
                     placeholder="Endereço*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM NÚMERO DA RESIDÊNCIA-->
                 <section class="campo">
                     <input type="text" name="Numero" 
                     placeholder="Número*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM CIDADE-->
                 <section class="campo">
                     <input type="text" name="Cidade" 
                     placeholder="Cidade*" required>
                     <div class="underline"></div>                           
                 </section>
 
+                <!--CAMPO PARA SELECIONAR A UNIDADE FEDERAL-->
                 <div class="select-uf">
                     <select  nome = " Unidade Federal " >
                         <option label="UF"></option >
@@ -109,7 +119,6 @@
 
         <!--Rodapé-->
         <footer>
-            <span>Desenvolvido pela discente Samara Cassie Dos Santos com finalidade educativa sob orientações da docente Marina  Carradore Sérgio do Instituto Federal de Santa Catarina ©</span>
         </footer>
     </body>
 </html>

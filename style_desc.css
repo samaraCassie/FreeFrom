@@ -39,11 +39,16 @@ section .box{
   width: 90%;
   margin-bottom: 15vmin;
 }
+
+/*Fotos de Demonstração do Produto*/
 .container .slide{
   top: 0;
   margin-right: 50%;
   width: 50%;
 }
+
+
+/*-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO--*/
 .container .info{
   background: transparent;
   top: 0;
@@ -57,36 +62,58 @@ section .box{
   .info #like{
     width:15%;
   }
+  .info h3{
+    font-size: 35px;
+    padding: 0 30px;
+    font-weight: bold;
+  }
+  .valor{
+    background: rgba(83, 59, 49, 0.505);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 8vmin;
+    font-size: 30px;
+    width: 100%;
+    padding: 0 30px;
+  }
+/*<!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->*/
 
+
+/*<!-- [INICO] SESSÃO DE **LOJISTA**-->*/
 .container .loja{ 
   border-end-end-radius: 2vmin;
   top: 450px;
   margin-right: 50%;
   width: 50%;
 }
+.mini-ft-perfil{
+  position: absolute;
+  width: 13vmin;
+  height: 13vmin;
+  border-radius: 10vmin;
+  top: 5px;
+  left: 5px;
+}
   .loja .idem{
     position: relative;
     top: 5px;
     right: 29%;
     width: 40%;
-  }
-      .idem h5{
-        position: absolute;
-        font-weight: bold;
-        margin-top: 7%;
-        margin-left: 15vmin;
-        font-size: 25px;
-      }
-      .idem h6{
-        position: absolute;
-        margin-top: 0%;
-        margin-left: 15vmin;
-        margin-top: 20%;
-        font-size: 18px;
-      }
-      .idem a{
-        color: black;
-      }
+  } .idem h5{
+      position: absolute;
+      font-weight: bold;
+      margin-top: 7%;
+      margin-left: 15vmin;
+      font-size: 25px;
+    }.idem h6{
+      position: absolute;
+      margin-top: 0%;
+      margin-left: 15vmin;
+      margin-top: 20%;
+      font-size: 18px;
+    }.idem a{
+      color: black;
+    }
   .loja .btn{
     position: absolute;
     top: 5px;
@@ -98,34 +125,44 @@ section .box{
     margin-top: 5px;
     width: 30%;
   }
+/*<!-- [fim] SESSÃO DE LOJISTA-->*/
 
+
+/*-- [INICO] SESSÃO DE **DETALHES** DO PRODUTO-->*/
 .container .detalhe{
   margin-top: 15%;
   padding: 10px;
-}
+  }
+    /*~~~~~ TABELA ~~~~~*/
+    table{
+      margin: 20px;
+      align-items: center ;
+      font-size: 20px;
+      width: 50%;
 
-/***** TABELA *****/
-table{
-  margin: 20px;
-  align-items: center ;
-  font-size: 20px;
-  width: 50%;
+    }
+    th{
+      text-align: end;
+    }
+    td{
+      position: absolute;
+      margin-left: 2%;
+    }dl, p, table{  
+      font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
+      font-size: 16px;
+      font-weight: 30;
+      line-height: 1.35;
+      padding: 10px;
+    }
+    /*~~~~~ End TABELA ~~~~~*/
+/*-- [INICO] SESSÃO DE DETALHES DO PRODUTO-->*/
 
-}
-th{
-  text-align: end;
-}
-td{
-  position: absolute;
-  margin-left: 2%;
-}
-/***** End TABELA *****/
 
+/*-- [INICO] SESSÃO DE DESCRIÇÃO DO PRODUTO-->*/
 .container .desc{
   top: 450px;
   margin-top: 50%;
 }
-
 .ingrd{
   margin-top: 1.5vmax;
   margin-bottom: 1.5vmax;
@@ -133,12 +170,14 @@ td{
   border-top: .5px solid rgba(83, 59, 49, 0.46);
   width: 80%;
 }
+/*-- [FIM] SESSÃO DE DETALHES DO PRODUTO-->*/
 
+
+/*-- [INICIO] SESSÃO DE AVALIAÇÃO DO PRODUTO-->*/
 .container .avlic{
   position: relative;
   margin-top: 115%;
-}
-  .container .avlic .clasfc{
+}.container .avlic .clasfc{
     position: relative;
     background: #ffff;
     box-shadow: 0px 2px 10px rgba(54, 46, 42, 0.183);
@@ -147,36 +186,32 @@ td{
     width: 94%;
     height: 15vmin;
     margin: 1%;
-  }
-  .clasfc h6{
+  }.clasfc h6{
     position: absolute;
     text-align: left;
     font-size: 60px;
     left: 30%;
     margin-top: 1vmin;
-  }
-  .clasfc p{
+  }.clasfc p{
     position: absolute;
     text-align: right;
     font-size: 15px;
     right: 30%;
     margin-top: 4vmin;
   }
-
-  .avlic .box{
-    margin-bottom: 25vmin;
-  }
+.avlic .box{
+  margin-bottom: 25vmin;
+}
+  /*[INICIO] COMENTARIOS*/
     .box .comentario{
       position: relative;
-    }
-      .comentario .user{
+    }.comentario .user{
         position: relative;
         top: 1vmin;
         margin: 1%;
         width: 98%;
         z-index: 1;
-      }
-        .user a{
+      }.user a{
           position: absolute;
           font-weight: bold ;
           font-size: 16px;
@@ -184,56 +219,64 @@ td{
           left: 11vmin ;
           margin-top: 4vmin;
         }
+    .mini-ft-perfil-user{
+      position: absolute;
+      width: 9vmin;
+      height: 9vmin;
+      border-radius: 9vmin;
+      top: 5px;
+      left: 5px;
+    }
     .comentario .txt{
       position: relative;
       width: 98%;
       margin: 1%;
       margin-top: 10vmin;
       bottom: 5vmin;
-    }
-      .txt h6{
+    }.txt h6{
         font-size: 18px;
         font-weight: bold;
         text-align: left;
         margin-left: 11vmin;
-      }
-      .txt p{
+      }.txt p{
         font-size: 16px;
         text-align: left;
         margin-left: 9vmin;
         margin-right: 5vmin;
       }
+  /*[FIM] COMENTÁRIOS*/
+/*-- [FIM] SESSÃO DE AVALIAÇÃO DO PRODUTO-->*/
+
 
 
 /***** AVALIAÇÃO *****/
   .avaliacao{
     display: flex;
-  }
-  .star-icon{
-    list-style-type: none;
-    cursor: pointer;
-    color: rgb(83, 59, 49);
-    font-size: 65px;/* alterar o tamanho das estrelas */
-  }
-  .star-icon::before{
-    content: "\2605";
-  }
-  .star-icon.ativo ~ .star-icon::before{
+  }.avaliacao:hover .star-icon::before{
+      content: "\2605";
+    }
+    .star-icon{
+      list-style-type: none;
+      cursor: pointer;
+      color: rgb(83, 59, 49);
+      font-size: 65px;/* alterar o tamanho das estrelas */
+    }.star-icon::before{
+      content: "\2605";
+    }.star-icon.ativo ~ .star-icon::before{
+      content: "\2606";
+    }.star-icon:hover ~ .star-icon::before{
     content: "\2606";
   }
-  .avaliacao:hover .star-icon::before{
-    content: "\2605";
-  }
-  .star-icon:hover ~ .star-icon::before{
-    content: "\2606";
-  }
+  /*ESTRELAS NA SESSÃO INFO*/
   .info .star-icon{
     font-size: 30px;
   }
+  /*ESTRELAS NA SESSÃO DO LOJISTA*/
   .loja .star-icon{
     font-size: 20px;
     margin-bottom: 15%;
   }
+  /*ESTRELAS NA SESSÃO DE COMENTÁRIOS*/
   .comentario .star-icon{
     font-size: 20px;
   }
@@ -242,6 +285,7 @@ td{
     margin-left: 11vmin;
   }
 /***** End AVALIAÇÃO *****/
+
 
 /***** FAVORITAR *****/
 .label {
@@ -283,68 +327,8 @@ button.like path {
     transform: scale(1);
   }
 }
-/***** End FAVORITAR *****/
+/***** [FIM] FAVORITAR *****/
 
-button {
-  background: #2c2c2c;
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: center;
-  cursor: pointer;
-  border: none;
-  border-radius: 8vmin;
-  margin-top: 1.5vmin;
-  margin-bottom: 1.5vmin;
-  height: 2.2rem;
-  width: 100%;
-  font-size: 2vmin;
-  padding: 0.5vmax 1vmax;
-  transition: all .2s ease-in-out;
-}
-button:hover{
-  box-shadow: 0px 6px 9px rgba(31, 26, 24, 0.633);
-}
-.btn a{
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
-  font-size: 2vmin;
-}
-.mini-ft-perfil{
-  position: absolute;
-  width: 13vmin;
-  height: 13vmin;
-  border-radius: 10vmin;
-  top: 5px;
-  left: 5px;
-}
-
-.mini-ft-perfil-user{
-  position: absolute;
-  width: 9vmin;
-  height: 9vmin;
-  border-radius: 9vmin;
-  top: 5px;
-  left: 5px;
-  
-}
-
-.info h3{
-  font-size: 35px;
-  padding: 0 30px;
-  font-weight: bold;
-}
-.valor{
-  background: rgba(83, 59, 49, 0.505);
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 8vmin;
-  font-size: 30px;
-  width: 100%;
-  padding: 0 30px;
-}
 h4{
   background: rgba(83, 59, 49, 0.505);
   color: rgb(255, 255, 255);
@@ -354,12 +338,5 @@ h4{
   font-size: 30px;
   top: 15px;
   width: 90%;
-}
-dl, p, table{  
-  font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
-  font-size: 16px;
-  font-weight: 30;
-  line-height: 1.35;
-  padding: 10px;
 }
  

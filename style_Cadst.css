@@ -9,7 +9,7 @@ body{
 }
 
 /*main*/
-
+    
     .container {
         background: rgb(46, 46, 46);
         box-shadow: 5px 5px 15px rgba(26, 26, 26, 0.315);
@@ -21,15 +21,16 @@ body{
         height: 100%;
     }
 
+    /*Formulario*/
     form {              
         display: flex;
         flex-direction: column;
         margin-top: 5%;
         margin-bottom: 5%;
         width: 80%;
-
     }
     
+    /*Estilização padrão de cada sessão*/
     section {
         position: relative;
         top: 30%;
@@ -38,6 +39,7 @@ body{
         height: 5vmin;
         }
     
+    /***** Estilização padrão de cada campo de preenchimento *****/
     .campo{
         display: flex;
         flex-direction: column;
@@ -46,21 +48,26 @@ body{
         padding: 1rem 1.5rem;
         gap: 5vmin;
     }
-
     .campo input{
         position: absolute;
         outline: none;
         cursor: pointer;
         border: none;
         border-radius: 5vmax;
-        padding: .5%; 
+        padding: 10px; 
         top: 0;
         width: 100%;  
         height: 80%;    
         font-size: 15px;
         color: rgba(0, 0, 0, 0.7);
     }
+    .campo input::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+    }
+    /***** [FIM] Estilização padrão de cada campo de preenchimento *****/
 
+
+    /***** Linha Decorativa abaixo dos campos de preenchimento *****/
     .campo .underline::before {
         content: '';
         position: absolute;
@@ -71,7 +78,6 @@ body{
         bottom: -.1vmin;
         background: rgba(0, 0, 0, 0.2);
     }
-
     .campo .underline::after {
         content: '';
         position: absolute;
@@ -85,15 +91,13 @@ body{
         transition: all .4s ease-in-out;
         transform-origin: left;
     }
-
     .campo input:focus ~ .underline::after {
         transform: scaleX(1);
     }
+    /***** [FIM] Linha Decorativa abaixo dos campos de preenchimento *****/
+    
 
-    .campo input::placeholder {
-        color: rgba(0, 0, 0, 0.5);
-    }
-
+    /***** Classe do campo de seleção de data de nascimento *****/
     .calendario{
         position: relative;
         margin-top: 0;
@@ -101,7 +105,6 @@ body{
         width: 30vmin;
         height: 10vmin;
     }
-
     .calendario input{
         position: absolute;
         left: 0;
@@ -114,7 +117,6 @@ body{
         color: rgba(0, 0, 0, 0.7);
         text-align: center;
     }
-
     .calendario h3{
         position: absolute;
         margin-top: -2vmin;
@@ -123,7 +125,10 @@ body{
         color: rgb(255, 255, 255);
         font-size: 14px;
     }
+    /***** [FIM] Classe do campo de seleção de data de nascimento *****/
 
+
+    /***** Seleção de Sexo *****/
     .radio{
         position: relative;
         color: white;
@@ -135,30 +140,24 @@ body{
         width: 35vmin;
         height: 10vmin;
     }
-
     .radio input{
         width: 30%;
         height: 30%;
     }
-
     .radio input.F {
         position: absolute;
         margin-top: 5vmin;
     }
-    
     .radio label.F{
         position: absolute; 
         margin-top: 5vmin;
-        margin-left: 11vmin;
-        
+        margin-left: 11vmin;   
     }
     .radio label.M{
         position: absolute;
         margin-top: 0;
-        margin-left: 0;
-        
+        margin-left: 0;   
     }
-
     .radio h3{
         position: absolute;
         margin-top: -2vmin;
@@ -167,7 +166,10 @@ body{
         color: rgb(255, 255, 255);
         font-size: 14px;
     }
+    /***** [FIM] Seleção de Sexo *****/
 
+
+    /***** Seleção de Unidade Federal *****/
     .select-uf{
         position: relative;
         margin-top: 0;
@@ -176,7 +178,6 @@ body{
         height: 5vmin;
         margin-bottom: 10vmin;
     }
-
     .select-uf select{
         position: absolute;
         left: 0;
@@ -189,7 +190,10 @@ body{
         color: rgba(0, 0, 0, 0.7);
         text-align: center;
     }
+    /***** [FIM] Seleção de Unidade Federal *****/
 
+
+    /***** Botões do Formulário *****/
     input[type="reset"] {
         width: 100%;
         cursor: pointer;
@@ -197,10 +201,7 @@ body{
         border: none;
         border-radius: 5vmax;
         margin-bottom: 2vmin;
-        padding: 4px;
     }
-
-
     input[type="submit"] {
         padding: 7px;
         width: 100%;
@@ -212,17 +213,10 @@ body{
         border-radius: 5vmax;
         transition: all 0.2s ease;
     }
-
     input[type="submit"]:hover {
         letter-spacing: 0.5px;
         background: linear-gradient(to right, rgb(212, 185, 152), rgb(26, 26, 26));
-    }
-
-    form .campo:first-child {
-        margin-bottom: 5px;
-    }
-
-    
+    }    
     .google{
         padding: 7px;
         border-radius: 5vmax;
@@ -232,7 +226,6 @@ body{
         text-decoration: none;
         text-align: center;
     }
-
     .facebook {
         background: linear-gradient(to right, #2a5298, #042055);
         color: whitesmoke;
@@ -243,6 +236,7 @@ body{
         text-decoration: none;
         text-align: center;                             
     }
+    /***** [FIM] Botões do Formulário *****/
 
 /*/MAIN*/
 
