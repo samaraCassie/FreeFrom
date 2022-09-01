@@ -184,3 +184,16 @@ footer{
     height: 20%;
     margin-bottom: 0;
 }
+@media screen and (max-width:768px){
+    section, div, ul, form, nav, span, li  {
+        width: 100%;
+        padding: 0%;
+    }
+}
+@media screen and (max-width:600px) {
+    nav, section, div, ul, span, img, li {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }   
+}
