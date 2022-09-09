@@ -6,6 +6,7 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
 /*main*/
@@ -101,7 +102,7 @@ body{
     .calendario{
         position: relative;
         margin-top: 0;
-        margin-left: 10vmin;
+        left: 10vmin;
         width: 30vmin;
         height: 10vmin;
     }
@@ -118,12 +119,7 @@ body{
         text-align: center;
     }
     .calendario h3{
-        position: absolute;
-        margin-top: -2vmin;
-        margin-left: 0;
-        width: 100%;
         color: rgb(255, 255, 255);
-        font-size: 14px;
     }
     /***** [FIM] Classe do campo de seleção de data de nascimento *****/
 
@@ -135,9 +131,8 @@ body{
         font-size: 15px;
         text-align: center;
         top: -10vmin;
-        bottom: -10vmax;
-        margin-left: 45vmin;
-        width: 35vmin;
+        margin-left: 55vmin;
+        width: 20vmin;
         height: 10vmin;
     }
     .radio input{
@@ -151,7 +146,7 @@ body{
     .radio label.F{
         position: absolute; 
         margin-top: 5vmin;
-        margin-left: 11vmin;   
+        margin-left: 6vmin;   
     }
     .radio label.M{
         position: absolute;
@@ -159,12 +154,7 @@ body{
         margin-left: 0;   
     }
     .radio h3{
-        position: absolute;
-        margin-top: -2vmin;
-        margin-left: 3vmin;
-        width: 100%;
         color: rgb(255, 255, 255);
-        font-size: 14px;
     }
     /***** [FIM] Seleção de Sexo *****/
 
@@ -192,6 +182,28 @@ body{
     }
     /***** [FIM] Seleção de Unidade Federal *****/
 
+    /***** Sessão de Seleção de Categorias *****/
+    .cat{
+        position: relative;
+        display: flex;
+        height: 0%;
+        width: 110%;
+        margin-left: -5%;
+        margin-bottom: 3vmax;
+        border-radius: .3vmax;
+        background: radial-gradient(rgba(49, 49, 49, 0.288), rgba(20, 20, 20, 0.466));
+        color: beige;
+    }
+    .fileira{
+        margin: 1%;
+    }
+    .check{
+        width: 14vmax;
+    }
+    input[type="checkbox"]{
+        width: 10%;
+    }
+    /***** [FIM] Sessão de Seleção de Categorias *****/
 
     /***** Botões do Formulário *****/
     input[type="reset"] {
@@ -237,7 +249,6 @@ body{
         text-align: center;                             
     }
     /***** [FIM] Botões do Formulário *****/
-
 /*/MAIN*/
 
 .pp{

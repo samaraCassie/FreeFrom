@@ -148,10 +148,9 @@ h1{
 }
 
 h2{
-    position: relative;
     color: rgb(165, 165, 165);
     font-size: 2.5vmax;
-    margin-bottom: 4vmin;
+    margin-bottom: 5vmax;
     text-transform: uppercase;
 }
 
