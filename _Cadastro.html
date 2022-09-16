@@ -14,29 +14,35 @@
         <main class="container">
             <form> 
                 <h2>Cadastrar</h2> 
+
+                <!--CAMPO PARA PREENCHER COM E-MAIL-->
                 <section class="campo">
                     <input type="text" name="email" id="email"
                         placeholder="E-mail*" required>
                     <div class="underline"></div>
                 </section>  
 
+                <!--CAMPO PARA PREENCHER COM NOME DO USUÁRIO-->
                 <section class="campo">
                     <input type="text" name="usuario" id="usuario"
                         placeholder="Usuário*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM A SENHA-->
                 <section class="campo">
                     <input type="password" name="senha" id="senha"
                         placeholder="Senha*" required>
                     <div class="underline"></div>
                 </section> 
 
+                <!--CAMPO PARA PREENCHER COM A DATA DE NASCIMENTO-->
                 <div class="calendario">
                     <h3>Data de Nascimento:</h3>
                     <input type="date"/>
                 </div>
 
+                <!--CAMPO PARA ESCOLHER SEXO-->
                 <div class="radio">
                     <h3>Sexo:</h3>
                     <input class="F" type="radio" name="sexo" value="F">
@@ -45,25 +51,29 @@
                     <input class="M" type="radio" name="sexo" value="M">
                     <label class="M" for="Mascolino">Masculino</label>
                 </div>
-                            
+
+                <!--CAMPO PARA PREENCHER COM ENDEREÇO-->
                 <section class="campo">
                     <input type="text" name="Endereço" 
                     placeholder="Endereço*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM NÚMERO DA RESIDÊNCIA-->
                 <section class="campo">
                     <input type="text" name="Numero" 
                     placeholder="Número*" required>
                     <div class="underline"></div>
                 </section>
 
+                <!--CAMPO PARA PREENCHER COM CIDADE-->
                 <section class="campo">
                     <input type="text" name="Cidade" 
                     placeholder="Cidade*" required>
                     <div class="underline"></div>                           
                 </section>
 
+                <!--CAMPO PARA SELECIONAR A UNIDADE FEDERAL-->
                 <div class="select-uf">
                     <select  nome = " Unidade Federal " >
                         <option label="UF"></option >
@@ -96,7 +106,82 @@
                         <option  value = " TO " > Tocantins </option >
                     </select>
                 </div>    
-
+                <section class="cat">
+                    <div class="fileira" id="f1">
+                        <div class="check">
+                            <input type="checkbox" name="categoria" class="categoria">
+                            <label for="gluten"> Glúten</label>                                
+                        </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Trigo"> Trigo</label>
+        
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Lactose"> Lactose</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="LeiteVaca"> Leite de Vaca</label>
+                    </div>
+                </div>
+                <div class="fileira" id="f2">
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Ovo"> Ovo</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Amendoin"> Amendoin</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Castanhas"> Castanhas</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Soja"> Soja</label>
+                    </div>
+                </div>
+                <div class="fileira" id="f3">
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Peixe"> Peixe</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="FrutosMar"> Frutos do Mar</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Acucar"> Açucar</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="AditivosAlimentares"> Aditivos alimentares</label>
+                    </div>
+                </div>
+                <div class="fileira" id="f4">
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Vegetariano"> Carne/Vegetariano</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Vegano"> De origem animal/Vegano</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Fitness"> Fitness</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" name="categoria" class="categoria">
+                        <label for="Outros"> Outros</label>
+                    </div>
+                </div>
+                </section>
+                
                 <input type="reset" value="Resetar">
                 <input type="submit" value="Enviar">
             
@@ -109,7 +194,6 @@
 
         <!--Rodapé-->
         <footer>
-            <span>Desenvolvido pela discente Samara Cassie Dos Santos com finalidade educativa sob orientações da docente Marina  Carradore Sérgio do Instituto Federal de Santa Catarina ©</span>
         </footer>
     </body>
 </html>
