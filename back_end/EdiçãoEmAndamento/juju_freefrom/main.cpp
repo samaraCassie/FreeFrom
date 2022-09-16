@@ -28,7 +28,7 @@ int main()
         cout << "[2] Remover produto\n";
         cout << "[3] Ver lista de cadastros\n";
         cout << "[4] Buscar\n";
-        cout << "[5] Editar\n"
+        cout << "[5] Editar\n";
 
         cin >> opcao;
 
@@ -62,7 +62,7 @@ int main()
             alunoHash.busca(aluno, busca);
         }else if( opcao == 5)
         {
-            cout "Id do produto a ser editado: ";
+            cout << "Id do produto a ser editado: ";
             cin >> id;
             Aluno aluno(id, " ", NULL);
         } //else if (opcao)
