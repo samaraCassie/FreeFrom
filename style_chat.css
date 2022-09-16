@@ -1,0 +1,66 @@
+@import url('reset.css');
+
+body{
+    background-color: rgb(48, 48, 48);
+    background-attachment: fixed;
+}
+main{
+    background: darkred;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    height: 100vh;
+    left: 0;
+
+}
+.user{
+    position: absolute;
+    background: cyan;
+    width: 85vw;
+    top: 0;
+    height: 10vh;
+}
+.user img{
+    position: absolute;
+    height: 100%;
+    left: 5%;
+}
+.user span{
+    margin-left: 10vmax;
+}
+.chat{
+    background: cornflowerblue;
+    position: absolute;
+    top: 10vh;
+    width: 85vw;
+    height: 80vh;
+}
+.
+#in{
+    background: purple;
+}
+#out{
+    background: orange;
+}
+
+aside{
+    background: radial-gradient(rgb(38, 38, 38), rgb(10, 10, 10));
+    height: 100vh;
+    width: 15vw;
+    right: 0px;
+    top: 0;
+    text-align: center;
+    float: right;
+    position: fixed;
+}
+
+footer{
+    width: 85vw;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    float: left;
+}
