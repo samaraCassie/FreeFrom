@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    Hello Chat
+    <main>
+      <article class="chat__container">
+        <div class="chat_content" id="chat_content"></div>
+        <div class="chat__messageBox">
+          <img id="porfile" src="" alt="porfile" />
+          <textarea id="message" name="message" placeholder="escreva a sua mensagem"></textarea>
+          <button id="send">Enviar</button>
+        </div>
+      </article>
+      <div class="modal">
+        <div class="modal_content">
+          <h2>Digite os dados</h2>
+          <div>
+            <input type="text" placeholder="o teu nome" id="name" />
+            <input type="text" placeholder="coloca a sala do chat" id="room" />
+            <button id="btn-form">Entrar</button>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="./chat.js" type="module"></script>
   </body>
 </html>
