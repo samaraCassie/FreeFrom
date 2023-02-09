@@ -6,7 +6,7 @@ main{
 }
 
 body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(24, 24, 24, 0.8)), url(Imagem/is14667-image.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(24, 24, 24, 0.8)), url(../Img/is14667-image.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
