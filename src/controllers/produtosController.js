@@ -1,3 +1,3 @@
 exports.paginaProdutos = (req, res) => {
-    res.render('_produtos');
+    res.render('_Produtos');
 }
