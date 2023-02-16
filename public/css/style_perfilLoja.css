@@ -1,0 +1,250 @@
+@import url('reset.css');
+
+body{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-top: 10vmax;
+  margin-bottom: 10vmax;
+  display: flex;
+  flex-direction: column;
+}
+
+
+header{
+  position: relative;
+  width: 100%;
+  top: 0;
+}
+
+
+.container{
+  position: absolute;
+  background: rgb(212, 185, 152);
+  box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
+  border: .5px solid rgba(83, 59, 49, 0.46);
+  top: 10vmax;
+  margin-top: 40%;
+  margin-right: 5%;
+  margin-left: 5%;
+  width: 90%;    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 0 auto;
+}
+
+.loja{ 
+    position: absolute;
+    background: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px rgba(56, 56, 56, 0.479);
+    width: 100%;
+    height: 30vmax;
+    margin-bottom: 5%;
+  }
+    .loja .idem{
+        position: relative;
+        width: 55%;    
+        height: 100%;
+    }
+        .idem h5{
+            position: absolute;
+            font-weight: bold;
+            margin-top: 21.5vmax;
+            margin-left: 13vmax;
+            font-size: 2.5vmax;
+        }
+        .idem h6{
+            position: absolute;
+            margin-top: 0%;
+            margin-left: 13vmax;
+            margin-top: 25vmax;
+            font-size: 1.8vmax;
+        }
+        .idem .ft-perfil{
+            position: absolute;
+            width: 10vmax;
+            height: 10vmax;
+            border-radius: 10vmax;
+            margin-top: 19vmax;
+            margin-left: 2vmax;
+            z-index: 1;
+        }
+        .loja .capa{
+            position: absolute;
+            margin-top: 0;
+            width: 100%;
+            height: 60%;
+            z-index: 1;
+        }
+
+    .loja .btn{
+        position: absolute;
+        right: 1.5vmax;
+        bottom: 2vmax;
+        width: 15%;
+    }
+    .loja .reputacao{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+        text-align: center;
+        top: 60%;
+        margin-left: 55%;   
+        width: 26.5vmax;
+        height: 40%;
+    }
+    .reputacao .txt-info{
+        position: absolute;
+        margin-top: 6vmax;
+        padding: 1vmax 1vmax;
+    }
+
+
+/***** AVALIAÇÃO *****/
+.avaliacao{
+    display: flex;
+    width: 100%;
+  }
+  .star-icon{
+    list-style-type: none;
+    cursor: pointer;
+    color: rgb(83, 59, 49);
+    font-size: 65px;/* alterar o tamanho das estrelas */
+  }
+  .number{
+    list-style-type: none;
+    cursor: pointer;
+    color: rgb(83, 59, 49);
+    font-size: 65px;/* alterar o tamanho das estrelas */
+    margin-top: 2vmin;
+  }
+  .star-icon::before{
+    content: "\2605";
+  }
+  .star-icon.ativo ~ .star-icon::before{
+    content: "\2606";
+  }
+  .avaliacao:hover .star-icon::before{
+    content: "\2605";
+  }
+  .star-icon:hover ~ .star-icon::before{
+    content: "\2606";
+  }
+  .reputacao .star-icon{
+    font-size: 5vmax;
+  }
+/***** [FIM] AVALIAÇÃO *****/
+
+
+/***** SESSÃO SOBRE A LOJA *****/
+  .bio{
+    background: #ffffff;
+    border-radius: 1vmin;
+    margin-top: 6vmax;
+    width: 90%;
+  }.bio .box{
+      margin-top: 2.5vmax;
+      margin-bottom: 2.5vmax;
+      margin-left: 5%;
+      width: 90%;
+    }.box p{
+        text-align: justify;
+      }
+/***** [FIM] SESSÃO SOBRE A LOJA *****/
+
+
+/***** PRODUTOS *****/
+.produtos{
+  background: rgb(255, 255, 255);
+  border-radius: 2vmin;
+  width: 90%;
+  margin-top: 10vmax;
+  margin-bottom: 5vmax;
+}
+.produtos section{
+  position: relative;
+  height: 50vh;
+  width: 22vw;
+  top: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+}
+/*Fileira de Cartões*/
+.cards {
+  display: flex;
+  width: 100%;
+}
+/*Cartão individual*/
+.cards section.card {
+  background: white;
+  box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
+  border: .5px solid rgba(83, 59, 49, 0.46);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  top: 0;
+  margin-left: 3vw;
+  margin-right: .5vw;   
+}
+/*espaço da capa no cartão*/
+section.card .icon {
+  position: absolute;
+  display: block;
+  top: 0%;
+  width: 100%;
+  height: 70%;
+}section.card img {
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}section.card span{
+  position: absolute;
+  font-size: 1.2vmax;
+  margin-top: 10px;
+  width: 95%;
+  left: 2.5%;
+}section.card a {
+  position: absolute;
+  background: #2c2c2c;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 2vmin;
+  padding: 0.5vmax 1vmax;
+  border-radius: 32vmin;
+  bottom: 1.5vh;
+  height: 30%;
+  width: 33%;
+  left: 33%;
+}
+/*[fIM] espaço da capa no cartão*/
+/*espaço do conteúdo no cartão*/
+.cont{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+}
+/*[FIM] SESSÃO DE PRODUTOS*/
+  
+h6{  
+  font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
+  font-size: 20px;
+  font-weight: 30;
+  line-height: 1.6;
+}
+
+p{  
+  font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
+  font-size: 16px;
+  font-weight: 30;
+  line-height: 1.6;
+}
