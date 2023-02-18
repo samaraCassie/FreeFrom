@@ -1,0 +1,30 @@
+.principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    background: rgb(204, 188, 169);
+    border-radius: 20px;
+    justify-content: center;
+    padding: 20px;
+    margin: 40px auto;
+}
+.principal h1{
+    color: rgb(90, 57, 35);
+}
+p{
+    color: rgb(51, 33, 21);
+    font-size: 30px;
+}
+.principal h2{
+    color: rgb(110, 95, 85);
+}
+a{
+    font-size: 25px;
+    padding: 10px;
+    color: rgb(161, 148, 138);
+    background-color: rgb(90, 57, 35);
+    border-radius: 20px;
+}
