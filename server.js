@@ -2,12 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-//const mongoose = require('mongoose');
-/*mongoose.set('strictQuery', true);
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.CONNECTIONSTRING).then(() => {
     console.log('Conexão com base de dados = true');
     app.emit('Pronto');
-}).catch(e => console.log('Erro com o Banco de dados!!:   ', e));*/
+}).catch(e => console.log('Erro com o Banco de dados!!:   ', e));
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -25,7 +25,7 @@ app.get('/imagem', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '.jpg'));
   });
 
-/*const sessionOptions = session({
+const sessionOptions = session({
     secret: 'SalveSalveHHH',
     store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
     resave: false,
@@ -36,7 +36,7 @@ app.get('/imagem', (req, res) => {
     }
 });
 app.use(sessionOptions);
-app.use(flash());*/
+app.use(flash());
 
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
@@ -45,9 +45,9 @@ app.set('view engine', 'ejs');
 app.use(meuMiddleware);
 app.use(routes);
 
-
-app.listen(3000, () => {
-    console.log('Acessar http://localhost:3000');
-    console.log('Servidor executando na porta 3000');
+app.on('Pronto', () => {
+    app.listen(3000, () => {
+        console.log('Acessar http://localhost:3000');
+        console.log('Servidor executando na porta 3000');
+    });
 });
-

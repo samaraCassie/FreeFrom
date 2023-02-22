@@ -8,6 +8,7 @@ const descricaoProdutos = require('./src/controllers/descricaoController');
 const lojaController = require('./src/controllers/lojaController');
 const perfilController = require('./src/controllers/perfilController');
 const sobreController = require('./src/controllers/sobreController');
+const chatController = require('./src/controllers/chatController');
 
 route.get('/', homeController.paginaInicial);
 route.get('/_Produtos', produtoController.paginaProdutos);
@@ -17,5 +18,6 @@ route.get('/_descricaoProduto', descricaoProdutos.paginaDesc);
 route.get('/_PerfilLoja', lojaController.paginaLoja);
 route.get('/_PerfilUser', perfilController.paginaPerfil);
 route.get('/_Sobre', sobreController.paginaSobre);
+route.get('/chat/frontend/index', chatController.chatPagina);
 
 module.exports = route;
