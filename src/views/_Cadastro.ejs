@@ -12,7 +12,7 @@
     <body>
         <!--Conteúdo do FORMULÁRIO-->
         <main class="container">
-            <form> 
+            <form id="formulario"> 
                 <h2>Cadastrar</h2> 
 
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
@@ -55,21 +55,21 @@
                 <!--CAMPO PARA PREENCHER COM ENDEREÇO-->
                 <section class="campo">
                     <input type="text" name="Endereço" 
-                    placeholder="Endereço*" required>
+                    placeholder="Endereço*" id="endereco" required>
                     <div class="underline"></div>
                 </section>
 
                 <!--CAMPO PARA PREENCHER COM NÚMERO DA RESIDÊNCIA-->
                 <section class="campo">
                     <input type="text" name="Numero" 
-                    placeholder="Número*" required>
+                    placeholder="Número*" id="numero" required>
                     <div class="underline"></div>
                 </section>
 
                 <!--CAMPO PARA PREENCHER COM CIDADE-->
                 <section class="campo">
                     <input type="text" name="Cidade" 
-                    placeholder="Cidade*" required>
+                    placeholder="Cidade*" id="cidade" required>
                     <div class="underline"></div>                           
                 </section>
 
@@ -195,5 +195,6 @@
         <!--Rodapé-->
         <footer>
         </footer>
+        <script src="../controllers/cadastroController.js"></script>
     </body>
 </html>

@@ -1,17 +1,25 @@
-require('dotenv').config();
-
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
-mongoose.set('strictQuery', true);
-mongoose.connect(process.env.CONNECTIONSTRING).then(() => {
-    console.log('Conexão com base de dados = true');
-    app.emit('Pronto');
-}).catch(e => console.log('Erro com o Banco de dados!!:   ', e));
 
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const flash = require('connect-flash');
+//conexão com banco de dados
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'FreeFrom'
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar: ' + err.stack);
+    return;
+  }
+
+  console.log('Conexão bem sucedida com o ID: ' + connection.threadId);
+});
+//-----------------
 
 const routes = require('./routes');
 const path = require('path');
@@ -25,19 +33,6 @@ app.get('/imagem', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '.jpg'));
   });
 
-const sessionOptions = session({
-    secret: 'SalveSalveHHH',
-    store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24* 7,
-        httpOnly: true
-    }
-});
-app.use(sessionOptions);
-app.use(flash());
-
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
@@ -45,9 +40,7 @@ app.set('view engine', 'ejs');
 app.use(meuMiddleware);
 app.use(routes);
 
-app.on('Pronto', () => {
-    app.listen(3000, () => {
-        console.log('Acessar http://localhost:3000');
-        console.log('Servidor executando na porta 3000');
-    });
+app.listen(3000, () => {
+    console.log('Acessar http://localhost:3000');
+    console.log('Servidor executando na porta 3000');
 });

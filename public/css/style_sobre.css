@@ -24,7 +24,7 @@ p{
 a{
     font-size: 25px;
     padding: 10px;
-    color: rgb(161, 148, 138);
-    background-color: rgb(90, 57, 35);
+    color: white;
+    background-color: rgba(40, 31, 28);
     border-radius: 20px;
 }
