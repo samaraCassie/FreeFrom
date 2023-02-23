@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'FreeFrom'
+  database: 'freefrom'
 });
 
 connection.connect((err) => {
@@ -18,6 +18,7 @@ connection.connect((err) => {
   }
 
   console.log('Conexão bem sucedida com o ID: ' + connection.threadId);
+  app.emit('Pronto');
 });
 //-----------------
 
@@ -40,7 +41,9 @@ app.set('view engine', 'ejs');
 app.use(meuMiddleware);
 app.use(routes);
 
-app.listen(3000, () => {
-    console.log('Acessar http://localhost:3000');
-    console.log('Servidor executando na porta 3000');
+app.on('Pronto', () => {
+    app.listen(3000, () => {
+      console.log('Acessar http://localhost:3000');
+      console.log('Servidor executando na porta 3000');
+  });
 });
