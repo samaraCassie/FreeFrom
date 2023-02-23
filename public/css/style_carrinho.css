@@ -1,0 +1,91 @@
+.principal{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+    background: aliceblue;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+
+body{
+    background-color: rgb(212, 185, 152);
+}
+h1{
+    color: black;
+    font-size: 35px;
+}
+
+hr{
+    border-color: rgb(90, 57, 35); 
+    width: 100%;
+}
+
+.cabecalho img{
+    position: absolute;
+    left: 50px;
+}
+
+img:hover{
+    background-color: rgba(128, 128, 128, 0.493);
+}
+
+.cards {
+    display: flex;
+}
+/*Cartão individual*/
+.cards section.card {
+    background: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    margin-left: 1.5vw;
+    margin-top: 5vh;
+    height: 50vh;
+    width: 22vw;
+    border: .5px solid rgba(83, 59, 49, 0.46);
+    box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
+}
+/*espaço da capa no cartão*/
+section.card .icon {
+    position: absolute;
+    display: block;
+    top: 0%;
+    width: 100%;
+    height: 70%;
+}
+section.card img {
+    width: 100%;
+    height: 100%;
+}
+/*Espaço do conteudo no cartão*/
+section.card span{
+    position: absolute;
+    font-size: 3vmin;
+    top: 73%;
+    width: 95%;
+}
+section.card a {/**********TENTAR TROCAR PARA BUTTON*/
+    position: absolute;
+    background: #2c2c2c;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 2vmin;
+    padding: 0.5vmax 1vmax;
+    border-radius: 32vmin;
+    bottom: 1.5vh;
+    height: 10%;
+}
+
+.btn{
+    align-self: center;
+    max-width: 25%;
+}
