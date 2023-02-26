@@ -12,7 +12,7 @@
     <body>
         <!--Conteúdo do FORMULÁRIO-->
         <main class="container">
-            <form id="formulario"> 
+            <form id="formulario" method="POST"> 
                 <h2>Cadastrar</h2> 
 
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
@@ -39,16 +39,16 @@
                 <!--CAMPO PARA PREENCHER COM A DATA DE NASCIMENTO-->
                 <div class="calendario">
                     <h3>Data de Nascimento:</h3>
-                    <input type="date"/>
+                    <input type="date" name="data"/>
                 </div>
 
                 <!--CAMPO PARA ESCOLHER SEXO-->
                 <div class="radio">
                     <h3>Sexo:</h3>
-                    <input class="F" type="radio" name="sexo" value="F">
+                    <input class="F" type="radio" name="sexo" value="Feminino">
                     <label class="F" for="Feminino"> Feminino</label>
 
-                    <input class="M" type="radio" name="sexo" value="M">
+                    <input class="M" type="radio" name="sexo" value="Masculino">
                     <label class="M" for="Mascolino">Masculino</label>
                 </div>
 
@@ -75,7 +75,7 @@
 
                 <!--CAMPO PARA SELECIONAR A UNIDADE FEDERAL-->
                 <div class="select-uf">
-                    <select  nome = " Unidade Federal " >
+                    <select  nome = " Unidade Federal " name="UF">
                         <option label="UF"></option >
                         <option  value = " AC " > Acre </option >
                         <option  value = " AL " > Alagoas </option >
