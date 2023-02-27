@@ -60,6 +60,7 @@ app.set('view engine', 'ejs');
 
 //Meus middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(meuMiddleware);
 app.use(routes);
 
 app.on('Pronto', () => {
