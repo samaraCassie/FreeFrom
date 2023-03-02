@@ -11,6 +11,8 @@ const perfilController = require('./src/controllers/perfilController');
 const sobreController = require('./src/controllers/sobreController');
 const chatController = require('./src/controllers/chatController');
 const carrinhoController = require('./src/controllers/carrinhoController');
+const cadastroProdutoController = require('./src/controllers/cadastroProdutoController');
+const editarProdutoController = require('./src/controllers/editarProdutoController');
 
 route.get('/', homeController.paginaInicial);
 route.get('/_Produtos', produtoController.paginaProdutos);
@@ -23,5 +25,10 @@ route.get('/_PerfilLoja', lojaController.paginaLoja);
 route.get('/_PerfilUser', perfilController.paginaPerfil);
 route.get('/_Sobre', sobreController.paginaSobre);
 route.get('/_Carrinho', carrinhoController.paginaCarrinho);
+route.get('/_CadastroProdutos', cadastroProdutoController.paginaCadastroProduto);
+route.post('/_CadastroProdutos', cadastroProdutoController.postProduto);
+route.get('/:id', editarProdutoController.getId)
+route.post('/:id', editarProdutoController.postEdicaoProdutos);
+route.delete('/:id', editarProdutoController.deleteProd);
 
 module.exports = route;
