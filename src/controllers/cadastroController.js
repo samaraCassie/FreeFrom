@@ -1,4 +1,5 @@
 const mysqls = require('mysql2');
+const md5 = require('md5');
 
 const connection = mysqls.createConnection({
     host: 'localhost',
@@ -15,14 +16,16 @@ exports.paginaCadastro = (req, res) =>{
 exports.postCadastro = (req, res) => {
   const usuario = req.body.usuario;
   const email = req.body.email;
-  const senha = req.body.senha;
+  const senha = md5(req.body.senha);
   const dataNascimento = req.body.data;
   const sexo = req.body.sexo;
   const endereço = req.body.Endereço;
   const numero = req.body.Numero;
   const cidade = req.body.Cidade;
   const uf = req.body.UF;
+
   
+
   const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
   const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf];
   connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {

@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+const md5 = require('md5');
 
 async function conectarBancoDeDados() {
     const connection = await mysql.createConnection({
@@ -17,7 +18,7 @@ exports.loginPagina = (req, res) => {
 exports.loginPost = async (req, res) => {
     const connection = await conectarBancoDeDados();
     const email = req.body.email;
-    const senha = req.body.senha;
+    const senha = md5(req.body.senha);
   
     const [rows, fields] = await connection.execute('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
   
