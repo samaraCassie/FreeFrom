@@ -1,5 +1,6 @@
 const mysql = require('mysql2/promise');
 const md5 = require('md5');
+let nome;
 
 async function conectarBancoDeDados() {
     const connection = await mysql.createConnection({
@@ -17,11 +18,12 @@ exports.loginPagina = (req, res) => {
 
 exports.loginPost = async (req, res) => {
     const connection = await conectarBancoDeDados();
-    const email = req.body.email;
+    const email = req.body.usuario;
     const senha = md5(req.body.senha);
   
-    const [rows, fields] = await connection.execute('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
-  
+    const [rows, fields] = await connection.execute('SELECT usuario, senha FROM usuario WHERE usuario = ? AND senha = ?', [email, senha]);
+    nome = rows[0].usuario;
+    console.log(nome)
     if (rows.length > 0) {
       res.redirect('/_Produtos')
     } else {
