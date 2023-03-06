@@ -18,15 +18,16 @@ exports.loginPagina = (req, res) => {
 
 exports.loginPost = async (req, res) => {
     const connection = await conectarBancoDeDados();
-    const email = req.body.usuario;
+    const usuario = req.body.usuario;
     const senha = md5(req.body.senha);
   
-    const [rows, fields] = await connection.execute('SELECT usuario, senha FROM usuario WHERE usuario = ? AND senha = ?', [email, senha]);
-    nome = rows[0].usuario;
-    console.log(nome)
+    const [rows, fields] = await connection.execute('SELECT usuario, senha FROM usuario WHERE usuario = ? AND senha = ?', [usuario, senha]);
     if (rows.length > 0) {
       res.redirect('/_Produtos')
+      nome = rows[0].usuario;
     } else {
       res.status(401).send('Dados de login incorretos!');
     }
   }
+
+module.exports.nome;
