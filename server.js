@@ -25,6 +25,7 @@ connection.connect((err) => {
 const routes = require('./routes');
 const path = require('path');
 const meuMiddleware = require('./src/middlewares/middleware.js');
+const middlewareProdutos = require('./src/middlewares/produtosMiddleware');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,6 +40,7 @@ app.set('view engine', 'ejs');
 //Meus middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(meuMiddleware);
+app.use('_Produtos', middlewareProdutos);
 app.use(routes);
 
 app.on('Pronto', () => {
