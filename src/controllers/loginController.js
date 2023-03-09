@@ -29,5 +29,3 @@ exports.loginPost = async (req, res) => {
       res.status(401).send('Dados de login incorretos!');
     }
   }
-
-module.exports.nome;
