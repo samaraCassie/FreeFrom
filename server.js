@@ -21,32 +21,10 @@ connection.connect((err) => {
   console.log('Conexão bem-sucedida com o banco de dados');
   app.emit('Pronto');
 });
-// const mysql = require('mysql');
-
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'freefrom'
-// });
-
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('Erro ao conectar: ' + err.stack);
-//     return;
-//   }
-
-//   console.log('Conexão bem sucedida com o ID: ' + connection.threadId);
-//   app.emit('Pronto');
-// });
-// module.exports = connection;
-//-----------------
 
 const routes = require('./routes');
 const path = require('path');
 const meuMiddleware = require('./src/middlewares/middleware.js');
-const e = require('express');
-const { emit } = require('process');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
