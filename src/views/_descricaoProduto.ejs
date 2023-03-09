@@ -10,6 +10,12 @@
     <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
 </head>
 <body>
+    <div class="modal">
+        <div class="modal-content">
+          <h1 style="color: lime; font-size: 35px;"><b>Produto comprado com sucesso</b></h1>
+          <button class="close-btn">Fechar</button>
+        </div>
+    </div>
     <article class="container">
 
         <!-------------- [INICO] FOTOS DE DEMONSTRAÇÃO DO PRODUTO--------------->
@@ -83,9 +89,9 @@
                     <!-- ei-slider-thumbs -->
                 </div>
             </div><!-- wrapper -->
-            <script type="text/javascript" src="javaScript/slide.min.js"></script>
-            <script type="text/javascript" src="javaScript/eiSlideShow.js"></script>
-            <script type="text/javascript" src="javaScript/slide.js"></script>
+            <script type="text/javascript" src="javaScript/slide/slide.min.js"></script>
+            <script type="text/javascript" src="javaScript/slide/eiSlideShow.js"></script>
+            <script type="text/javascript" src="javaScript/slide/slide.js"></script>
             <script type="text/javascript">
                 $(function() {
                     $('#ei-slider').eislideshow({
@@ -111,13 +117,12 @@
                     <li class="star-icon" data-avaliacao="5"></li>
                 </ul>
             </div>
-            <!--
             <p>0 Avaliações</p>
             <p>0 Vendidos</p>
             <div class="btn">
-            <button><a href="#">Adicionar ao carrinho</a></button>
-            <button><a href="#">Comprar</a></button>
+            <button id="open-modal-btn">Comprar</button>  
             </div>
+            <!--
             <button id="like">
                 <div class="label">
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -336,8 +341,23 @@
          [fim] SESSÃO DE AVALIAÇÃO DO PRODUTO-----------------------------------COMENTARIO-->
     </article>
 
-    <footer>
-    </footer>
+    <!--<footer>
+    </footer>-->
     <script src="./assets/js/bundle.js"></script>
+    <script>
+        const openModalBtn = document.querySelector('#open-modal-btn');
+        const closeModalBtn = document.querySelector('.close-btn');
+        const modal = document.querySelector('.modal');
+
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
