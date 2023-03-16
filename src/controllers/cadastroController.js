@@ -72,10 +72,10 @@ exports.postCadastro = (req, res) => {
         if(!validaSenha){
             errors.push('Senha invalida!');
         }
+
         if(errors.length>0){
             req.flash('errors', errors);
             req.session.save(function() {
-                res.redirect('back');
                 return;
             });
             return;
