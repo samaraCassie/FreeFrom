@@ -147,19 +147,23 @@
                 </section>-->
     </header>
     <main>   
-        <% for(var nums = 0; nums<num_produtos; nums++) {%>     
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <% produtos.forEach((produto) => { %>
-                    <span><%= produto.nome %></span>
-                  <% }); %>
-                <a href="_descricaoProduto">Veja Mais</a> 
-            </section>
-        </div>  
-        <% } %>
+        
+        <% for(var nums = 0; nums<num_produtos; nums++) {%>  
+            <div class="cards"><!----------------FILEIRA DE CARTÕES-->
+                <% for(var i = 0; i<3; i++){ %>
+                    <% console.log(cont); %>
+                    <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                        <div class="icon"><!--ESPAÇO DA CAPA-->
+                            <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
+                        </div>
+                            <span><%= produtos[i].descricao %></span>
+                        <a href="_descricaoProduto">Veja Mais</a> 
+                    </section>
+                    
+                <% }; %>
+                
+            </div>  
+        <% }; %>
     </main>
     <footer></footer>
     <script src="./assets/js/bundle.js"></script>

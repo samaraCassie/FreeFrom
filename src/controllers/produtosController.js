@@ -24,7 +24,7 @@ exports.paginaProdutos = (req, res) => {
                 descricao: row.descricao
                 });
             });
-            res.render('_Produtos', { produtos: products, num_produtos: results[0].num_produtos });
+            res.render('_Produtos', { produtos: result, num_produtos: results[0].num_produtos });
         });
     });
 }
