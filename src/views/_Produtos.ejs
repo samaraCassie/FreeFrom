@@ -146,76 +146,20 @@
                 </div>
                 </section>-->
     </header>
-    <main>        
+    <main>   
+        <% for(var nums = 0; nums<num_produtos; nums++) {%>     
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
             <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                 <div class="icon"><!--ESPAÇO DA CAPA-->
                     <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
                 </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                <% produtos.forEach((produto) => { %>
+                    <span><%= produto.nome %></span>
+                  <% }); %>
                 <a href="_descricaoProduto">Veja Mais</a> 
             </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
         </div>  
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-        </div>  
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                    <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                    </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                    <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-        </div>  
+        <% } %>
     </main>
     <footer></footer>
     <script src="./assets/js/bundle.js"></script>
