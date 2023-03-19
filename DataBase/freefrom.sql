@@ -65,8 +65,7 @@ CREATE TABLE `produto` (
 -- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES
-(1, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', '../../public/img/paes.jpg', NULL);
+INSERT INTO `produto` (`descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES ( 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/paes.jpg', NULL);
 
 -- --------------------------------------------------------
 
