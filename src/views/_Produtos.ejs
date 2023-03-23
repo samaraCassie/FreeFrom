@@ -148,22 +148,26 @@
     </header>
     <main>   
         
-        <% for(var nums = 0; nums<num_produtos; nums++) {%>  
+        <% var cont = 0
+            
+        %>
+        
             <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-                <% for(var i = 0; i<3; i++){ %>
-                    <% console.log(cont); %>
+               
+                <% for(var i = 0; i<num_produtos; i++){ %>
                     <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                         <div class="icon"><!--ESPAÇO DA CAPA-->
                             <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
                         </div>
-                            <span><%= produtos[i].descricao %></span>
-                        <a href="_descricaoProduto">Veja Mais</a> 
+                            <span><%= produtos[cont].descricao %></span>
+                            <% var id = produtos[cont].id %>
+                        <a href="_descricaoProduto:<%- id %>">Veja Mais</a> 
                     </section>
-                    
+                    <% cont++ %>
                 <% }; %>
                 
             </div>  
-        <% }; %>
+        
     </main>
     <footer></footer>
     <script src="./assets/js/bundle.js"></script>

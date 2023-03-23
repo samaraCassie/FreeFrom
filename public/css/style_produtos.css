@@ -23,6 +23,8 @@ main{
 /*Fileiras de cartões*/
 .cards {
     display: flex;
+    max-width: 75vw;
+    flex-wrap: wrap;
 }
 /*Cartão individual*/
 .cards section.card {
