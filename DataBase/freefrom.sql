@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Mar-2023 às 18:44
+-- Tempo de geração: 23-Mar-2023 às 20:59
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 7.4.23
 
@@ -65,7 +65,15 @@ CREATE TABLE `produto` (
 -- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO `produto` (`descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES ( 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/paes.jpg', NULL);
+INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES
+(0, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie'),
+(1, 'Produto vegano com lascas de carne', 5, '40', NULL, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne'),
+(2, 'Sem lactobacilos mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal'),
+(3, 'COM lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons'),
+(4, 'gelatina mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado'),
+(5, 'leite lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza'),
+(6, 'Com leite mais sem queijo', 10, '50', NULL, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo'),
+(7, 'saudaveu', 10, '50', NULL, 'Saudavel', 'img/paes.jpg', 'Maçã');
 
 -- --------------------------------------------------------
 
@@ -151,7 +159,7 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
