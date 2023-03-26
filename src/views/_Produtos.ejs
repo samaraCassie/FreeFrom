@@ -128,6 +128,11 @@
                 </section>
     </header>
     <main>   
+        <% if(usuario){ %>
+            <h1 style="color: black"><%= user[0].usuario %></h1>
+        <% }else{ %>
+            <h1 style="color: black">Nenhum usuario logado</h1>
+        <% } %>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
             <% produtos.forEach(function(produto){ %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->

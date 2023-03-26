@@ -15,7 +15,9 @@
 
 
     <main class="container">
-
+        <% if(errado){ %>
+        <div style="color: red"><%= error %></div>
+        <% } %>
         <h2>Login</h2>
         <form method="POST">
             <section class="campo">
