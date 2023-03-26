@@ -29,10 +29,11 @@ const path = require('path');
 const meuMiddleware = require('./src/middlewares/middleware.js');
 
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'frontend')));
+// app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/imagem', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', '.jpg'));
+    res.sendFile(path.join(__dirname, 'public', '.jpg'));
   });
   
 app.set('views', path.resolve(__dirname, 'src', 'views'));
@@ -41,7 +42,7 @@ app.set('view engine', 'ejs');
 app.use(session({ cookie: { maxAge: 60000 }, 
   secret: 'woot',
   resave: false, 
-  saveUninitialized: false
+  saveUninitialized: true
 }));
 app.use(flash());
 //Meus middlewares
