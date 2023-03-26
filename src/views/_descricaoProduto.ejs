@@ -20,9 +20,9 @@
 
         <!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->
         <section class="info" id="box">
-            <h3>Kit 10 Sequilhos Leite Sem Lactose E Sem Glúten 100g Nazinha</h3>
-            <img src="...">
-            <h3 class="valor"><b> R$34,76</b></h3>
+            <h3><%= produtos[0].nome %></h3>
+            <img src="<%= produtos[0].img %>">
+            <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
             <div class="star">
                 <ul class="avaliacao" id="info">
                     <li class="star-icon ativo" data-avaliacao="1"></li>
@@ -130,20 +130,8 @@
         <section class="desc" id="box">
             <h4>Descrição do Produto</h4>
             <div class="box">
-                <p>Os biscoitos Bauducco são muito saborosos, crocantes e irresistíveis. É um produto muito conhecido no mercado com garantia de qualidade Bauducco.
-                    Ideal para servir em coffee breaks, cafés da manhã, quartos de hotel, clínicas e consultórios. <br>
-                    Por ser embalado um a um é econômico e prático.</p>
-                <p>O PRODUTO É COTADO PELO PESO, VALORES UNITARIOS SÃO APENAS UMA ESTIMATIVA</p>
-                <p>52* SACHES BISCOTIO CHOCOLATE - 728g <br>
-                    52* SACHES BISCOITO LEITE - 673G <br>
-                    52* SACHES BISCOITO GOTAS DE CHOCOLATE - 711G <br>
-                    52* SACHES BISCOITO BANANA COM CANELA - 773G <br>
-                    52* SACHES BISCOITO MAISENA - 502G <br>
-                    60* SACHES BISCOITO SALGADO CREAM CRACKER 651G <br>
-                    (COM 2 BISCOITOS EM CADA SACHE)</p>
-                <p>Validade mínima de 8 meses</p>
-                <p>*ATENÇÃO* os biscoito são pesados e o valor calculado de acordo com o peso, as unidade são apenas uma estimativa</p>
-                <div class="ingrd">
+                <p><%= produtos[0].descricao %></p>
+                    <div class="ingrd">
                     <dl>
                         <dt>INGREDIENTES:</dt>
                             <dd>Amido de milho</dd>
