@@ -1,7 +1,3 @@
-<% if (errors.length > 0){ %>
-    <div class="alert alert-danger" role="alert">
-            <% errors.forEach( erro => { %>
-                <% erro %><br>
-            <% }); %> 
-    </div>
-<% } %>
+<div class="alert alert-danger" role="alert">
+    <%= error %>
+</div>
