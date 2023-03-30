@@ -11,7 +11,7 @@ const connection = mysqls.createConnection({
 
 
 exports.paginaCadastro = (req, res) =>{
-    res.render('_cadastro');
+    res.render('_cadastro', {errado: false});
 }
 
 exports.postCadastro = (req, res) => {
@@ -47,11 +47,11 @@ exports.postCadastro = (req, res) => {
     const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
-            if (error) throw error;
+            if (error) res.render('_Cadastro', {errado: true, error: 'Algo deu errado no seu cadastro!! Tente novamente'});
 
             if (results.length > 0) {
                 // Usuário já existe no banco de dados
-                res.send('Usuário já cadastrado!');
+                res.render('_Cadastro', {errado: true, error: 'Usuario já cadastrado'})
             } else {
                 connection.query(sql, values, (err, result) => {
                 if (err) {
@@ -67,18 +67,10 @@ exports.postCadastro = (req, res) => {
     }
     else{
         if(!validaEmail){
-            errors.push('Email invalido!');
+            res.render('_Cadastro', {errado: true, error: 'Email inválido!!'});
         }
         if(!validaSenha){
-            errors.push('Senha invalida!');
-        }
-
-        if(errors.length>0){
-            req.flash('errors', errors);
-            req.session.save(function() {
-                return;
-            });
-            return;
+          res.render('_Cadastro', {errado: true, error: 'Senha inválida!!'});
         }
     }
 }
