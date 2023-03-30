@@ -44,8 +44,8 @@ route.get('/_Sobre', sobreController.paginaSobre);
 route.get('/_Carrinho', carrinhoController.paginaCarrinho);
 
 //Rotas do cadastro de produtos
-route.get('/_CadastroProdutos', cadastroProdutoController.paginaCadastroProduto);
-route.post('/_CadastroProdutos', cadastroProdutoController.postProduto);
+route.get('/produtosCadastrar', cadastroProdutoController.paginaCadastroProduto);
+route.post('/produtosCadastrar', cadastroProdutoController.postProduto);
 
 //Rotas de editar produtos
 // route.get('/:id', editarProdutoController.getId)
