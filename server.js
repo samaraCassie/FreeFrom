@@ -39,7 +39,7 @@ app.get('/imagem', (req, res) => {
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({ cookie: { maxAge: 60000 }, 
+app.use(session({ cookie: { maxAge: 100000 }, 
   secret: 'woot',
   resave: false, 
   saveUninitialized: true
