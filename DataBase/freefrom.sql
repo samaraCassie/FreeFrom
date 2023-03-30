@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Mar-2023 às 20:59
+-- Tempo de geração: 30-Mar-2023 às 21:25
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 7.4.23
 
@@ -66,14 +66,14 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES
-(0, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie'),
 (1, 'Produto vegano com lascas de carne', 5, '40', NULL, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne'),
 (2, 'Sem lactobacilos mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal'),
 (3, 'COM lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons'),
 (4, 'gelatina mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado'),
 (5, 'leite lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza'),
 (6, 'Com leite mais sem queijo', 10, '50', NULL, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo'),
-(7, 'saudaveu', 10, '50', NULL, 'Saudavel', 'img/paes.jpg', 'Maçã');
+(7, 'saudaveu', 10, '50', NULL, 'Saudavel', 'img/paes.jpg', 'Maçã'),
+(11, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,8 @@ ALTER TABLE `compra`
 -- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id_produto`);
+  ADD PRIMARY KEY (`id_produto`),
+  ADD KEY `id_vendedor` (`id_vendedor`);
 
 --
 -- Índices para tabela `usuario`
@@ -159,7 +160,7 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
@@ -168,10 +169,14 @@ ALTER TABLE `usuario`
   MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT de tabela `vendedor`
+-- Restrições para despejos de tabelas
 --
-ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- Limitadores para a tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD CONSTRAINT `produto_fk` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id_vendedor`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
