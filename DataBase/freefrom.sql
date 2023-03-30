@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Fev-2023 às 03:48
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 23-Mar-2023 às 20:59
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cliente` (
   `id_cliente` int(5) NOT NULL,
   `cpf` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,7 +42,7 @@ CREATE TABLE `compra` (
   `id_compra` int(5) NOT NULL,
   `data` date DEFAULT NULL,
   `total_compra` decimal(10,0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -55,8 +55,25 @@ CREATE TABLE `produto` (
   `descricao` varchar(100) DEFAULT NULL,
   `qtd_estoque` int(100) DEFAULT NULL,
   `preco_unit` decimal(10,0) DEFAULT NULL,
-  `id_vendedor` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_vendedor` int(5) DEFAULT NULL,
+  `categoria` varchar(100) DEFAULT NULL,
+  `img` varchar(250) NOT NULL,
+  `nome` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`) VALUES
+(0, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie'),
+(1, 'Produto vegano com lascas de carne', 5, '40', NULL, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne'),
+(2, 'Sem lactobacilos mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal'),
+(3, 'COM lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons'),
+(4, 'gelatina mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado'),
+(5, 'leite lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza'),
+(6, 'Com leite mais sem queijo', 10, '50', NULL, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo'),
+(7, 'saudaveu', 10, '50', NULL, 'Saudavel', 'img/paes.jpg', 'Maçã');
 
 -- --------------------------------------------------------
 
@@ -75,15 +92,7 @@ CREATE TABLE `usuario` (
   `data_nascimento` date DEFAULT NULL,
   `usuario` varchar(150) NOT NULL,
   `uf` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `numero`, `cidade`, `data_nascimento`, `usuario`, `uf`) VALUES
-(19, 'julianalvesinstinto@gmail.com', '65591982', 'Masculino', 'Rua alagoas', 85, 'Jaraguá do sul', '2007-05-16', 'julian', ' SC '),
-(21, 'sim@gmail.com', '123456', NULL, 'jyuuj', 564645, 'kyuky', '0000-00-00', 'ju', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,7 +103,7 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `nume
 CREATE TABLE `vendedor` (
   `id_vendedor` int(5) NOT NULL,
   `cnpj` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tabelas despejadas
@@ -150,13 +159,13 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `vendedor`

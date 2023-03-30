@@ -17,33 +17,11 @@
         <label id="icone" for="check">
             <img style="background-color: rgba(40, 31, 28, 0.9); border-radius: 5px;" src="Img/iconeMenu.png">
         </label>
-
         <div class="barra">
             <nav class="menu">
                 <ul>   
                     <li><div class="menu"><a href="/">Início</a></div></li>
-    
                     <li><div class="aq"><a href="#">Produtos</a></div></li>
-                    <!--
-                    <li><div class="menu"><a href="#">Receitas</a></div></li>
-
-                    <li>
-                        <div class="menu"><a href="#">Categorias▾</a></div>
-                        <ul>
-                            <li class="subMenu"><a href="#">Tudo</a></li>
-                            <li class="subMenu"><a href="#">Granel</a></li>
-                            <li class="subMenu"><a href="#">Frutas Secas</a></li>
-                            <li class="subMenu"><a href="#">Oleaginosas</a></li>
-                            <li class="subMenu"><a href="#">Farinhas</a></li>
-                            <li class="subMenu"><a href="#">Adoçantes</a></li>
-                            <li class="subMenu"><a href="#">Temperos</a></li>
-                            <li class="subMenu"><a href="#">Suplementos</a></li>
-                        </ul>
-                    </li>-->
-
-                    <li><div class="menu"><a href="_Carrinho">Carrinho</a></div></li>
-
-                    
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
@@ -56,19 +34,19 @@
                     <li>
                         <div class="menu"><a href="#">Conta▾</a></div>
                         <ul>
-                            <li class="subMenu"><a href="_Cadastro" target="_blank">Cadastrar</a></li>
-                            <li class="subMenu"><a href="_Login" target="_blank">Entrar</a></li>
+                            <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
+                            <li class="subMenu"><a href="_Login">Entrar</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-        <!--
+        
         <div class="busca">
             <form action="/_Produtos.html" method="get">
-                <div class="campo">
-                  <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
-                  <input type="submit" value="Buscar">
+                <div>
+                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                    <button type="submit">Buscar</button>
                 </div>
             </form>
         </div>
@@ -147,77 +125,24 @@
                         <label for="Outros"> Outros</label>
                     </div>
                 </div>
-                </section>-->
+                </section>
     </header>
-    <main>        
+    <main>   
+        <% if(usuario){ %>
+            <h1 style="color: black"><%= user[0].usuario %></h1>
+        <% }else{ %>
+            <h1 style="color: black">Nenhum usuario logado</h1>
+        <% } %>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a> 
-            </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-        </div>  
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-        </div>  
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+            <% produtos.forEach(function(produto){ %>
+                <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                     <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
+                        <img src="<%= produto.img %>" alt="Contact us.">
                     </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                    <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card shop"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
-            <section class="card about"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloCereal.jpg" alt="About us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a>
-            </section>
+                        <span><%= produto.nome %></span>
+                    <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
+                </section>
+            <% }); %>
         </div>  
     </main>
     <footer></footer>

@@ -1,29 +1,35 @@
-const mysql = require('mysql2/promise');
+const mysql = require('mysql');
+const md5 = require('md5');
 
-async function conectarBancoDeDados() {
-    const connection = await mysql.createConnection({
+
+const connection =  mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: '',
       database: 'freefrom'
     });
-    return connection;
-}
+
 
 exports.loginPagina = (req, res) => {
-    res.render('_Login');
+    res.render('_Login', {errado: false});
 }
 
 exports.loginPost = async (req, res) => {
-    const connection = await conectarBancoDeDados();
-    const email = req.body.email;
-    const senha = req.body.senha;
+    const usuario = req.body.usuario;
+    const senha = md5(req.body.senha);
   
-    const [rows, fields] = await connection.execute('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
-  
-    if (rows.length > 0) {
-      res.redirect('/_Produtos')
-    } else {
-      res.status(401).send('Dados de login incorretos!');
-    }
+    connection.query('SELECT * FROM usuario WHERE usuario = ? AND senha = ?', [usuario, senha], (error, results, fields) => {
+      if (error) {
+        // se ocorrer um erro, exibir mensagem de erro
+        res.render('_Login', { error: 'Ocorreu um erro ao fazer login. Tente novamente.', errado: true});
+      } else if (results.length === 0) {
+        // se não houver resultados, exibir mensagem de erro
+        res.render('_Login', { error: 'Email ou senha inválidos.', errado: true});
+      } else {
+        // se o usuário existir, redirecionar para a página inicial
+        req.session.user = results;
+        res.redirect('/_Produtos')
+        nome = results[0].usuario;
+      }
+    });
   }
