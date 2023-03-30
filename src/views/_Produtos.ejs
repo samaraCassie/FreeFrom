@@ -22,6 +22,7 @@
                 <ul>   
                     <li><div class="menu"><a href="/">Início</a></div></li>
                     <li><div class="aq"><a href="#">Produtos</a></div></li>
+                    <li><div class="menu"><a href="produtosCadastrar">Cadastrar Produto</a></div></li>
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
@@ -137,7 +138,7 @@
             <% produtos.forEach(function(produto){ %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                     <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="<%= produto.img %>" alt="Contact us.">
+                        <img src="<%= produto.img %>"alt="Contact us.">
                     </div>
                         <span><%= produto.nome %></span>
                     <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
