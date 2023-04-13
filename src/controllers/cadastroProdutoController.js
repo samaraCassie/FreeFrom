@@ -20,7 +20,7 @@ exports.postProduto = (req, res) => {
     const img = req.body.img;
     const preco = req.body.preco;
 
-    const imagem = `img/${img}`;
+    const imagem = `img/${Date.now() + file.originalname}`;
 
     const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria) VALUES (?, ?, ?, ?, ?, ?)';
     const values = [nome, descricao, preco, estoque, imagem, categoria];
@@ -29,9 +29,6 @@ exports.postProduto = (req, res) => {
             console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
             return;
         }
-        console.log(result);
-        console.log(result[0].id_produto);
-
         console.log('Dados inseridos com sucesso no banco de dados');
         res.redirect('/_PerfilLoja');
     });
