@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastrar</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <label for="img">Imagem</label>
+        <input type="file" name="img">
+        
+        <label for="nome">Nome</label>
+        <input type="text" name="nome">
+
+        <label for="descricao">Descrição</label>
+        <input type="text" name="descricao">
+
+        <label for="preco">Preço</label>
+        <input type="number" name="preco">
+
+        <label for="estoque">Quantidade no estoque</label>
+        <input type="number" name="estoque">
+
+        <label for="categoria">Categoria</label>
+        <select name="categoria">
+            <option value="Vegano">Vegano</option>
+            <option value="Zero lactose">Sem lactose</option>
+            <option value="Zero glutem">Sem glutem</option>
+        </select>
+        <button>Enviar</button>
+    </form>
+</body>
+</html>

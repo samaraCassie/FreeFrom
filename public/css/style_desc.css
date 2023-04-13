@@ -363,3 +363,16 @@ h4{
 .close-btn {
   margin-top: 10px;
 }
+
+.demonstracao{
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  right: 110%;
+  overflow: hidden;
+}
+
+.produto{
+  max-width: 100%;
+  height: 100%;
+}

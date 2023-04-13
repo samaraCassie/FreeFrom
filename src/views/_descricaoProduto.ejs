@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" type="text/css" href="css/style_slide.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" type="text/css" href="css/demo.css" />
-    <link rel="stylesheet" href="css/style_desc.css">
-    <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
+    <link rel="stylesheet" href="/css/style_slide.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/demo.css" />
+    <link rel="stylesheet" href="/css/style_desc.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
 </head>
 <body>
     <div class="modal">
@@ -18,19 +18,18 @@
     </div>
     <article class="container">
 
-<<<<<<< master
-=======
         <!-------------- [INICO] FOTO DE DEMONSTRAÇÃO DO PRODUTO--------------->
         <section>
-            <img src="#" alt="...">
+            <img src="/#" alt="...">
         </section>
         <!---------- [FIM] FOTO DE DEMONSTRAÇÃO DO PRODUTO------------->
 
->>>>>>> master
         <!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->
         <section class="info" id="box">
             <h3><%= produtos[0].nome %></h3>
-            <img src="<%= produtos[0].img %>">
+            <div class="demonstracao">
+                <img class="produto" src="/<%= produtos[0].img %>">
+            </div>
             <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
             <div class="star">
                 <ul class="avaliacao" id="info">
@@ -69,7 +68,7 @@
         <section class="loja" id="box">
             <div class="idem">
                 <a href="_PerfilLoja">
-                <img class="mini-ft-perfil" src="Img/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <img class="mini-ft-perfil" src="/Img/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
                 <h5>Nome Da Loja</h5>
                 <h6>Slogan</h6>
                 </a>
@@ -255,7 +254,7 @@
 
     <!--<footer>
     </footer>-->
-    <script src="./assets/js/bundle.js"></script>
+    <script src="/assets/js/bundle.js"></script>
     <script>
         const openModalBtn = document.querySelector('#open-modal-btn');
         const closeModalBtn = document.querySelector('.close-btn');

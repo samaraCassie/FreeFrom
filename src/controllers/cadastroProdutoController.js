@@ -9,25 +9,26 @@ const connection = mysql.createConnection({
 
 
 exports.paginaCadastroProduto = (req, res) => {
-    res.render('/_CadastroProdutos');
+    res.render('produtosCadastrar');
 }
 
 exports.postProduto = (req, res) => {
-    const nome = req.body.name;
+    const nome = req.body.nome;
     const categoria = req.body.categoria;
     const descricao = req.body.descricao;
-    const estoque = req.body.qtdEstoque;
+    const estoque = req.body.estoque;
     const img = req.body.img;
     const preco = req.body.preco;
 
+    const imagem = `img/${Date.now() + file.originalname}`;
+
     const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria) VALUES (?, ?, ?, ?, ?, ?)';
-    const values = [nome, descricao, preco, estoque, img, categoria];
+    const values = [nome, descricao, preco, estoque, imagem, categoria];
     connection.query(sql, values, (err, result) => {
         if (err) {
             console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
             return;
         }
-
         console.log('Dados inseridos com sucesso no banco de dados');
         res.redirect('/_PerfilLoja');
     });
