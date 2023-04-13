@@ -1,5 +1,18 @@
 const app = require('express');
 const route = app.Router();
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, "public/Img/");
+    },
+    filename: function(req, file, cb){
+        cb(null, Date.now() + file.originalname);
+    }
+})
+
+const upload = multer({storage});
 
 const homeController = require('./src/controllers/homeController');
 const produtoController = require('./src/controllers/produtosController');
@@ -45,11 +58,6 @@ route.get('/_Carrinho', carrinhoController.paginaCarrinho);
 
 //Rotas do cadastro de produtos
 route.get('/produtosCadastrar', cadastroProdutoController.paginaCadastroProduto);
-route.post('/produtosCadastrar', cadastroProdutoController.postProduto);
-
-//Rotas de editar produtos
-// route.get('/:id', editarProdutoController.getId)
-// route.post('/:id', editarProdutoController.postEdicaoProdutos);
-// route.delete('/:id', editarProdutoController.deleteProd);
+route.post('/produtosCadastrar', upload.single('img'), cadastroProdutoController.postProduto);
 
 module.exports = route;
