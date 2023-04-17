@@ -32,9 +32,10 @@ route.get('/', homeController.paginaInicial);
 
 //Rotas da pagina de produtos
 route.get('/_Produtos', produtoController.paginaProdutos);
+route.post('/_Produtos', produtoController.produtosPost);
 
 //Rotas do login
-route.get('/_Login', loginController.loginPagina)
+route.get('/_Login', loginController.loginPagina);
 route.post('/_Login', loginController.loginPost);
 
 //Rotas do cadastro
