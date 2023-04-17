@@ -120,11 +120,13 @@
     height: 100%;
     padding: 2%;
     border-radius: 25px;
+    margin: 20px;
 }
 
 .formBusca{
+    margin: 20px;
     position: relative;
-    height: 5vh;
+    height: 6vh;
     width: 90%;
     left: 5%;
 }
@@ -138,6 +140,20 @@
     font-size: 40%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 1vmin 1vmax;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.formBusca button{
+    margin: 20px;
+    background: #2c2c2c;
+    color: rgb(255, 255, 255);
+    margin: 10px;
+    height: 50%;
+    width: 50%;
+    font-size: 50%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1.5vmin 1.5vmax;
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
 }

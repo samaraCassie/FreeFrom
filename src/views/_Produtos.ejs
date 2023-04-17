@@ -42,16 +42,7 @@
                 </ul>
             </nav>
         </div>
-        
-        <div class="busca">
-            <form action="/_Produtos.html" class="formBusca" method="get">
-                <div>
-                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
-                    <button type="submit">Buscar</button>
-                </div>
-            </form>
-        </div>
-
+        <!--
         <section class="cat">
                     <div class="fileira" id="f1">
                         <div class="check">
@@ -126,14 +117,22 @@
                         <label for="Outros"> Outros</label>
                     </div>
                 </div>
-                </section>
+                </section>-->
     </header>
     <main>   
         <% if(usuario){ %>
-            <h1 style="color: black"><%= user[0].usuario %></h1>
+            <h1 style="color: black;"><%= user[0].usuario %></h1>
         <% }else{ %>
-            <h1 style="color: black">Nenhum usuario logado</h1>
+            <h1 style="color: black;">Nenhum usuario logado</h1>
         <% } %>
+        <div class="busca">
+            <form class="formBusca" method="POST">
+                <div>
+                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                    <button type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
             <% produtos.forEach(function(produto){ %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->

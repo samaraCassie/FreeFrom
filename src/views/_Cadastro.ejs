@@ -14,12 +14,10 @@
     <body>
         <!--Conteúdo do FORMULÁRIO-->
         <main class="container">
-
-            <% if(errado){ %>
-                <%- include('./includes/messages.ejs') %>
-            <% } %>
-
             <form id="formulario" method="POST"> 
+                <% if(errado){ %>
+                    <%- include('./includes/messages.ejs') %>
+                <% } %>
                 <h2>Cadastrar</h2> 
 
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
