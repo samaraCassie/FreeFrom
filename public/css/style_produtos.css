@@ -24,6 +24,7 @@ main{
 .cards {
     display: flex;
     max-width: 75vw;
+    width: 75vw;
     flex-wrap: wrap;
 }
 /*Cartão individual*/

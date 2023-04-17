@@ -15,11 +15,12 @@
 
 <body>
     <main class="container">
-        <% if(errado){ %>
-            <%- include('./includes/messages.ejs') %>
-        <% } %>
-        <h2>Login</h2>
+        
         <form method="POST">
+            <% if(errado){ %>
+                <%- include('./includes/messages.ejs') %>
+            <% } %>
+            <h2>Login</h2>
             <section class="campo">
                 <input type="text" name="usuario" id="usuario" placeholder="Usuário">
                 <div class="underline"></div>
