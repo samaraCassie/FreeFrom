@@ -122,14 +122,14 @@
     border-radius: 25px;
 }
 
-form{
+.formBusca{
     position: relative;
     height: 5vh;
     width: 90%;
     left: 5%;
 }
 
-form input{
+.formBusca input{
     background: #2c2c2c;
     color: rgb(255, 255, 255);
     margin: 0;
@@ -142,6 +142,7 @@ form input{
     border: 1px solid rgb(255, 255, 255);
 }
 /***** [fim] ESTILIZAÇÃO DA BUSCA *****/
+
 
 /***** BOTÕES *****/
 button {
