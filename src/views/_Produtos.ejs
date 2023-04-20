@@ -22,7 +22,7 @@
                 <ul>   
                     <li><div class="menu"><a href="/">Início</a></div></li>
                     <li><div class="aq"><a href="#">Produtos</a></div></li>
-                    <li><div class="menu"><a href="produtosCadastrar">Cadastrar Produto</a></div></li>
+                    <!--<li><div class="menu"><a href="produtosCadastrar">Cadastrar Produto</a></div></li>-->
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
@@ -133,6 +133,7 @@
                 </div>
             </form>
         </div>
+        <% if(resultado){ %>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
             <% produtos.forEach(function(produto){ %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->
@@ -144,6 +145,11 @@
                 </section>
             <% }); %>
         </div>  
+        <% }else{ %>
+            <div class="cards">
+                <h1 style="color: black; position: relative; left: 40%;">Nenhum produto encontrado!</h1>
+            </div>
+        <% } %>
     </main>
     <footer></footer>
     <script src="./assets/js/bundle.js"></script>
