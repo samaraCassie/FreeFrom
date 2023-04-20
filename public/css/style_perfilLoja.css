@@ -177,7 +177,9 @@ header{
 /*Fileira de Cartões*/
 .cards {
   display: flex;
-  width: 100%;
+  max-width: 77vw;
+  width: 77vw;
+  flex-wrap: wrap;
 }
 /*Cartão individual*/
 .cards section.card {
