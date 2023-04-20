@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style_perfilLoja.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style_perfilLoja.css">
     <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>
     <title>Free From ⋆ Um Sabor Seguro</title>
 </head>
@@ -13,11 +13,11 @@
     <!--Menu-->
     <header>
         <div class="loja">
-            <img class="capa" src="Img/2022-07-29.png"> <!--FOTO DE CAPA-->
+            <img class="capa" src="/Img/2022-07-29.png"> <!--FOTO DE CAPA-->
             <div class="idem">
-                <img class="ft-perfil" src="Img/PomeloPizza.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
-                <h5>Nome Da Loja</h5>
-                <h6>Slogan</h6>
+                <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <h5><%= vendedor[0].nome_loja%></h5>
+                <h6><%= vendedor[0].slogan %></h6>
             </div>
             <div class="btn">
                 <button>Seguir</button>
@@ -33,7 +33,7 @@
                     <li class="star-icon" data-avaliacao="4"></li>
                     <li class="star-icon" data-avaliacao="5"></li>
                 </ul>
-                <script type="text/javascript" src="javaScript/stars.js"></script>
+                <script type="text/javascript" src="/javaScript/stars.js"></script>
                 <div class="txt-info">
                     <p>Seguidores</p>
                     <p>Seguindo</p>
@@ -54,97 +54,22 @@
             <section class="bio">
                 <div class="box">
                     <h6>Sobre a Loja</h6>
-                    <p>     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit nesciunt quibusdam ipsum at architecto accusamus deleniti cupiditate odit dolore excepturi porro, expedita quas nulla error et voluptates dignissimos, tempore illum est dolores earum aliquam. Aut tempora, quidem voluptates porro impedit amet at cupiditate praesentium atque quam quae velit dolorum fugiat?</p>
-                    <p>     Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero neque et quo numquam recusandae voluptatibus vero animi deserunt incidunt, doloremque laborum fugiat dolores minima nobis assumenda nisi cumque eum sit facilis quam obcaecati alias error temporibus. Laborum iste vero, nesciunt aperiam et temporibus commodi hic iusto voluptate, voluptatibus sint iure.</p>
+                    <p><%= vendedor[0].sobre %></p>
                 </div>
             </section>
             <section class="produtos">
                 <div class="cards">
+                    <% produtos.forEach(function(produto){ %>
                     <section class="card contact">
                             <div class="icon">
-                                <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
+                                <img src="/<%- produto.img %>" alt="Contact us.">
                             </div>
                             <div class="cont">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                <a href="_descricaoProduto">Veja Mais</a> 
+                                <span><%= produto.nome %></span>
+                                <a href="/_descricaoProduto/<%- produto.id_produto %>">Veja Mais</a> 
                             </div>
                     </section>
-                    <section class="card shop">
-                        <div class="icon">
-                            <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
-                    <section class="card about">
-                        <div class="icon">
-                            <img src="Img/PomeloCereal.jpg" alt="About us.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
-                </div>  
-                <div class="cards">
-                    <section class="card contact">
-                            <div class="icon">
-                                <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                            </div>
-                            <div class="cont">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                <a href="_descricaoProduto">Veja Mais</a> 
-                            </div>
-                    </section>
-                    <section class="card shop">
-                        <div class="icon">
-                            <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
-                    <section class="card about">
-                        <div class="icon">
-                            <img src="Img/PomeloCereal.jpg" alt="About us.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
-                </div>  
-                <div class="cards">
-                    <section class="card contact">
-                            <div class="icon">
-                                <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                            </div>
-                            <div class="cont">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                <a href="_descricaoProduto">Veja Mais</a> 
-                            </div>
-                    </section>
-                    <section class="card shop">
-                        <div class="icon">
-                            <img src="Img/PomeloMacarrons.jpg" alt="Shop here.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
-                    <section class="card about">
-                        <div class="icon">
-                            <img src="Img/PomeloCereal.jpg" alt="About us.">
-                        </div>
-                        <div class="cont">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                            <a href="_descricaoProduto">Veja Mais</a> 
-                        </div>
-                    </section>
+                    <% }) %>
                 </div>
             </section> 
         </article>
@@ -152,6 +77,6 @@
     <footer>
         
     </footer>
-    <script src="./assets/js/bundle.js"></script>
+    <script src="/assets/js/bundle.js"></script>
 </body>
 </html>

@@ -68,10 +68,10 @@
         <!-- [INICO] SESSÃO DE LOGISTA-->
         <section class="loja" id="box">
             <div class="idem">
-                <a href="_PerfilLoja">
-                <img class="mini-ft-perfil" src="/Img/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
-                <h5>Nome Da Loja</h5>
-                <h6>Slogan</h6>
+                <a href="/_PerfilLoja/<%- vendedor[0].id_vendedor %>">
+                <img class="mini-ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <h5><%= vendedor[0].nome_loja %></h5>
+                <h6><%= vendedor[0].slogan %></h6>
                 </a>
             </div>
             <!--<div class="reputacao">

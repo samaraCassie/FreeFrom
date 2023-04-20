@@ -28,7 +28,7 @@ exports.paginaProdutos = (req, res) => {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
                 // Renderiza a página do dashboard com as informações do usuário
-                res.render('_Produtos', { produtos: result, num_produtos: results[0].num_produtos, user: user, usuario: true, resultadp: true});
+                res.render('_Produtos', { produtos: result, num_produtos: results[0].num_produtos, user: user, usuario: true, resultado: true});
               }
             else{
                 res.render('_Produtos', { produtos: result, num_produtos: results[0].num_produtos, usuario: false, resultado: true});
