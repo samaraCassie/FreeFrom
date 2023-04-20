@@ -26,6 +26,7 @@ const chatController = require('./src/controllers/chatController');
 const carrinhoController = require('./src/controllers/carrinhoController');
 const cadastroProdutoController = require('./src/controllers/cadastroProdutoController');
 const editarProdutoController = require('./src/controllers/editarProdutoController');
+const logOutController = require('./src/controllers/logOutController');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -38,6 +39,9 @@ route.post('/_Produtos', produtoController.produtosPost);
 route.get('/_Login', loginController.loginPagina);
 route.post('/_Login', loginController.loginPost);
 
+//Rotas de logOut
+route.post('/_logOut', logOutController.logOut);
+
 //Rotas do cadastro
 route.get('/_cadastro', cadastroController.paginaCadastro);
 route.post('/_cadastro', cadastroController.postCadastro);
@@ -46,7 +50,7 @@ route.post('/_cadastro', cadastroController.postCadastro);
 route.get('/_descricaoProduto/:id', descricaoProdutos.paginaDesc);
 
 //Rotas do perfil da loja
-route.get('/_PerfilLoja', lojaController.paginaLoja);
+route.get('/_PerfilLoja/:id', lojaController.paginaLoja);
 
 //Rotas do perfil do usuario
 route.get('/_PerfilUser', perfilController.paginaPerfil);
