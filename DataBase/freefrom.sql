@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Abr-2023 às 00:29
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 20-Abr-2023 às 22:09
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cliente` (
   `id_cliente` int(5) NOT NULL,
   `cpf` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,7 +42,7 @@ CREATE TABLE `compra` (
   `id_compra` int(5) NOT NULL,
   `data` date DEFAULT NULL,
   `total_compra` decimal(10,0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -60,21 +60,21 @@ CREATE TABLE `produto` (
   `img` varchar(250) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `imagem` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produto`
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`, `imagem`) VALUES
-(0, 'Sem lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie', NULL),
-(1, 'Produto vegano com lascas de carne', 5, '40', NULL, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne', NULL),
-(2, 'Sem lactobacilos mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal', NULL),
-(3, 'COM lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons', NULL),
-(4, 'gelatina mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado', NULL),
-(5, 'leite lactose mais com glutemn', 10, '50', NULL, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza', NULL),
-(6, 'Com leite mais sem queijo', 10, '50', NULL, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo', NULL),
-(7, 'saudaveu', 10, '50', NULL, 'Saudavel', 'img/paes.jpg', 'Maçã', NULL);
+(0, 'Sem lactose mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie', NULL),
+(1, 'Produto vegano com lascas de carne', 5, '40', 1, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne', NULL),
+(2, 'Sem lactobacilos mais com glutemn', 10, '50', 2, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal', NULL),
+(3, 'COM lactose mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons', NULL),
+(4, 'gelatina mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado', NULL),
+(5, 'leite lactose mais com glutemn', 10, '50', 2, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza', NULL),
+(6, 'Com leite mais sem queijo', 10, '50', 2, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo', NULL),
+(7, 'saudaveu', 10, '50', 1, 'Saudavel', 'img/paes.jpg', 'Maçã', NULL);
 
 -- --------------------------------------------------------
 
@@ -93,14 +93,15 @@ CREATE TABLE `usuario` (
   `data_nascimento` date DEFAULT NULL,
   `usuario` varchar(150) NOT NULL,
   `uf` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `numero`, `cidade`, `data_nascimento`, `usuario`, `uf`) VALUES
-(23, 'ju@gmail.com', '0e38e67f330be882c03a1e31dd1812d7', 'Masculino', 'Sim', 564645, 'kyuky', '2023-03-15', 'julian', ' MG ');
+(23, 'ju@gmail.com', '0e38e67f330be882c03a1e31dd1812d7', 'Masculino', 'Sim', 564645, 'kyuky', '2023-03-15', 'julian', ' MG '),
+(24, 'julian@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Masculino', 'Nessa rua', 12, 'jaras', '2023-04-03', 'julian', ' SC ');
 
 -- --------------------------------------------------------
 
@@ -110,8 +111,20 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `nume
 
 CREATE TABLE `vendedor` (
   `id_vendedor` int(5) NOT NULL,
-  `cnpj` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `cnpj` int(20) DEFAULT NULL,
+  `nome_loja` varchar(100) DEFAULT NULL,
+  `slogan` varchar(200) DEFAULT NULL,
+  `img` varchar(200) DEFAULT NULL,
+  `sobre` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `vendedor`
+--
+
+INSERT INTO `vendedor` (`id_vendedor`, `cnpj`, `nome_loja`, `slogan`, `img`, `sobre`) VALUES
+(1, 2147483647, 'Suco do vale', 'Direto da fruta', 'Img/is14667-image.jpg', 'Loja de sucos naturais, feitos na hora com salgados e doces feitos na loja, sempre aqui para atender você da melhor maneira sempre!!'),
+(2, 85462514, 'Yalla esfiharia', 'Só o melhor', 'img/esphirraria.jpg', 'Lojas de esphirras muito boa');
 
 --
 -- Índices para tabelas despejadas
@@ -133,7 +146,8 @@ ALTER TABLE `compra`
 -- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id_produto`);
+  ADD PRIMARY KEY (`id_produto`),
+  ADD KEY `ct_fk_vendedor` (`id_vendedor`);
 
 --
 -- Índices para tabela `usuario`
@@ -173,13 +187,23 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_vendedor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD CONSTRAINT `ct_fk_vendedor` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id_vendedor`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
