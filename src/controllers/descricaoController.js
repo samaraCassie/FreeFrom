@@ -15,7 +15,7 @@ exports.paginaDesc = (req, res) => {
         connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
           if(error) throw error;
 
-          res.render('_descricaoProduto', { produtos: results, vendedor: result });
+          res.render('_descricaoProduto', { produtos: results, vendedor: result, comprado: false});
         });
     });
 }
