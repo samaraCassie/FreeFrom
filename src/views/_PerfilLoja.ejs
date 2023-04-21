@@ -13,17 +13,17 @@
     <!--Menu-->
     <header>
         <div class="loja">
-            <img class="capa" src="/Img/2022-07-29.png"> <!--FOTO DE CAPA-->
+            <img class="capa" src="/<%- vendedor[0].back_img %>"> <!--FOTO DE CAPA-->
             <div class="idem">
                 <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
-            <div class="btn">
+            <!-- <div class="btn">
                 <button>Seguir</button>
                 <button><a href="../../chat/frontend/index">Conversar agora</a></button>
-            </div>
-            <div class="reputacao">
+            </div> -->
+            <!-- <div class="reputacao">
                 
                 <ul class="avaliacao" id="loja">
                     <li class="number">5.0</li>
@@ -38,7 +38,7 @@
                     <p>Seguidores</p>
                     <p>Seguindo</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </header>
     <div class="barra" id="loja">
@@ -58,18 +58,16 @@
                 </div>
             </section>
             <section class="produtos">
-                <div class="cards">
+                <div class="cards"><!----------------FILEIRA DE CARTÕES-->
                     <% produtos.forEach(function(produto){ %>
-                    <section class="card contact">
-                            <div class="icon">
-                                <img src="/<%- produto.img %>" alt="Contact us.">
+                        <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                            <div class="icon"><!--ESPAÇO DA CAPA-->
+                                <img src="/<%= produto.img %>"alt="Contact us.">
                             </div>
-                            <div class="cont">
                                 <span><%= produto.nome %></span>
-                                <a href="/_descricaoProduto/<%- produto.id_produto %>">Veja Mais</a> 
-                            </div>
-                    </section>
-                    <% }) %>
+                            <a href="/_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
+                        </section>
+                    <% }); %>
                 </div>
             </section> 
         </article>
