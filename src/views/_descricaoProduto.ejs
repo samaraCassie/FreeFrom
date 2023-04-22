@@ -24,6 +24,7 @@
             </div> 
         </div>
     <article class="container">
+        <% if(!produtos[0].qtd_estoque == 0){ %>
 
         <!-------------- [INICO] FOTO DE DEMONSTRAÇÃO DO PRODUTO--------------->
         <section>
@@ -34,25 +35,29 @@
 
         <!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->
         <section class="info" id="box">
-            <h3><%= produtos[0].nome %></h3>
-            <div class="demonstracao">
-                <img class="produto" src="/<%= produtos[0].img %>">
-            </div>
-            <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
-            <div class="star">
-                <ul class="avaliacao" id="info">
-                    <li class="star-icon ativo" data-avaliacao="1"></li>
-                    <li class="star-icon" data-avaliacao="2"></li>
-                    <li class="star-icon" data-avaliacao="3"></li>
-                    <li class="star-icon" data-avaliacao="4"></li>
-                    <li class="star-icon" data-avaliacao="5"></li>
-                </ul>
-            </div>
-            <p>0 Avaliações</p>
-            <p>0 Vendidos</p>
-            <div class="btn">
-            <button id="open-modal-btn">Comprar</button>  
-            </div>
+            
+                <h3><%= produtos[0].nome %></h3>
+                <div class="demonstracao">
+                    <img class="produto" src="/<%= produtos[0].img %>">
+                </div>
+                <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
+                <div class="star">
+                    <ul class="avaliacao" id="info">
+                        <li class="star-icon ativo" data-avaliacao="1"></li>
+                        <li class="star-icon" data-avaliacao="2"></li>
+                        <li class="star-icon" data-avaliacao="3"></li>
+                        <li class="star-icon" data-avaliacao="4"></li>
+                        <li class="star-icon" data-avaliacao="5"></li>
+                    </ul>
+                </div>
+                <p>0 Avaliações</p>
+                <p>0 Vendidos</p>
+                <div class="btn">
+                <button id="open-modal-btn">Comprar</button>  
+                </div>
+            <% }else{ %>
+                <h1 style="color: black; font-size: 50px;">Produto esgotado!!</h1>
+            <% } %>
             <!--
             <button id="like">
                 <div class="label">
@@ -71,6 +76,7 @@
             -->
         </section>
         <!-- [FIM] SESSÃO DE INFORMAÇÕES DO PRODUTO-->
+        <% if(!produtos[0].qtd_estoque == 0){ %>
         
         <!-- [INICO] SESSÃO DE LOGISTA-->
         <section class="loja" id="box">
@@ -259,6 +265,9 @@
     
          [fim] SESSÃO DE AVALIAÇÃO DO PRODUTO-----------------------------------COMENTARIO-->
     </article>
+    <% }else{ %>
+        
+    <% } %>
 
     <!--<footer>
     </footer>-->

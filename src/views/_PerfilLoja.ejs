@@ -58,8 +58,10 @@
                 </div>
             </section>
             <section class="produtos">
+                <h6>Produtos</h6>
                 <div class="cards"><!----------------FILEIRA DE CARTÕES-->
                     <% produtos.forEach(function(produto){ %>
+                        <% if(!produto.qtd_estoque == 0){ %>
                         <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                             <div class="icon"><!--ESPAÇO DA CAPA-->
                                 <img src="/<%= produto.img %>"alt="Contact us.">
@@ -67,6 +69,7 @@
                                 <span><%= produto.nome %></span>
                             <a href="/_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
                         </section>
+                        <%}%>
                     <% }); %>
                 </div>
             </section> 
