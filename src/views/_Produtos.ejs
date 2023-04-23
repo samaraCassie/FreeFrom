@@ -36,6 +36,7 @@
                         <div class="menu"><a href="#">Conta▾</a></div>
                         <ul>
                             <% if(usuario){ %>
+                                <li class="subMenu"><a href="_editar/<%- user[0].id_usuario %>">Editar</a></li>
                                 <li class="subMenu"><form action="_logout" method="POST"><button class="btton" type="submit">Sair</button></form></li>
                             <% }else{ %>
                                 <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
