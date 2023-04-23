@@ -14,8 +14,9 @@ exports.paginaDesc = (req, res) => {
         
         connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
           if(error) throw error;
-
-          res.render('_descricaoProduto', { produtos: results, vendedor: result, comprado: false});
+          connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
+            res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false});
+          });
         });
     });
 }

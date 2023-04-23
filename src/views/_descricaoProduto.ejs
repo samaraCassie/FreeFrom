@@ -41,7 +41,7 @@
                     <img class="produto" src="/<%= produtos[0].img %>">
                 </div>
                 <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
-                <div class="star">
+                <!-- <div class="star">
                     <ul class="avaliacao" id="info">
                         <li class="star-icon ativo" data-avaliacao="1"></li>
                         <li class="star-icon" data-avaliacao="2"></li>
@@ -50,9 +50,13 @@
                         <li class="star-icon" data-avaliacao="5"></li>
                     </ul>
                 </div>
-                <p>0 Avaliações</p>
+                <p>0 Avaliações</p> -->
                 <p>Estoque: <%= produtos[0].qtd_estoque %></p>
-                <p>0 Vendidos</p>
+                <% if(vendidos != null){ %>
+                <p><%= vendidos %> Vendidos</p>
+                <% }else{ %>
+                    <p>0 Vendidos</p>
+                <% } %>
                 <div class="btn">
                 <button id="open-modal-btn">Comprar</button>  
                 </div>
