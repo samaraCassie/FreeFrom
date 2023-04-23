@@ -29,7 +29,6 @@ exports.produtosPost = (req, res) => {
 
     connection.query(`SELECT * FROM produto where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}% " OR categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
         if (error) throw error;
-        console.log(result);
         if(result == ""){
             result.push('Nenhum produto encontrado!');
             resultado = false;

@@ -72,7 +72,6 @@ exports.postCadastro = (req, res) => {
                         console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
                         return;
                     }
-                    console.log(result.insertId)
                     connection.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
                       req.session.user = results;
                       res.redirect('/_Produtos');
