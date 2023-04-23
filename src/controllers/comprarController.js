@@ -7,14 +7,14 @@ const connection = mysql.createConnection({
   database: 'freefrom'
 });
 
-function atualizarQuantidadeEmEstoque(produtoId) {
-    const sql = `UPDATE produto SET qtd_estoque = qtd_estoque - 1 WHERE id_produto = ?`;
-    const params = [produtoId];
+function atualizarQuantidadeEmEstoque(qtd, produtoId) {
+    const sql = `UPDATE produto SET qtd_estoque = qtd_estoque - ? WHERE id_produto = ?`;
+    const params = [qtd, produtoId];
   
     // Execute a consulta SQL
     connection.query(sql, params, (err, result) => {
       if (err) throw err;
-      console.log(`Quantidade em estoque atualizada para o produto ${produtoId}`);
+      
     });
   }
 
@@ -30,10 +30,11 @@ exports.comprar = (req, res) => {
         const vendedor = req.body.vendedor;
         const valor = req.body.valor;
         const produto = req.body.produto;
-        connection.query('INSERT INTO compra (data, total_compra, id_vendedor, id_cliente, id_produto) VALUES (?, ?, ?, ?, ?)', [data, valor, vendedor, usuario, produto], (error, result) => {
+        const qtd = req.body.qtd;
+        connection.query('INSERT INTO compra (data, total_compra, id_vendedor, id_cliente, id_produto, quantidade) VALUES (?, ?, ?, ?, ?, ?)', [data, valor, vendedor, usuario, produto, qtd], (error, result) => {
             if(error) throw error
 
-            atualizarQuantidadeEmEstoque(produto);
+            atualizarQuantidadeEmEstoque(qtd, produto);
             res.redirect(`_descricaoProduto/${produto}`);
         });
     }   
