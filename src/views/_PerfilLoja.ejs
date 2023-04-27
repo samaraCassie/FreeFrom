@@ -19,10 +19,11 @@
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
-            <!-- <div class="btn">
-                <button>Seguir</button>
-                <button><a href="../../chat/frontend/index">Conversar agora</a></button>
-            </div> -->
+            <% if(user){ %>
+            <div class="btn">
+                <button><a href="/_editar">Editar</a></button>
+            </div>
+            <% } %>
             <!-- <div class="reputacao">
                 
                 <ul class="avaliacao" id="loja">
