@@ -24,7 +24,7 @@ const sobreController = require('./src/controllers/sobreController');
 const chatController = require('./src/controllers/chatController');
 const carrinhoController = require('./src/controllers/carrinhoController');
 const cadastroProdutoController = require('./src/controllers/cadastroProdutoController');
-const editarProdutoController = require('./src/controllers/editarProdutoController');
+const editarLojaController = require('./src/controllers/editarController');
 const logOutController = require('./src/controllers/logOutController');
 const comprarController = require('./src/controllers/comprarController');
 const cadastroLojaController = require('./src/controllers/cadastroLojaController');
@@ -72,5 +72,9 @@ route.post('/_cadastroLoja',  upload.fields([{name: 'img'}, {name: 'backImg'}]),
 //Rotas do cadastro de produtos
 route.get('/produtosCadastrar', cadastroProdutoController.paginaCadastroProduto);
 route.post('/upload', upload.single('file'), cadastroProdutoController.postProduto);
+
+//Rotas para editar a loja
+route.get('/_editar/:id', editarLojaController.editarPage);
+route.post('/_editar/:id', editarLojaController.postEditar);
 
 module.exports = route;

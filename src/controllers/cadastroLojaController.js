@@ -30,8 +30,6 @@ exports.postcadastroloja = (req, res) => {
     const id = user[0].id_usuario;
     const path = req.files['img'][0].path
     const path2 = req.files['backImg'][0].path
-    console.log(path);
-    console.log(path2);
 
     let img = path.slice(7);
     let img2 = path2.slice(7);
