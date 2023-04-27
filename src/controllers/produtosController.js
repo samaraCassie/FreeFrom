@@ -14,11 +14,20 @@ exports.paginaProdutos = (req, res) => {
             if (req.session.user) {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
-                // Renderiza a página do dashboard com as informações do usuário
-                res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true});
+
+                connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                    if(err) throw err;
+                    // Renderiza a página do dashboard com as informações do usuário
+                    if(results != ""){
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
+                    }
+                    else{
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false});
+                    }
+                });
               }
             else{
-                res.render('_Produtos', { produtos: result, usuario: false, resultado: true});
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
               }
         });
     }
@@ -38,10 +47,19 @@ exports.produtosPost = (req, res) => {
             // Recupera as informações do usuário da sessão
             const user = req.session.user;
             // Renderiza a página do dashboard com as informações do usuário
-            res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: resultado});
+            connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                if(err) throw err;
+                // Renderiza a página do dashboard com as informações do usuário
+                if(results != ""){
+                    res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
+                }
+                else{
+                    res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false});
+                }
+            });
           }
         else{
-            res.render('_Produtos', { produtos: result, usuario: false, resultado: resultado});
+            res.render('_Produtos', { produtos: result, usuario: false, resultado: resultado, vendedor: false});
           }
     });
 }

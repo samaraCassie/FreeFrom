@@ -26,7 +26,9 @@
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
-                            <!-- <li class="subMenu"><a href="#">Vender</a></li> -->
+                            <% if(!vendedor){ %>
+                                <li class="subMenu"><a href="/_cadastroLoja">Vender</a></li>
+                            <% } %>
                             <!--<li class="subMenu"><a href="#">Frete</a></li>-->
                             <li class="subMenu"><a href="_Sobre">Sobre Nós</a></li>
                         </ul>
@@ -36,6 +38,9 @@
                         <div class="menu"><a href="#">Conta▾</a></div>
                         <ul>
                             <% if(usuario){ %>
+                                <% if(vendedor){ %>
+                                    <li class="subMenu"><a href="_PerfilLoja/<%- idLoja %>">Minha Loja</a></li>
+                                <% } %>
                                 <li class="subMenu"><form action="_logout" method="POST"><button class="btton" type="submit">Sair</button></form></li>
                             <% }else{ %>
                                 <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
