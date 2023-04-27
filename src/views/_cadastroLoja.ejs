@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style_Cadst.css">
+        <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!--Conteúdo do FORMULÁRIO-->
+        <% if(logado){ %>
+        <main class="container">
+            <form id="formulario" method="POST" enctype="multipart/form-data"> 
+                <% if(errado){ %>
+                    <%- include('./includes/messages.ejs') %>
+                <% } %>
+                <h2>Cadastrar</h2> 
+
+                <!--CAMPO PARA PREENCHER COM E-MAIL-->
+                <section class="campo">
+                    <input type="number" name="cnpj" id="cnpj"
+                        placeholder="cnpj*" required>
+                    <div class="underline"></div>
+                </section>  
+
+                <!--CAMPO PARA PREENCHER COM NOME DA LOJA-->
+                <section class="campo">
+                    <input type="text" name="loja" id="loja"
+                        placeholder="Nome da loja*" required>
+                    <div class="underline"></div>
+                </section>
+
+
+                <section class="campo">
+                    <input type="text" name="slogan" id="slogan"
+                        placeholder="Slogan da loja*" required>
+                    <div class="underline"></div>
+                </section>
+
+                <section class="campo">
+                    <input type="text" name="sobre" id="sobre"
+                        placeholder="Sobre a loja*" required>
+                    <div class="underline"></div>
+                </section>
+
+                <input type="file" name="img" placeholder="Foto de perfil da loja">
+
+                <input type="file" name="backImg" placeholder="Imagem de fundo da loja">
+                
+                <input type="reset" value="Resetar">
+                <input type="submit" value="Enviar">
+            
+                <!-- <p class="pp">Ou</p>
+                <p class="pp">Já se cadastrou?<a class="link" href="_Login">Entre</a></p> -->
+            </form>
+        </main>
+        <% }else{ %>
+            <main class="container">
+                <h2>Para cadastrar sua loja, cadastre-se como usuario primeiro, ou logue em sua conta: </h2>
+                <p class="pp"><a class="link" href="_Login">Entre</a> <a href="/_cadastro" class="link">Cadastre-se</a></p>
+            </main>
+        <% } %>
+
+        <!--Rodapé-->
+        <!-- <footer>
+        </footer> -->
+        <script src="./assets/js/bundle.js"></script>
+    </body>
+</html>
