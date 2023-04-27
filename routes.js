@@ -4,15 +4,14 @@ const multer = require('multer');
 const path = require('path');
 
 const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, "public/Img/");
+    destination: function(req, file, cb) {
+      cb(null, './public/Img'); // Pasta onde os arquivos serão salvos
     },
-    filename: function(req, file, cb){
-        cb(null, Date.now() + file.originalname);
+    filename: function(req, file, cb) {
+      cb(null, file.originalname); // Nome do arquivo original
     }
-})
-
-const upload = multer({storage});
+  });
+  const upload = multer({ storage: storage });
 
 const homeController = require('./src/controllers/homeController');
 const produtoController = require('./src/controllers/produtosController');
@@ -28,6 +27,7 @@ const cadastroProdutoController = require('./src/controllers/cadastroProdutoCont
 const editarProdutoController = require('./src/controllers/editarProdutoController');
 const logOutController = require('./src/controllers/logOutController');
 const comprarController = require('./src/controllers/comprarController');
+const cadastroLojaController = require('./src/controllers/cadastroLojaController');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -65,9 +65,12 @@ route.get('/_Carrinho', carrinhoController.paginaCarrinho);
 //Rota para comprar produto
 route.post('/_comprar', comprarController.comprar);
 
+//Rotas do cadastro da loja
+route.get('/_cadastroLoja', cadastroLojaController.cadastroLoja);
+route.post('/_cadastroLoja',  upload.fields([{name: 'img'}, {name: 'backImg'}]),cadastroLojaController.postcadastroloja);
 
 //Rotas do cadastro de produtos
 route.get('/produtosCadastrar', cadastroProdutoController.paginaCadastroProduto);
-route.post('/produtosCadastrar', upload.single('img'), cadastroProdutoController.postProduto);
+route.post('/upload', upload.single('file'), cadastroProdutoController.postProduto);
 
 module.exports = route;
