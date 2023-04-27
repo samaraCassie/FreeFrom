@@ -26,7 +26,7 @@
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
-                            <li class="subMenu"><a href="#">Vender</a></li>
+                            <!-- <li class="subMenu"><a href="#">Vender</a></li> -->
                             <!--<li class="subMenu"><a href="#">Frete</a></li>-->
                             <li class="subMenu"><a href="_Sobre">Sobre Nós</a></li>
                         </ul>
@@ -35,8 +35,12 @@
                     <li>
                         <div class="menu"><a href="#">Conta▾</a></div>
                         <ul>
-                            <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
-                            <li class="subMenu"><a href="_Login">Entrar</a></li>
+                            <% if(usuario){ %>
+                                <li class="subMenu"><form action="_logout" method="POST"><button class="btton" type="submit">Sair</button></form></li>
+                            <% }else{ %>
+                                <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
+                                <li class="subMenu"><a href="_Login">Entrar</a></li>
+                            <% } %>
                         </ul>
                     </li>
                 </ul>
@@ -134,17 +138,19 @@
             </form>
         </div>
         <% if(resultado){ %>
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <% produtos.forEach(function(produto){ %>
-                <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                    <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="<%= produto.img %>"alt="Contact us.">
-                    </div>
-                        <span><%= produto.nome %></span>
-                    <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
-                </section>
-            <% }); %>
-        </div>  
+            <div class="cards"><!----------------FILEIRA DE CARTÕES-->
+                <% produtos.forEach(function(produto){ %>
+                    <% if(!produto.qtd_estoque == 0){ %>
+                        <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                            <div class="icon"><!--ESPAÇO DA CAPA-->
+                                <img src="<%= produto.img %>"alt="Contact us.">
+                            </div>
+                                <span><%= produto.nome %></span>
+                            <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
+                        </section>
+                    <% } %>
+                <% }); %>
+            </div>  
         <% }else{ %>
             <div class="cards">
                 <h1 style="color: black; position: relative; left: 40%;">Nenhum produto encontrado!</h1>

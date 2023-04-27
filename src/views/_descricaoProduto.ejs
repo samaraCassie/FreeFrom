@@ -12,11 +12,19 @@
 <body>
     <div class="modal">
         <div class="modal-content">
-          <h1 style="color: lime; font-size: 35px;"><b>Produto comprado com sucesso</b></h1>
-          <button class="close-btn">Fechar</button>
+          <h1 style="color: black; font-size: 35px;"><b>Realmente deseja comprar esse produto?</b></h1>
+          <form action="/_comprar" method="POST"><input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>"><input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>"><input type="hidden" name="produto" value="<%- produtos[0].id_produto %>"><h6><b>Quantidade</b></h6><select class="select" name="qtd"><% for(let i =1; i<=produtos[0].qtd_estoque; i++){ %> <option value="<%- i %>"><%= i %></option> <%}%></select><button id="comprar" type="submit">Comprar</button></form>
+          <button class="close-btn">Cancelar</button>
         </div>
     </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <h1 style="color: limegreen; font-size: 20px;">Produto comprado com sucesso!!</h1>
+                <button id="close">fechar</button>
+            </div> 
+        </div>
     <article class="container">
+        <% if(!produtos[0].qtd_estoque == 0){ %>
 
         <!-------------- [INICO] FOTO DE DEMONSTRAÇÃO DO PRODUTO--------------->
         <section>
@@ -27,25 +35,34 @@
 
         <!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->
         <section class="info" id="box">
-            <h3><%= produtos[0].nome %></h3>
-            <div class="demonstracao">
-                <img class="produto" src="/<%= produtos[0].img %>">
-            </div>
-            <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
-            <div class="star">
-                <ul class="avaliacao" id="info">
-                    <li class="star-icon ativo" data-avaliacao="1"></li>
-                    <li class="star-icon" data-avaliacao="2"></li>
-                    <li class="star-icon" data-avaliacao="3"></li>
-                    <li class="star-icon" data-avaliacao="4"></li>
-                    <li class="star-icon" data-avaliacao="5"></li>
-                </ul>
-            </div>
-            <p>0 Avaliações</p>
-            <p>0 Vendidos</p>
-            <div class="btn">
-            <button id="open-modal-btn">Comprar</button>  
-            </div>
+            
+                <h3><%= produtos[0].nome %></h3>
+                <div class="demonstracao">
+                    <img class="produto" src="/<%= produtos[0].img %>">
+                </div>
+                <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
+                <!-- <div class="star">
+                    <ul class="avaliacao" id="info">
+                        <li class="star-icon ativo" data-avaliacao="1"></li>
+                        <li class="star-icon" data-avaliacao="2"></li>
+                        <li class="star-icon" data-avaliacao="3"></li>
+                        <li class="star-icon" data-avaliacao="4"></li>
+                        <li class="star-icon" data-avaliacao="5"></li>
+                    </ul>
+                </div>
+                <p>0 Avaliações</p> -->
+                <p>Estoque: <%= produtos[0].qtd_estoque %></p>
+                <% if(vendidos != null){ %>
+                <p><%= vendidos %> Vendidos</p>
+                <% }else{ %>
+                    <p>0 Vendidos</p>
+                <% } %>
+                <div class="btn">
+                <button id="open-modal-btn">Comprar</button>  
+                </div>
+            <% }else{ %>
+                <h1 style="color: black; font-size: 50px;">Produto esgotado!!</h1>
+            <% } %>
             <!--
             <button id="like">
                 <div class="label">
@@ -64,14 +81,15 @@
             -->
         </section>
         <!-- [FIM] SESSÃO DE INFORMAÇÕES DO PRODUTO-->
+        <% if(!produtos[0].qtd_estoque == 0){ %>
         
         <!-- [INICO] SESSÃO DE LOGISTA-->
         <section class="loja" id="box">
             <div class="idem">
-                <a href="/_PerfilLoja">
-                <img class="mini-ft-perfil" src="/Img/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
-                <h5>Nome Da Loja</h5>
-                <h6>Slogan</h6>
+                <a href="/_PerfilLoja/<%- vendedor[0].id_vendedor %>">
+                <img class="mini-ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <h5><%= vendedor[0].nome_loja %></h5>
+                <h6><%= vendedor[0].slogan %></h6>
                 </a>
             </div>
             <!--<div class="reputacao">
@@ -252,6 +270,9 @@
     
          [fim] SESSÃO DE AVALIAÇÃO DO PRODUTO-----------------------------------COMENTARIO-->
     </article>
+    <% }else{ %>
+        
+    <% } %>
 
     <!--<footer>
     </footer>-->
