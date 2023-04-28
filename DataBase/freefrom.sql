@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Abr-2023 às 05:02
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 9.2.0
+-- Tempo de geração: 28-Abr-2023 às 20:58
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cliente` (
   `id_cliente` int(5) NOT NULL,
   `cpf` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE `compra` (
   `id_cliente` int(3) NOT NULL,
   `id_produto` int(3) NOT NULL,
   `quantidade` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `compra`
@@ -83,7 +83,7 @@ CREATE TABLE `produto` (
   `img` varchar(250) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `imagem` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produto`
@@ -116,7 +116,7 @@ CREATE TABLE `usuario` (
   `data_nascimento` date DEFAULT NULL,
   `usuario` varchar(150) NOT NULL,
   `uf` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -139,16 +139,17 @@ CREATE TABLE `vendedor` (
   `slogan` varchar(200) DEFAULT NULL,
   `img` varchar(200) DEFAULT NULL,
   `sobre` varchar(200) DEFAULT NULL,
-  `back_img` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `back_img` varchar(200) DEFAULT NULL,
+  `id_usuario` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `vendedor`
 --
 
-INSERT INTO `vendedor` (`id_vendedor`, `cnpj`, `nome_loja`, `slogan`, `img`, `sobre`, `back_img`) VALUES
-(1, 2147483647, 'Suco do vale', 'Direto da fruta', 'Img/is14667-image.jpg', 'Loja de sucos naturais, feitos na hora com salgados e doces feitos na loja, sempre aqui para atender você da melhor maneira sempre!!', 'img/fundo.jpg'),
-(2, 85462514, 'Yalla esfiharia', 'Só o melhor', 'img/esphirraria.jpg', 'Lojas de esphirras muito boa', 'Img/2022-07-29.png');
+INSERT INTO `vendedor` (`id_vendedor`, `cnpj`, `nome_loja`, `slogan`, `img`, `sobre`, `back_img`, `id_usuario`) VALUES
+(1, 2147483647, 'Suco do vale', 'Direto da fruta', 'Img/is14667-image.jpg', 'Loja de sucos naturais, feitos na hora com salgados e doces feitos na loja, sempre aqui para atender você da melhor maneira sempre!!', 'img/fundo.jpg', 38),
+(2, 85462514, 'Yalla esfiharia', 'Só o melhor', 'img/esphirraria.jpg', 'Lojas de esphirras muito boa', 'Img/2022-07-29.png', 39);
 
 --
 -- Índices para tabelas despejadas
@@ -186,7 +187,8 @@ ALTER TABLE `usuario`
 -- Índices para tabela `vendedor`
 --
 ALTER TABLE `vendedor`
-  ADD PRIMARY KEY (`id_vendedor`);
+  ADD PRIMARY KEY (`id_vendedor`),
+  ADD KEY `fk_usuario` (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -239,6 +241,12 @@ ALTER TABLE `compra`
 --
 ALTER TABLE `produto`
   ADD CONSTRAINT `ct_fk_vendedor` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id_vendedor`);
+
+--
+-- Limitadores para a tabela `vendedor`
+--
+ALTER TABLE `vendedor`
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
