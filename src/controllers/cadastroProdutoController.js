@@ -9,7 +9,22 @@ const connection = mysql.createConnection({
 
 
 exports.paginaCadastroProduto = (req, res) => {
-    res.render('produtosCadastrar');
+    const user = req.session.user;
+    if(user){
+        connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+            if(err) throw err;
+            // Renderiza a página do dashboard com as informações do usuário
+            if(results != ""){
+                res.render('_CadastroProdutos', {errado: false, vendedor: true});
+            }
+            else{
+                res.render('_CadastroProdutos', {errado: false, vendedor: false});
+            }
+        });
+    }
+    else{
+        res.render('_CadastroProdutos', {errado: false, vendedor: false});
+    }
 }
 
 exports.postProduto = (req, res) => {
@@ -21,16 +36,22 @@ exports.postProduto = (req, res) => {
     const path = req.file.path;
     const preco = req.body.preco;
 
-    let imagem = path.slice(6);
-
-    const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria) VALUES (?, ?, ?, ?, ?, ?)';
-    const values = [nome, descricao, preco, estoque, imagem, categoria];
-    connection.query(sql, values, (err, result) => {
-        if (err) {
-            console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
-            return;
-        }
-        console.log('Dados inseridos com sucesso no banco de dados');
-        res.redirect('/_PerfilLoja');
-    });
+    let imagem = path.slice(7);
+    const user = req.session.user;
+    if(user){
+        connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+            if(err) throw err;
+            const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria, id_vendedor) VALUES (?, ?, ?, ?, ?, ?, ?)';
+            const values = [nome, descricao, preco, estoque, imagem, categoria, results[0].id_vendedor];
+            connection.query(sql, values, (err, result) => {
+                if (err) {
+                    console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
+                    return;
+                }
+                console.log('Dados inseridos com sucesso no banco de dados');
+                res.redirect('/_Produtos');
+            });
+        });
+    }
+    
 }
