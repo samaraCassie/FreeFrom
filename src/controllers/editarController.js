@@ -14,44 +14,15 @@ exports.editarPage = (req, res) => {
 }
 
 exports.postEditar = (req, res) => {
+    const id = req.params.id;
     const nome = req.body.loja;
     const cnpj = req.body.cnpj;
     const slogan = req.body.slogan;
     const sobre = req.body.sobre;
     
+    connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ? WHERE id_vendedor = ?', [nome, cnpj, slogan, sobre, id], (erro, result) => {
+        if(erro) throw erro
     
-
-
-    if(path == null || path == ""){
-        const path2 = req.files['backImg'][0].path
-        let img2 = path2.slice(7);
-        connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ?, back_img = ?', [nome, cnpj, slogan, sobre, img2], (erro, result) => {
-            if(erro) throw erro
-    
-            res.redirect('_Perfilloja');
-        });
-    }
-    else if(path2 == null || path2 == ""){
-        const path = req.files['img'][0].path
-        let img = path.slice(7);
-        connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ?, img = ?', [nome, cnpj, slogan, sobre, img], (erro, result) => {
-            if(erro) throw erro
-    
-            res.redirect('_Perfilloja');
-        });
-    }
-    else if(path == null || path == "" && path2 == null || path2 == ""){
-        connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ?', [nome, cnpj, slogan, sobre], (erro, result) => {
-            if(erro) throw erro
-    
-            res.redirect('_Perfilloja');
-        });
-    }
-    else{
-        connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ?, img = ?, back_img = ?', [nome, cnpj, slogan, sobre, img, img2], (erro, result) => {
-            if(erro) throw erro
-    
-            res.redirect('_Perfilloja');
-        });
-    }
+        res.redirect('_Perfilloja');
+    });
 }
