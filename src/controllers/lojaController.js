@@ -15,13 +15,13 @@ exports.paginaLoja = (req, res) => {
             if(error) throw error
             connection.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
                 if(err) throw err
-                connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, resultado) => {
+                connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, resultado) => {
                     if(erro) throw erro
-                    if(resultado != ""){
-                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true});
+                    if(resultado != "" || resultado != null){
+                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true, usuario: user, resultado: resultado});
                     }
                     else{
-                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false});
+                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, usuario: user, resultado: resultado});
                     }
                 });
             });
