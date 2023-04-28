@@ -70,7 +70,7 @@ route.get('/_cadastroLoja', cadastroLojaController.cadastroLoja);
 route.post('/_cadastroLoja',  upload.fields([{name: 'img'}, {name: 'backImg'}]),cadastroLojaController.postcadastroloja);
 
 //Rotas do cadastro de produtos
-route.get('/produtosCadastrar', cadastroProdutoController.paginaCadastroProduto);
+route.get('/_CadastroProdutos', cadastroProdutoController.paginaCadastroProduto);
 route.post('/upload', upload.single('file'), cadastroProdutoController.postProduto);
 
 //Rotas para editar a loja
