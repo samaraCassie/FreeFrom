@@ -21,7 +21,7 @@ exports.paginaLoja = (req, res) => {
                         res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true, usuario: user, resultado: resultado});
                     }
                     else{
-                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, usuario: user, resultado: resultado});
+                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, usuario: user, resultado: null});
                     }
                 });
             });
