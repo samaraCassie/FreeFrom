@@ -94,7 +94,7 @@
         <!--Conteúdo do FORMULÁRIO-->
         <% if(vendedor){ %>
         <main class="container">
-            <form method="post" action="/upload" enctype="multipart/form-data">
+            <form method="post" id="form" action="/upload" enctype="multipart/form-data">
                 <% if(errado){ %>
                     <%- include('./includes/messages.ejs') %>
                 <% } %>
@@ -136,7 +136,7 @@
                     </select>
                 </div>
 
-                <label for="img">Imagem</label>
+                <label for="img" style="color: white;">Imagem do produto</label>
                 <input type="file" name="file">
                 
                 <input type="reset" value="Resetar">
@@ -146,10 +146,10 @@
                 <a class="google" href="#">Continue com Google</a>
                 <a class="facebook" href="#">Continue com Facebook</a>
                 <p class="pp">Já se cadastrou?<a class="link" href="_Login">Entre</a></p>
+                <% }else{ %>
+                    <h2 style="background-color: black;">Você não tem permissão para esta ação!!, logue como vendedor ou se cadastre para poder adicionar produtos!!</h2>
+                <% } %>
             </form>
-            <% }else{ %>
-                <h2>Você não tem permissão para esta ação!!, logue como vendedor ou se cadastre para poder adicionar produtos!!</h2>
-            <% } %>
         </main>
         <!--Rodapé-->
         <!-- <footer>
