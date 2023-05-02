@@ -14,7 +14,8 @@
     <body>
         <!--Conteúdo do FORMULÁRIO-->
         <main class="container">
-            <form id="formulario" method="POST" enctype="multipart/form-data"> 
+            <form id="formulario" method="POST"> 
+                <% if(loja){ %>
                 <% if(errado){ %>
                     <%- include('./includes/messages.ejs') %>
                 <% } %>
@@ -22,15 +23,13 @@
 
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
                 <section class="campo">
-                    <input type="number" name="cnpj" id="cnpj"
-                        placeholder="cnpj*" required>
+                    <input type="number" name="cnpj" placeholder="cnpj*" required>
                     <div class="underline"></div>
                 </section>  
 
                 <!--CAMPO PARA PREENCHER COM NOME DA LOJA-->
                 <section class="campo">
-                    <input type="text" name="loja" id="loja"
-                        placeholder="Nome da loja*" required>
+                    <input type="text" name="loja" id="loja" placeholder="Nome da loja*" required>
                     <div class="underline"></div>
                 </section>
 
@@ -52,6 +51,9 @@
             
                 <!-- <p class="pp">Ou</p>
                 <p class="pp">Já se cadastrou?<a class="link" href="_Login">Entre</a></p> -->
+                <% }else{ %>
+                    <h2>Você não tem permição para editar esta loja!!</h2>
+                <% } %>
             </form>
         </main>
 
