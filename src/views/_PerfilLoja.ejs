@@ -20,12 +20,14 @@
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
             <% if(user){ %>
-                <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
-            <div class="btn">
-                <button><a href="/_CadastroProdutos">Novo produto</a></button>
-                <button><a href="/_editar/<%- vendedor[0].id_vendedor %>">Editar</a></button>
-            </div>
-            <% } %>
+                <% if(resultado != ""){ %>
+                    <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
+                        <div class="btn">
+                            <button><a href="/_CadastroProdutos">Novo produto</a></button>
+                            <button><a href="/_editar/<%- vendedor[0].id_vendedor %>">Editar</a></button>
+                        </div>
+                    <% } %>
+                <% } %>
             <% } %>
             <!-- <div class="reputacao">
                 
