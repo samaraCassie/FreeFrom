@@ -10,12 +10,31 @@
 </head>
 <body> 
     <main>
+        <div class="modal">
+            <div class="modal-content">
+              <form method="post" action="/_fotoCapa" enctype="multipart/form-data">
+                <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
+                <input type="file" name="back_img">
+                <input type="submit" value="enviar">
+              </form>
+              <button class="close-btn">Cancelar</button>
+            </div>
+        </div>
     <!--Menu-->
     <header>
         <div class="loja">
-            <img class="capa" src="/<%- vendedor[0].back_img %>"> <!--FOTO DE CAPA-->
+            <% if(user){ %>
+                <% if(resultado != ""){ %>
+                    <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
+                        <div class="change-photo" id="open-modal-btn" onclick="openModal()">Alterar foto</div>
+                    <% } %>
+                <% } %>
+            <% } %>
+                <img class="capa" src="/<%- vendedor[0].back_img %>" alt="imagem"> <!--FOTO DE CAPA-->
             <div class="idem">
-                <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <div class="foto">
+                    <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                </div>
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
@@ -85,5 +104,20 @@
         
     </footer>
     <script src="/assets/js/bundle.js"></script>
+    <script>
+        const openModalBtn = document.querySelector('#open-modal-btn');
+        const closeModalBtn = document.querySelector('.close-btn');
+        const modal = document.querySelector('.modal');
+
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
