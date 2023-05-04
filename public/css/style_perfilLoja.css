@@ -36,7 +36,7 @@ header{
 }
 
 .loja{ 
-    position: absolute;
+    position: relative;
     background: rgb(255, 255, 255);
     box-shadow: 1px 1px 5px rgba(56, 56, 56, 0.479);
     width: 100%;
@@ -251,4 +251,55 @@ p{
   font-size: 16px;
   font-weight: 30;
   line-height: 1.6;
+}
+
+.change-photo {
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.575);
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.foto{
+  position: absolute;
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 10vmax;
+  margin-top: 19vmax;
+  margin-left: 2vmax;
+  z-index: 1;
+}
+
+/* Modal CSS */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* fundo preto com opacidade de 50% */
+  z-index: 3;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+}
+
+.close-btn {
+  margin-top: 10px;
 }
