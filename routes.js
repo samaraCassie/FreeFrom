@@ -28,6 +28,7 @@ const editarLojaController = require('./src/controllers/editarController');
 const logOutController = require('./src/controllers/logOutController');
 const comprarController = require('./src/controllers/comprarController');
 const cadastroLojaController = require('./src/controllers/cadastroLojaController');
+const editarCapaController = require('./src/controllers/mudarCapaController');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -72,6 +73,9 @@ route.post('/_cadastroLoja',  upload.fields([{name: 'img'}, {name: 'backImg'}]),
 //Rotas do cadastro de produtos
 route.get('/_CadastroProdutos', cadastroProdutoController.paginaCadastroProduto);
 route.post('/upload', upload.single('file'), cadastroProdutoController.postProduto);
+
+//Rota para editar a foto de capa da loja
+route.post('/_fotoCapa', upload.single('back_img'), editarCapaController.mudarCapa);
 
 //Rotas para editar a loja
 route.get('/_editar/:id', editarLojaController.editarPage);
