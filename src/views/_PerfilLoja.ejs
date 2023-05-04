@@ -20,6 +20,18 @@
               <button class="close-btn">Cancelar</button>
             </div>
         </div>
+
+        <div class="modal2">
+            <div class="modal-content">
+              <form method="post" action="/_fotoPerfil" enctype="multipart/form-data">
+                <h1 style="color: black;">OI</h1>
+                <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
+                <input type="file" name="img">
+                <input type="submit" value="enviar">
+              </form>
+              <button class="close-btn" id="fechar">Cancelar</button>
+            </div>
+        </div>
     <!--Menu-->
     <header>
         <div class="loja">
@@ -34,6 +46,7 @@
             <div class="idem">
                 <div class="foto">
                     <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                    <button id="abrirModal">modal</button>
                 </div>
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
@@ -117,6 +130,20 @@
         closeModalBtn.addEventListener('click', (e) => {
             e.preventDefault();
             modal.style.display = 'none';
+        });
+
+        const openModalBtn2 = document.querySelector('#abrirModal');
+        const closeModalBtn2 = document.querySelector('#fechar');
+        const modal2 = document.querySelector('.modal2');
+
+        openModalBtn2.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal2.style.display = 'block';
+        });
+
+        closeModalBtn2.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal2.style.display = 'none';
         });
     </script>
 </body>
