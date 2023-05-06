@@ -52,7 +52,7 @@
                 <!-- <p class="pp">Ou</p>
                 <p class="pp">Já se cadastrou?<a class="link" href="_Login">Entre</a></p> -->
                 <% }else{ %>
-                    <h2>Você não tem permição para editar esta loja!!</h2>
+                    <%- include('./includes/permição.ejs') %>
                 <% } %>
             </form>
         </main>

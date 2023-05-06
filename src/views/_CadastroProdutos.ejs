@@ -147,7 +147,7 @@
                 <a class="facebook" href="#">Continue com Facebook</a>
                 <p class="pp">Já se cadastrou?<a class="link" href="_Login">Entre</a></p>
                 <% }else{ %>
-                    <h2 style="background-color: black;">Você não tem permissão para esta ação!!, logue como vendedor ou se cadastre para poder adicionar produtos!!</h2>
+                    <%- include('./includes/permição.ejs') %>
                 <% } %>
             </form>
         </main>
