@@ -34,8 +34,6 @@ exports.postEditar = (req, res) => {
     const cnpj = req.body.cnpj;
     const slogan = req.body.slogan;
     const sobre = req.body.sobre;
-
-    console.log(id, nome, cnpj)
     
     connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ? WHERE id_vendedor = ?', [nome, cnpj, slogan, sobre, id], (erro, result) => {
         if(erro) throw erro
