@@ -36,7 +36,7 @@ header{
 }
 
 .loja{ 
-    position: absolute;
+    position: relative;
     background: rgb(255, 255, 255);
     box-shadow: 1px 1px 5px rgba(56, 56, 56, 0.479);
     width: 100%;
@@ -177,21 +177,25 @@ header{
 /*Fileira de Cartões*/
 .cards {
   display: flex;
-  width: 100%;
+  max-width: 80vw;
+  width: 80vw;
+  flex-wrap: wrap;
 }
 /*Cartão individual*/
 .cards section.card {
-  background: white;
-  box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
-  border: .5px solid rgba(83, 59, 49, 0.46);
+  background: transparent;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 1rem 1.5rem;
-  top: 0;
-  margin-left: 3vw;
-  margin-right: .5vw;   
+  margin-left: 1.5vw;
+  margin-top: 5vh;
+  height: 55vh;
+  width: 24.5vw;
+  border: .5px solid rgba(83, 59, 49, 0.46);
+  box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
 }
 /*espaço da capa no cartão*/
 section.card .icon {
@@ -200,17 +204,19 @@ section.card .icon {
   top: 0%;
   width: 100%;
   height: 70%;
-}section.card img {
-  margin-top: 0;
+}
+section.card img {
   width: 100%;
   height: 100%;
-}section.card span{
+}
+/*Espaço do conteudo no cartão*/
+section.card span{
   position: absolute;
-  font-size: 1.2vmax;
-  margin-top: 10px;
+  font-size: 3vmin;
+  top: 73%;
   width: 95%;
-  left: 2.5%;
-}section.card a {
+}
+section.card a {/**********TENTAR TROCAR PARA BUTTON*/
   position: absolute;
   background: #2c2c2c;
   color: rgb(255, 255, 255);
@@ -221,9 +227,7 @@ section.card .icon {
   padding: 0.5vmax 1vmax;
   border-radius: 32vmin;
   bottom: 1.5vh;
-  height: 30%;
-  width: 33%;
-  left: 33%;
+  height: 10%;
 }
 /*[fIM] espaço da capa no cartão*/
 /*espaço do conteúdo no cartão*/
@@ -247,4 +251,81 @@ p{
   font-size: 16px;
   font-weight: 30;
   line-height: 1.6;
+}
+
+.change-back-img {
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.575);
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.change-img{
+  color: white;
+  font-size: 50px;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  border-radius: 50vmax;
+  background-color: rgba(128, 128, 128, 0.575);
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.foto{
+  position: absolute;
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 10vmax;
+  margin-top: 19vmax;
+  margin-left: 2vmax;
+  z-index: 1;
+}
+
+/* Modal CSS */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* fundo preto com opacidade de 50% */
+  z-index: 3;
+}
+
+.modal2 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* fundo preto com opacidade de 50% */
+  z-index: 3;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+}
+
+.close-btn {
+  margin-top: 10px;
 }
