@@ -33,8 +33,13 @@ exports.postProduto = (req, res) => {
     const descricao = req.body.descricao;
     const estoque = req.body.estoque;
     const img = req.body.img;
-    const path = req.file.path;
+    const path = req.file ? req.file.path : null;
     const preco = req.body.preco;
+
+    if(!path){
+        const erro = "Envie uma imagem do produto!!";
+        res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
+    }
 
     let imagem = path.slice(7);
     const user = req.session.user;
