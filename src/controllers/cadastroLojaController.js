@@ -28,8 +28,22 @@ exports.postcadastroloja = (req, res) => {
     const slogan = req.body.slogan;
     const sobre = req.body.sobre;
     const id = user[0].id_usuario;
-    const path = req.files['img'][0].path
-    const path2 = req.files['backImg'][0].path
+    const path = req.files['img'] ? req.files['img'][0].path : null;
+    const path2 = req.files['backImg'] ? req.files['backImg'][0].path : null;
+
+    if (!path && !path2){
+        const erro = "Envie uma imagem de perfil e de fundo da loja!! não pode ser nulo";
+        res.render('_cadastroLoja', {errado: true, error: erro, logado: true});
+    }
+    else if (!path){
+        const erro = "Envie uma imagem de perfil!! não pode ser nulo!";
+        res.render('_cadastroLoja', {errado: true, error: erro, logado: true});
+    }
+    else if (!path2){
+        const erro = "Envie uma imagem de fundo da loja!! não pode ser nulo!";
+        res.render('_cadastroLoja', {errado: true, error: erro, logado: true});
+    }
+    
 
     let img = path.slice(7);
     let img2 = path2.slice(7);
