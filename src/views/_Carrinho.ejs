@@ -16,13 +16,15 @@
             <hr>
         </div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a> 
-            </section>
+            <% produtos.forEach(function(produto){ %>
+                <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                    <div class="icon"><!--ESPAÇO DA CAPA-->
+                        <img src="<%= produto.img %>"alt="Contact us.">
+                    </div>
+                        <span><%= produto.nome %></span>
+                    <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
+                </section>
+            <% }); %>
         </div>
         <br>
         <hr>

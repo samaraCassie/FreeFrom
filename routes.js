@@ -26,7 +26,7 @@ const carrinhoController = require('./src/controllers/carrinhoController');
 const cadastroProdutoController = require('./src/controllers/cadastroProdutoController');
 const editarLojaController = require('./src/controllers/editarController');
 const logOutController = require('./src/controllers/logOutController');
-const comprarController = require('./src/controllers/comprarController');
+const addCarrinhoController = require('./src/controllers/addCarrinhoController');
 const cadastroLojaController = require('./src/controllers/cadastroLojaController');
 const editarCapaController = require('./src/controllers/mudarCapaController');
 const editarFotoController = require('./src/controllers/mudarFotoController');
@@ -65,7 +65,7 @@ route.get('/_Sobre', sobreController.paginaSobre);
 route.get('/_Carrinho', carrinhoController.paginaCarrinho);
 
 //Rota para comprar produto
-route.post('/_comprar', comprarController.comprar);
+route.post('/_addCarrinho', addCarrinhoController.addCarrinho);
 
 //Rotas do cadastro da loja
 route.get('/_cadastroLoja', cadastroLojaController.cadastroLoja);

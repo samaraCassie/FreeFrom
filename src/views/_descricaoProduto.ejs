@@ -13,7 +13,7 @@
     <div class="modal">
         <div class="modal-content">
           <h1 style="color: black; font-size: 35px;"><b>Realmente deseja comprar esse produto?</b></h1>
-          <form action="/_comprar" method="POST"><input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>"><input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>"><input type="hidden" name="produto" value="<%- produtos[0].id_produto %>"><h6><b>Quantidade</b></h6><select class="select" name="qtd"><% for(let i =1; i<=produtos[0].qtd_estoque; i++){ %> <option value="<%- i %>"><%= i %></option> <%}%></select><button id="comprar" type="submit">Comprar</button></form>
+          <form action="/_addCarrinho" method="POST"><input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>"><input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>"><input type="hidden" name="produto" value="<%- produtos[0].id_produto %>"><h6><b>Quantidade</b></h6><select class="select" name="qtd"><% for(let i =1; i<=produtos[0].qtd_estoque; i++){ %> <option value="<%- i %>"><%= i %></option> <%}%></select><button id="comprar" type="submit">Adicionar</button></form>
           <button class="close-btn">Cancelar</button>
         </div>
     </div>
@@ -58,7 +58,7 @@
                     <p>0 Vendidos</p>
                 <% } %>
                 <div class="btn">
-                <button id="open-modal-btn">Comprar</button>  
+                <button id="open-modal-btn">Adicionar ao carrinho</button>  
                 </div>
             <% }else{ %>
                 <h1 style="color: black; font-size: 50px;">Produto esgotado!!</h1>
