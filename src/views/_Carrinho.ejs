@@ -16,20 +16,34 @@
             <hr>
         </div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <% produtos.forEach(function(produto){ %>
+            <% if(produtos){ %>
+            <%let preco = produtos.reduce((total, produtoA) => total + produtoA[0].preco_unit, 0); produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                     <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="<%= produto.img %>"alt="Contact us.">
+                        <img src="<%- produto.img %>"alt="Contact us.">
                     </div>
                         <span><%= produto.nome %></span>
                     <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
                 </section>
             <% }); %>
+            <% } %>
         </div>
         <br>
         <hr>
-        <h1>Total: R$10000000.00</h1>
-        <button class="btn">Confirmar</button>
+        <% if(produtos){%>
+            <h1>Total: R$<%= preco %></h1>
+        <% }else{ %>
+            <h1>Total: R$00,00</h1>
+        <% } %>
+        <% if(user){ %>
+        <form action="/_confirmarCompra" method="POST">
+            <input type="hidden" name="total" value="<%- preco %>">
+            <input type="hidden" name="id" value="<%- results[0].id_itens_produto %>">
+            <button class="btn">Confirmar</button>
+        </form>
+        <% }else{ %>
+            <button class="btn">Confirmar</button>
+        <% } %>
     </section>
 
     <script src="./assets/js/bundle.js"></script>

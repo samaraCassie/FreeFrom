@@ -20,7 +20,7 @@ exports.addCarrinho = (req, res) => {
         connection.query('INSERT INTO itens_produto (id_usuario, id_produto, quantidade) VALUES (?, ?, ?)', [usuario, produto, qtd], (error, result) => {
             if(error) throw error
 
-            res.redirect(`_Carrinho`);
+            res.redirect(`/_produtos`);
         });
     }   
 }
