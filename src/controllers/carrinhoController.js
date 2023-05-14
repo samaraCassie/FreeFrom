@@ -32,7 +32,7 @@ exports.paginaCarrinho = (req, res) => {
                   
                     Promise.all(promises)
                       .then((produtos) => {
-                        res.render('_Carrinho', { produtos: produtos, results: results, user: true});
+                        res.render('_Carrinho', {produtin: true, produtos: produtos, results: results, user: true});
                       })
                       .catch((erro) => {
                         throw erro;
@@ -40,18 +40,47 @@ exports.paginaCarrinho = (req, res) => {
                   });
             }
             else{
-                res.render('_Carrinho', {produtos: null, user: true});
+                res.render('_Carrinho', {produtos: "", produtin: false, user: true});
             }
         });
     }
     else{
-        res.render('_Carrinho', {produtos: null, user: false});
+        res.render('_Carrinho', {produtos: "", produtin: false, user: false});
     }
+}
+
+function atualizarQuantidadeEmEstoque(qtd, produtoId) {
+  const sql = `UPDATE produto SET qtd_estoque = qtd_estoque - ? WHERE id_produto = ?`;
+  const params = [qtd, produtoId];
+
+  // Execute a consulta SQL
+  connection.query(sql, params, (err, result) => {
+    if (err) throw err;
+    
+  });
 }
 
 exports.confirmarCompra = (req, res) => {
     const total = req.body.total;
-    const id_usuario = req.session.user[0].id_usuario;
-    const id_itens_produto = req.body.id; 
-    
+    const i = req.body.i;
+
+    for(let index = 0; index<i; index++){
+      const qtd = req.body[`qtd${index}`];
+      const id_itens = req.body[`id${index}`];
+
+      connection.query('INSERT INTO compra (data, total_compra, quantidade, id_itens_produto) VALUES (?, ?, ?, ?)', [Date.now(), total, qtd, id_itens], (error, results) => {
+        if(error) throw error;
+
+        res.redirect("/_produtos");
+      });
+    }
+}
+
+exports.removerProduto = (req, res) => {
+    const id_itens = req.body.id_itens;
+    connection.query("DELETE FROM itens_produto WHERE id_itens_produto = ?", [id_itens], (err, result) => {
+      if(err) throw err;
+
+      res.redirect('_carrinho');
+    });
 }

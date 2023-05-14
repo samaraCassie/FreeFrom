@@ -63,6 +63,8 @@ route.get('/_Sobre', sobreController.paginaSobre);
 
 //Rotas do carrinho
 route.get('/_Carrinho', carrinhoController.paginaCarrinho);
+route.post('/_remove', carrinhoController.removerProduto);
+route.post('/_confirmarCompra', carrinhoController.confirmarCompra);
 
 //Rota para comprar produto
 route.post('/_addCarrinho', addCarrinhoController.addCarrinho);
