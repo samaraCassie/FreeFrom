@@ -20,7 +20,7 @@
             <% let qtd = 0; %>
             <% let i = 0; %>
             <% if(produtos != ""){ %>
-            <%preco = produtos.reduce((total, produtoA) => total + produtoA[0].preco_unit, 0); produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
+            <%produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
                 <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                     <div class="icon"><!--ESPAÇO DA CAPA-->
                         <img src="<%- produto.img %>"alt="Contact us.">
@@ -31,6 +31,7 @@
                             <button class="remove">Remover do carrinho</button>
                         </form>
                 </section>
+                <% preco += produto.preco_unit * results[i].quantidade;%>
                 <% i++ %>
             <% }); %>
             <% } %>

@@ -61,6 +61,7 @@ function atualizarQuantidadeEmEstoque(qtd, produtoId) {
 }
 
 exports.confirmarCompra = (req, res) => {
+    let feito = 0;
     const total = req.body.total;
     const i = req.body.i;
 
@@ -68,11 +69,14 @@ exports.confirmarCompra = (req, res) => {
       const qtd = req.body[`qtd${index}`];
       const id_itens = req.body[`id${index}`];
 
-      connection.query('INSERT INTO compra (data, total_compra, quantidade, id_itens_produto) VALUES (?, ?, ?, ?)', [Date.now(), total, qtd, id_itens], (error, results) => {
+      connection.query('INSERT INTO compra (data, total_compra, quantidade, id_itens_produto) VALUES (?, ?, ?, ?)', [new Date, total, qtd, id_itens], (error, results) => {
         if(error) throw error;
 
-        res.redirect("/_produtos");
-      });
+        feito++
+        if(feito == i){
+          res.redirect('/_produtos');
+        }
+      }); 
     }
 }
 
