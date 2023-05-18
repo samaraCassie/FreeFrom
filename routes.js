@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
       cb(null, './public/Img'); // Pasta onde os arquivos serão salvos
     },
     filename: function(req, file, cb) {
-      cb(null, file.originalname); // Nome do arquivo original
+      cb(null, Date.now() + file.originalname); // Nome do arquivo original
     }
   });
   const upload = multer({ storage: storage });
@@ -43,7 +43,7 @@ route.get('/_Login', loginController.loginPagina);
 route.post('/_Login', loginController.loginPost);
 
 //Rotas de logOut
-route.post('/_logOut', logOutController.logOut);
+route.get('/_logOut', logOutController.logOut);
 
 //Rotas do cadastro
 route.get('/_cadastro', cadastroController.paginaCadastro);
