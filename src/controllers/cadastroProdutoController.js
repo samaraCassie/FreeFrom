@@ -32,30 +32,38 @@ exports.postProduto = (req, res) => {
     const categoria = req.body.categoria;
     const descricao = req.body.descricao;
     const estoque = req.body.estoque;
-    const img = req.body.img;
     const path = req.file ? req.file.path : null;
     const preco = req.body.preco;
 
-    if(!path){
-        const erro = "Envie uma imagem do produto!!";
-        res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
-    }
+    
+
+    
 
     let imagem = path.slice(7);
     const user = req.session.user;
     if(user){
         connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
             if(err) throw err;
-            const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria, id_vendedor) VALUES (?, ?, ?, ?, ?, ?, ?)';
-            const values = [nome, descricao, preco, estoque, imagem, categoria, results[0].id_vendedor];
-            connection.query(sql, values, (err, result) => {
-                if (err) {
-                    console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
-                    return;
+            if(estoque <= 0){
+                const erro = "Para cadastrar um produto você precisa ter no minímo 1 no estoque!!";
+                res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
+            }else{
+                if(!path){
+                    const erro = "Envie uma imagem do produto!!";
+                    res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
+                }else{
+                    const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria, id_vendedor) VALUES (?, ?, ?, ?, ?, ?, ?)';
+                    const values = [nome, descricao, preco, estoque, imagem, categoria, results[0].id_vendedor];
+                    connection.query(sql, values, (err, result) => {
+                        if (err) {
+                            console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
+                            return;
+                        }
+                        console.log('Dados inseridos com sucesso no banco de dados');
+                        res.redirect('/_Produtos');
+                    });
                 }
-                console.log('Dados inseridos com sucesso no banco de dados');
-                res.redirect('/_Produtos');
-            });
+            }
         });
     }
     
