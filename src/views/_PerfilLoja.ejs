@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +11,10 @@
         <div class="modal">
             <div class="modal-content">
               <form method="post" action="/_fotoCapa" enctype="multipart/form-data">
+                <h1 style="color: black;">Foto de capa:</h1>
                 <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
                 <input type="file" name="back_img">
-                <input type="submit" value="enviar">
+                <button type="submit">Enviar</button>
               </form>
               <button class="close-btn">Cancelar</button>
             </div>
@@ -24,10 +23,10 @@
         <div class="modal2">
             <div class="modal-content">
               <form method="post" action="/_fotoPerfil" enctype="multipart/form-data">
-                <h1 style="color: black;">OI</h1>
+                <h1 style="color: black;">Foto de perfil:</h1>
                 <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
                 <input type="file" name="img">
-                <input type="submit" value="enviar">
+                <button type="submit">Enviar</button>
               </form>
               <button class="close-btn" id="fechar">Cancelar</button>
             </div>
@@ -35,19 +34,28 @@
     <!--Menu-->
     <header>
         <div class="loja">
-            <% if(user){ %>
-                <% if(resultado != ""){ %>
-                    <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
-                        <div class="change-photo" id="open-modal-btn" onclick="openModal()">Alterar foto</div>
+            <div class="loja-capa">
+                <% if(user){ %>
+                    <% if(resultado != ""){ %>
+                        <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
+                            <div class="change-back-img" id="open-modal-btn" onclick="openModal()">Alterar foto</div>
+                        <% } %>
                     <% } %>
                 <% } %>
-            <% } %>
                 <img class="capa" src="/<%- vendedor[0].back_img %>" alt="imagem"> <!--FOTO DE CAPA-->
-            <div class="idem">
-                <div class="foto">
-                    <img class="ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
-                    <button id="abrirModal">modal</button>
-                </div>
+            </div>
+
+            <div class="idem">     
+                <img class="ft-perfil" src="/<%- vendedor[0].img %>">  <!--//COLOCAR FOTO DE PERFIL DA LOJA-->
+                <% if(user){ %>
+                    <% if(resultado != ""){ %>
+                        <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
+                            <div class="foto">
+                                <div class="change-img" id="abrirModal">Alterar</div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                <% } %>
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
