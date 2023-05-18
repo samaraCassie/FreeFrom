@@ -34,13 +34,13 @@ exports.paginaProdutos = (req, res) => {
 
 exports.produtosPost = (req, res) => {
     const pesquisa = req.body.pesquisa;
-    var resultado = true
+
 
     connection.query(`SELECT * FROM produto where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}% " OR categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
         if (error) throw error;
         if(result == ""){
             result.push('Nenhum produto encontrado!');
-            resultado = false;
+
         }
 
         if (req.session.user) {
@@ -59,7 +59,7 @@ exports.produtosPost = (req, res) => {
             });
           }
         else{
-            res.render('_Produtos', { produtos: result, usuario: false, resultado: resultado, vendedor: false});
+            res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
           }
     });
 }
