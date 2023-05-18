@@ -20,20 +20,22 @@
             <% let qtd = 0; %>
             <% let i = 0; %>
             <% if(produtos != ""){ %>
-            <%produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
-                <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                    <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="<%- produto.img %>"alt="Contact us.">
-                    </div>
-                        <span><%= produto.nome %></span>
-                        <form action="/_remove" method="POST">
-                            <input type="hidden" value="<%- results[i].id_itens_produto %>" name="id_itens">
-                            <button class="remove">Remover do carrinho</button>
-                        </form>
-                </section>
-                <% preco += produto.preco_unit * results[i].quantidade;%>
-                <% i++ %>
-            <% }); %>
+                <%produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
+                    <% if(!produto.qtd_estoque == 0){ %>
+                    <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                        <div class="icon"><!--ESPAÇO DA CAPA-->
+                            <img src="<%- produto.img %>"alt="Contact us.">
+                        </div>
+                            <span><%= produto.nome %></span>
+                            <form action="/_remove" method="POST">
+                                <input type="hidden" value="<%- results[i].id_itens_produto %>" name="id_itens">
+                                <button class="remove">Remover do carrinho</button>
+                            </form>
+                    </section>
+                    <% preco += produto.preco_unit * results[i].quantidade;%>
+                    <% i++ %>
+                    <% } %>
+                <% }); %>
             <% } %>
         </div>
         <br>
@@ -50,6 +52,7 @@
                 <% for(let index = 0; index<i; index++){ %>
                     <input type="hidden" name="qtd<%- index %>" value="<%- results[index].quantidade %>">
                     <input type="hidden" name="id<%- index %>" value="<%- results[index].id_itens_produto %>">
+                    <input type="hidden" name="id_produto<%- index %>" value="<%- results[index].id_produto %>">
                 <% } %>
                 <button class="btn">Confirmar</button>
             </form>

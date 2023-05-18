@@ -53,7 +53,6 @@ function atualizarQuantidadeEmEstoque(qtd, produtoId) {
   const sql = `UPDATE produto SET qtd_estoque = qtd_estoque - ? WHERE id_produto = ?`;
   const params = [qtd, produtoId];
 
-  // Execute a consulta SQL
   connection.query(sql, params, (err, result) => {
     if (err) throw err;
     
@@ -64,18 +63,25 @@ exports.confirmarCompra = (req, res) => {
     let feito = 0;
     const total = req.body.total;
     const i = req.body.i;
+    const user = req.session.user;
+    const id_user = user[0].id_usuario
 
+    console.log(id_user);
     for(let index = 0; index<i; index++){
       const qtd = req.body[`qtd${index}`];
       const id_itens = req.body[`id${index}`];
+      const id_produto = req.body[`id_produto${index}`];
 
-      connection.query('INSERT INTO compra (data, total_compra, quantidade, id_itens_produto) VALUES (?, ?, ?, ?)', [new Date, total, qtd, id_itens], (error, results) => {
+      connection.query('INSERT INTO compra (data, total_compra, quantidade, id_produto, id_usuario) VALUES (?, ?, ?, ?, ?)', [new Date, total, qtd, id_produto, id_user], (error, results) => {
         if(error) throw error;
-
-        feito++
-        if(feito == i){
-          res.redirect('/_produtos');
-        }
+        
+        connection.query('DELETE FROM itens_produto WHERE id_itens_produto = ?', [id_itens], (err, result) => {
+          atualizarQuantidadeEmEstoque(qtd, id_produto);
+          feito++
+          if(feito == i){
+            res.redirect('/_produtos');
+          }
+        });
       }); 
     }
 }
