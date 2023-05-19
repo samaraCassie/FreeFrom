@@ -32,7 +32,6 @@ CREATE TABLE `compra` (
   `data` date DEFAULT NULL,
   `total_compra` decimal(10,0) DEFAULT NULL,
   `quantidade` int(4) NOT NULL,
-  `id_itens_produto` int(3) DEFAULT NULL,
   `id_produto` int(3) DEFAULT NULL,
   `id_usuario` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -155,7 +154,6 @@ INSERT INTO `vendedor` (`id_vendedor`, `cnpj`, `nome_loja`, `slogan`, `img`, `so
 --
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`id_compra`),
-  ADD KEY `fk_id_itens_produto` (`id_itens_produto`),
   ADD KEY `fk_produto` (`id_produto`),
   ADD KEY `fk_idusuario` (`id_usuario`);
 
@@ -229,7 +227,6 @@ ALTER TABLE `vendedor`
 -- Limitadores para a tabela `compra`
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `fk_id_itens_produto` FOREIGN KEY (`id_itens_produto`) REFERENCES `itens_produto` (`id_itens_produto`),
   ADD CONSTRAINT `fk_idusuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   ADD CONSTRAINT `fk_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`);
 
