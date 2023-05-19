@@ -66,7 +66,6 @@ exports.confirmarCompra = (req, res) => {
     const user = req.session.user;
     const id_user = user[0].id_usuario
 
-    console.log(id_user);
     for(let index = 0; index<i; index++){
       const qtd = req.body[`qtd${index}`];
       const id_itens = req.body[`id${index}`];
