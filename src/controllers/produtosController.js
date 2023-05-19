@@ -37,29 +37,47 @@ exports.produtosPost = (req, res) => {
 
 
     connection.query(`SELECT * FROM produto where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}% " OR categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
-        if (error) throw error;
+        if (error) throw error
         if(result == ""){
-            result.push('Nenhum produto encontrado!');
-
-        }
-
-        if (req.session.user) {
-            // Recupera as informações do usuário da sessão
-            const user = req.session.user;
-            // Renderiza a página do dashboard com as informações do usuário
-            connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
-                if(err) throw err;
+            if (req.session.user) {
+                // Recupera as informações do usuário da sessão
+                const user = req.session.user;
                 // Renderiza a página do dashboard com as informações do usuário
-                if(results != ""){
-                    res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
-                }
-                else{
-                    res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false});
-                }
-            });
-          }
+                connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                    if(err) throw err;
+                    // Renderiza a página do dashboard com as informações do usuário
+                    if(results != ""){
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: false, vendedor: true, idLoja: results[0].id_vendedor});
+                    }
+                    else{
+                        res.render('_Produtos', { produtos: null, user: user, usuario: true, resultado: false, vendedor: false, idLoja: results[0].id_vendedor});
+                    }
+                });
+            }
+            else{
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: false, vendedor: false});
+            }
+        }
         else{
-            res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
-          }
+            if (req.session.user) {
+                // Recupera as informações do usuário da sessão
+                const user = req.session.user;
+                // Renderiza a página do dashboard com as informações do usuário
+                connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                    if(err) throw err;
+                    // Renderiza a página do dashboard com as informações do usuário
+                    if(results != ""){
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
+                    }
+                    else{
+                        res.render('_Produtos', { produtos: null, user: user, usuario: true, resultado: true, vendedor: false, idLoja: results[0].id_vendedor});
+                    }
+                });
+            }
+            else{
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
+            }
+        }
+        
     });
 }
