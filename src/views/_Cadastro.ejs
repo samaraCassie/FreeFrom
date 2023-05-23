@@ -20,6 +20,8 @@
                 <% } %>
                 <h2>Cadastrar</h2> 
 
+                <h2 style="font-size: 20px;">Todos os campos com * são obrigatorios</h2>
+
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
                 <section class="campo">
                     <input type="text" name="email" id="email"
@@ -43,13 +45,13 @@
 
                 <!--CAMPO PARA PREENCHER COM A DATA DE NASCIMENTO-->
                 <div class="calendario">
-                    <h3>Data de Nascimento:</h3>
+                    <h3 style="font-size: 20px;">Data de Nascimento: *</h3>
                     <input type="date" name="data"/>
                 </div>
 
                 <!--CAMPO PARA ESCOLHER SEXO-->
                 <div class="radio">
-                    <h3>Sexo:</h3>
+                    <h3>Sexo: </h3>
                     <input class="F" type="radio" name="sexo" value="Feminino">
                     <label class="F" for="Feminino"> Feminino</label>
 
@@ -81,7 +83,7 @@
                 <!--CAMPO PARA SELECIONAR A UNIDADE FEDERAL-->
                 <div class="select-uf">
                     <select  nome = " Unidade Federal " name="UF">
-                        <option label="UF"></option >
+                        <option label="UF*"></option >
                         <option  value = " AC " > Acre </option >
                         <option  value = " AL " > Alagoas </option >
                         <option  value = " AP " > Amapá </option >

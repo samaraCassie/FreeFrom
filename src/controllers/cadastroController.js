@@ -28,6 +28,8 @@ exports.postCadastro = (req, res) => {
   var validaEmail;
   var validaSenha;
   var senhaErro;
+  var validaData;
+  var validaUF;
 
   if(validator.isEmail(email)){
     validaEmail = true;
@@ -51,9 +53,28 @@ exports.postCadastro = (req, res) => {
     validaSenha = false;
     senhaErro = "Senha invalida!";
   }
-  var errors = [];
+  
+  if(dataNascimento == null || dataNascimento == "" || dataNascimento == undefined){
+    validaData = false;
+  }
+  else if(!dataNascimento){
+    validaData = false;
+  }
+  else{
+    validaData = true;
+  }
 
-  if(validaEmail && validaSenha){
+  if(uf == null || uf == "" || uf == undefined){
+    validaUF = false;
+  }
+  else if(!uf){
+    validaUF = false;
+  }
+  else{
+    validaUF = true;
+  }
+
+  if(validaEmail && validaSenha && validaData && validaUF){
     const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
@@ -88,6 +109,12 @@ exports.postCadastro = (req, res) => {
         }
         if(!validaSenha){
           res.render('_Cadastro', {errado: true, error: senhaErro});
+        }
+        if(!validaData){
+          res.render('_Cadastro', {errado: true, error: 'Data de nascimento não pode ser nula!!'});
+        }
+        if(!validaUF){
+          res.render('_Cadastro', {errado: true, error: 'UF não pode ser nulo!!'});
         }
     }
 }
