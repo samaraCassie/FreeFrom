@@ -150,7 +150,8 @@
                             <div class="icon"><!--ESPAÇO DA CAPA-->
                                 <img src="<%= produto.img %>"alt="Contact us.">
                             </div>
-                                <span><%= produto.nome %></span>
+                                <span class="span1"><%= produto.nome %></span>
+                                <span class="span2">Preço: <%= produto.preco_unit %></span>
                             <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
                         </section>
                     <% } %>

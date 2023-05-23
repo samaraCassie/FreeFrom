@@ -38,7 +38,7 @@ main{
     padding: 1rem 1.5rem;
     margin-left: 1.5vw;
     margin-top: 5vh;
-    height: 50vh;
+    height: 55vh;
     width: 22vw;
     border: .5px solid rgba(83, 59, 49, 0.46);
     box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
@@ -56,12 +56,18 @@ section.card img {
     height: 100%;
 }
 /*Espaço do conteudo no cartão*/
-section.card span{
+section.card .span1{
     position: absolute;
     font-size: 3vmin;
-    top: 73%;
+    top: 72%;
     width: 95%;
-}
+  }
+  section.card .span2{
+    position: absolute;
+    font-size: 3vmin;
+    top: 80%;
+    width: 95%;
+  }
 section.card a {/**********TENTAR TROCAR PARA BUTTON*/
     position: absolute;
     background: #2c2c2c;
@@ -72,7 +78,7 @@ section.card a {/**********TENTAR TROCAR PARA BUTTON*/
     font-size: 2vmin;
     padding: 0.5vmax 1vmax;
     border-radius: 32vmin;
-    bottom: 1.5vh;
+    bottom: 1vh;
     height: 10%;
 }
 /*Rodapé*/
