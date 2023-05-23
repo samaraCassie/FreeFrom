@@ -26,7 +26,9 @@
                         <div class="icon"><!--ESPAÇO DA CAPA-->
                             <img src="<%- produto.img %>"alt="Contact us.">
                         </div>
-                            <span><%= produto.nome %></span>
+                            <span class="span1"><%= produto.nome %></span>
+                            <span class="span2">Quantidade: <%= results[i].quantidade; %></span>
+                            <span class="span3">Preço unidade: <%= produto.preco_unit %></span>
                             <form action="/_remove" method="POST">
                                 <input type="hidden" value="<%- results[i].id_itens_produto %>" name="id_itens">
                                 <button class="remove">Remover do carrinho</button>

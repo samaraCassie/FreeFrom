@@ -50,7 +50,7 @@ img:hover{
     padding: 1rem 1.5rem;
     margin-left: 2vw;
     margin-top: 5vh;
-    height: 55vh;
+    height: 70vh;
     width: 24.5vw;
     border: .5px solid rgba(83, 59, 49, 0.46);
     box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
@@ -68,10 +68,22 @@ img:hover{
     height: 100%;
   }
   /*Espaço do conteudo no cartão*/
-  section.card span{
+  section.card .span1{
     position: absolute;
     font-size: 3vmin;
-    top: 73%;
+    top: 70%;
+    width: 95%;
+  }
+  section.card .span2{
+    position: absolute;
+    font-size: 3vmin;
+    top: 75%;
+    width: 95%;
+  }
+  section.card .span3{
+    position: absolute;
+    font-size: 3vmin;
+    top: 80.5%;
     width: 95%;
   }
   section.card a {/**********TENTAR TROCAR PARA BUTTON*/
@@ -106,4 +118,7 @@ img:hover{
     bottom: 1.5vh;
     right: 0%;
     height: 10%;
+    top: 85%;
+    max-width: 75%;
+    right: 12%;
 }
