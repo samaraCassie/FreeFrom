@@ -1,82 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Free From ⋆ Um Sabor Seguro</title>
-</head>
-<body>
-    <div class="card md-3" style="background-color: aquamarine; margin-top: 10%; width: 70%; margin-left: 15%;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="..." class="img-fluit rounded-start">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body row mb-sm-3">
-                    <h1 style= "background-color: blueviolet;" >Adicionando Produto</h1>
-                    <form action="///////////////////////////////////////////////////////////////" method="post">
-                        <div class="row mb-sm-3">
-                            <div class="themed-grid-col col-5 mb-sm-2" style="background-color: brown;"><label for="nameProduct">Nome do Produto:</label></div>
-                            <div class="themed-grid-col col mb-sm-2" style="background-color: brown;"><input type="text" name="nameProduct" id="nameProduct"></div>
-                        </div>
-                        <div class="row mb-sm-3">
-                            <div class="themed-grid-col col-5 mb-sm-2" style="background-color: brown;"><label for="descProduct">Descrição do Produto:</label></div>
-                            <div class="themed-grid-col col mb-sm-2" style="background-color: brown;"><input type="text" name="descProduct" id="descProduct"></div>
-                        </div>
-                        <div class="row mb-sm-3">
-                            <div class="themed-grid-col col-5 mb-sm-2" style="background-color: rgb(165, 132, 42);"><label for="Categotia">Selecione Categoria</label></div>
-                            <div class="themed-grid-col col mb-sm-2" style="background-color: rgb(165, 132, 42);">
-                                <select class="" name="categoria" id="categoria">
-                                    <option value="Free-Gluten">Sem Glúten</option>
-                                    <option value="Free-Trigo">Trigo</option>
-                                    <option value="Lactose">Lactose</option>
-                                    <option value="Leite de Vaca">Leite de Vaca</option>
-                                    <option value="Ovo">Ovo</option>
-                                    <option value="Amendoin">Amendoin</option>
-                                    <option value="Castanhas">Castanhas</option>
-                                    <option value="Soja">Soja</option>
-                                    <option value="Peixe">Peixe</option>
-                                    <option value="Frutos do Mar">Frutos do Mar</option>
-                                    <option value="Açucar">Açucar</option>
-                                    <option value="Aditivos alimentares">Aditivos alimentares</option>
-                                    <option value="Carne/Vegetariano">Carne/Vegetariano</option>
-                                    <option value="De origem animal/Vegano">De origem animal/Vegano</option>
-                                    <option value="Fitness">Fitness</option>
-                                    <option value="Outros">Outros</option>
-                                </select>
-                            </div>
-                            <div class="row mb-sm-3">
-                                <div class="themed-grid-col gap-lg-5 col-5 mb-sm-2" style="background-color: brown;"><label for="imgProduct">Insira imagens do produto</label></div>
-                                <div class="themed-grid-col col mb-sm-2" style="background-color: brown; width: 50%"><input type="file" src="" alt="" style="width: 50%;"></div>
-                            </div>
-                            <div class="row mb-sm-3" style="width: 100%;">
-                                <div class="themed-grid-col col-5 mb-sm-2" style="background-color: rgb(165, 132, 42);"><label for="nameProduct">Preço:</label></div>
-                                <div class="themed-grid-col col mb-sm-2" style="background-color: rgb(165, 132, 42);"><input type="number" name="nameProduct" id="nameProduct"></div>
-                            </div>
-                            <div class="row mb-sm-3">
-                                <div class="themed-grid-col col-5 mb-sm-2" style="background-color: brown;"><label for="nameProduct">Estoque:</label></div>
-                                <div class="themed-grid-col col mb-sm-2" style="background-color: brown;"><input type="number" name="nameProduct" id="nameProduct"></div>
-                            </div>
-                            <div class="btn">
-                                <button type="reset">Cancelar</button>
-                                <button type="submit">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html> -->
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -127,17 +48,31 @@
                     placeholder="Quantidade no estoque*" id="estoque" required>
                     <div class="underline"></div>
                 </section>
-
+                <br>
+                <label for="categoria" style="color: white; left: 28.5%; position: absolute; top: 63%;">Categoria:</label>
                 <div class="select-uf">
-                    <select name="categoria">
+                    <select class="" name="categoria" id="categoria">
+                        <option value="Sem Gluten">Sem Glúten</option>
+                        <option value="Sem Trigo">Sem Trigo</option>
+                        <option value="Sem Lactose">Sem Lactose</option>
+                        <option value="Sem Leite de Vaca">Sem leite de Vaca</option>
+                        <option value="Sem Ovo">Sem Ovo</option>
+                        <option value="Sem Amendoin">Sem Amendoin</option>
+                        <option value="Sem Castanhas">Sem Castanhas</option>
+                        <option value="Sem Soja">Sem Soja</option>
+                        <option value="Sem Peixe">Sem Peixe</option>
+                        <option value="Sem Frutos do Mar">Sem Frutos do Mar</option>
+                        <option value="Sem Açucar">Sem Açucar</option>
+                        <option value="Sem Aditivos alimentares">Sem Aditivos alimentares</option>
+                        <option value="Vegetariano">Vegetariano</option>
                         <option value="Vegano">Vegano</option>
-                        <option value="Zero lactose">Sem lactose</option>
-                        <option value="Zero glutem">Sem glutem</option>
+                        <option value="Fitness">Fitness</option>
                     </select>
                 </div>
 
                 <label for="img" style="color: white;">Imagem do produto</label>
                 <input type="file" name="file">
+                <br>
                 
                 <input type="reset" value="Resetar">
                 <input type="submit" value="Enviar">
