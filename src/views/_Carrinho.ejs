@@ -16,18 +16,51 @@
             <hr>
         </div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                <div class="icon"><!--ESPAÇO DA CAPA-->
-                    <img src="Img/PomeloBolinho.jpg" alt="Contact us.">
-                </div>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                <a href="_descricaoProduto">Veja Mais</a> 
-            </section>
+            <% let preco = 0; %>
+            <% let qtd = 0; %>
+            <% let i = 0; %>
+            <% if(produtos != ""){ %>
+                <%produtos.forEach(function(produtoA){ const produto = produtoA[0] %>
+                    <% if(!produto.qtd_estoque == 0){ %>
+                    <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                        <div class="icon"><!--ESPAÇO DA CAPA-->
+                            <img src="<%- produto.img %>"alt="Contact us.">
+                        </div>
+                            <span class="span1"><%= produto.nome %></span>
+                            <span class="span2">Quantidade: <%= results[i].quantidade; %></span>
+                            <span class="span3">Preço unidade: <%= produto.preco_unit %></span>
+                            <form action="/_remove" method="POST">
+                                <input type="hidden" value="<%- results[i].id_itens_produto %>" name="id_itens">
+                                <button class="remove">Remover do carrinho</button>
+                            </form>
+                    </section>
+                    <% preco += produto.preco_unit * results[i].quantidade;%>
+                    <% i++ %>
+                    <% } %>
+                <% }); %>
+            <% } %>
         </div>
         <br>
         <hr>
-        <h1>Total: R$10000000.00</h1>
-        <button class="btn">Confirmar</button>
+        <% if(produtos != ""){%>
+            <h1>Total: R$<%= preco %></h1>
+        <% }else{ %>
+            <h1>Total: R$00,00</h1>
+        <% } %>
+        <% if(user && produtos != ""){ %>
+            <form action="/_confirmarCompra" method="POST">
+                <input type="hidden" name="total" value="<%- preco %>">
+                <input type="hidden" name="i" value="<%- i%>">
+                <% for(let index = 0; index<i; index++){ %>
+                    <input type="hidden" name="qtd<%- index %>" value="<%- results[index].quantidade %>">
+                    <input type="hidden" name="id<%- index %>" value="<%- results[index].id_itens_produto %>">
+                    <input type="hidden" name="id_produto<%- index %>" value="<%- results[index].id_produto %>">
+                <% } %>
+                <button class="btn">Confirmar</button>
+            </form>
+        <% }else{ %>
+            <button class="btn">Confirmar</button>
+        <% } %>
     </section>
 
     <script src="./assets/js/bundle.js"></script>

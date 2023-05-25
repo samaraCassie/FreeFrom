@@ -254,6 +254,7 @@ body{
 .pp{
     padding: 1vmax;
     text-align: center;
+    color: white;
 }
 .link{
     color: rgb(5, 146, 211);

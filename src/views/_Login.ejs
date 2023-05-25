@@ -15,13 +15,14 @@
 
 <body>
     <main class="container">
-        <% if(errado){ %>
-            <%- include('./includes/messages.ejs') %>
-        <% } %>
-        <h2>Login</h2>
+        
         <form method="POST">
+            <% if(errado){ %>
+                <%- include('./includes/messages.ejs') %>
+            <% } %>
+            <h2>Login</h2>
             <section class="campo">
-                <input type="text" name="usuario" id="usuario" placeholder="Usuário">
+                <input type="email" name="email" id="email" placeholder="email">
                 <div class="underline"></div>
             </section>
             <section class="campo">
@@ -30,15 +31,15 @@
             </section>
 
             <input type="submit" value="Entrar" style="margin-top: 3vmax;">
-            <p class="pp">Ou</p>
+            <!-- <p class="pp">Ou</p> -->
 
-            <a class="google" href="#">
+            <!-- <a class="google" href="#">
                 Continue com Google
             </a>
 
             <a class="facebook" href="#">
                 Continue com Facebook
-            </a>
+            </a> -->
             <p class="pp">Ainda não tem uma conta?<a class="link" href="_Cadastro">Cadastre-se</a></p>
         </form>
 </body>

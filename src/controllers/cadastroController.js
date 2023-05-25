@@ -11,7 +11,7 @@ const connection = mysqls.createConnection({
 
 
 exports.paginaCadastro = (req, res) =>{
-    res.render('_cadastro');
+    res.render('_cadastro', {errado: false});
 }
 
 exports.postCadastro = (req, res) => {
@@ -27,6 +27,9 @@ exports.postCadastro = (req, res) => {
 
   var validaEmail;
   var validaSenha;
+  var senhaErro;
+  var validaData;
+  var validaUF;
 
   if(validator.isEmail(email)){
     validaEmail = true;
@@ -35,50 +38,83 @@ exports.postCadastro = (req, res) => {
     validaEmail = false;
   }
 
-  if(req.body.senha.length > 6 && req.body.senha.length < 30){
+  if(req.body.senha.length >= 6 && req.body.senha.length <= 30){
     validaSenha = true;
+  }
+  else if(req.body.senha.length < 6){
+    validaSenha = false;
+    senhaErro = "Senha muito pequena, digite uma senha com no minimo 6 caracteres!!";
+  }
+  else if(req.body.senha.length > 30){
+    validaSenha = false;
+    senhaErro = "Senha muito grande!! Digite uma senha com no maximo 30 caracteres!!";
   }
   else{
     validaSenha = false;
+    senhaErro = "Senha invalida!";
   }
-  var errors = [];
+  
+  if(dataNascimento == null || dataNascimento == "" || dataNascimento == undefined){
+    validaData = false;
+  }
+  else if(!dataNascimento){
+    validaData = false;
+  }
+  else{
+    validaData = true;
+  }
 
-  if(validaEmail && validaSenha){
+  if(uf == null || uf == "" || uf == undefined){
+    validaUF = false;
+  }
+  else if(!uf){
+    validaUF = false;
+  }
+  else{
+    validaUF = true;
+  }
+
+  if(validaEmail && validaSenha && validaData && validaUF){
     const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
-            if (error) throw error;
+            if (error) res.render('_Cadastro', {errado: true, error: 'Algo deu errado no seu cadastro!! Tente novamente'});
 
             if (results.length > 0) {
                 // Usuário já existe no banco de dados
-                res.send('Usuário já cadastrado!');
+                res.render('_Cadastro', {errado: true, error: 'Usuario já cadastrado'})
             } else {
-                connection.query(sql, values, (err, result) => {
-                if (err) {
-                    console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
-                    return;
+              connection.query('SELECT * FROM usuario WHERE usuario = ?', usuario, (erro, result, field) => {
+                if(result.length > 0){
+                  res.render('_Cadastro', {errado: true, error: 'Este nome ja esta sendo usado!!'});
+                }else{
+                  connection.query(sql, values, (err, result) => {
+                    if (err) {
+                        console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
+                        return;
+                    }
+                    connection.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
+                      req.session.user = results;
+                      res.redirect('/_Produtos');
+                    })
+                    });
                 }
-            
-                console.log('Dados inseridos com sucesso no banco de dados');
-                res.redirect('/_Produtos');
-                });
+              })
             }
         });
     }
     else{
         if(!validaEmail){
-            errors.push('Email invalido!');
+            res.render('_Cadastro', {errado: true, error: 'Email inválido!!'});
         }
         if(!validaSenha){
-            errors.push('Senha invalida!');
+          res.render('_Cadastro', {errado: true, error: senhaErro});
         }
-
-        if(errors.length>0){
-            req.flash('errors', errors);
-            req.session.save(function() {
-                return;
-            });
-            return;
+        if(!validaData){
+          res.render('_Cadastro', {errado: true, error: 'Data de nascimento não pode ser nula!!'});
+        }
+        if(!validaUF){
+          res.render('_Cadastro', {errado: true, error: 'UF não pode ser nulo!!'});
         }
     }
 }

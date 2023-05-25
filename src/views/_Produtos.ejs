@@ -22,10 +22,13 @@
                 <ul>   
                     <li><div class="menu"><a href="/">Início</a></div></li>
                     <li><div class="aq"><a href="#">Produtos</a></div></li>
+                    <li><div class="menu"><a href="_carrinho">Carrinho</a></div></li>
                     <li>
                         <div class="menu"><a href="#">Mais▾</a></div>
                         <ul>
-                            <li class="subMenu"><a href="#">Vender</a></li>
+                            <% if(!vendedor){ %>
+                                <li class="subMenu"><a href="/_cadastroLoja">Vender</a></li>
+                            <% } %>
                             <!--<li class="subMenu"><a href="#">Frete</a></li>-->
                             <li class="subMenu"><a href="_Sobre">Sobre Nós</a></li>
                         </ul>
@@ -34,23 +37,21 @@
                     <li>
                         <div class="menu"><a href="#">Conta▾</a></div>
                         <ul>
-                            <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
-                            <li class="subMenu"><a href="_Login">Entrar</a></li>
+                            <% if(usuario){ %>
+                                <% if(vendedor){ %>
+                                    <li class="subMenu"><a href="_PerfilLoja/<%- idLoja %>">Minha Loja</a></li>
+                                <% } %>
+                                <li class="subMenu"><a href="_logOut">Sair</a></li>
+                            <% }else{ %>
+                                <li class="subMenu"><a href="_Cadastro">Cadastrar</a></li>
+                                <li class="subMenu"><a href="_Login">Entrar</a></li>
+                            <% } %>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-        
-        <div class="busca">
-            <form action="/_Produtos.html" method="get">
-                <div>
-                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
-                    <button type="submit">Buscar</button>
-                </div>
-            </form>
-        </div>
-
+        <!--
         <section class="cat">
                     <div class="fileira" id="f1">
                         <div class="check">
@@ -125,25 +126,42 @@
                         <label for="Outros"> Outros</label>
                     </div>
                 </div>
-                </section>
+                </section>-->
     </header>
     <main>   
         <% if(usuario){ %>
-            <h1 style="color: black"><%= user[0].usuario %></h1>
+            <h1 style="color: black;"><%= user[0].usuario %></h1>
         <% }else{ %>
-            <h1 style="color: black">Nenhum usuario logado</h1>
+            <h1 style="color: black;">Nenhum usuario logado</h1>
         <% } %>
-        <div class="cards"><!----------------FILEIRA DE CARTÕES-->
-            <% produtos.forEach(function(produto){ %>
-                <section class="card contact"><!--CARTÃO INDIVIDUAL-->
-                    <div class="icon"><!--ESPAÇO DA CAPA-->
-                        <img src="<%= produto.img %>" alt="Contact us.">
-                    </div>
-                        <span><%= produto.nome %></span>
-                    <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
-                </section>
-            <% }); %>
-        </div>  
+        <div class="busca">
+            <form class="formBusca" method="POST">
+                <div>
+                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                    <button type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <% if(resultado){ %>
+            <div class="cards"><!----------------FILEIRA DE CARTÕES-->
+                <% produtos.forEach(function(produto){ %>
+                    <% if(!produto.qtd_estoque == 0){ %>
+                        <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                            <div class="icon"><!--ESPAÇO DA CAPA-->
+                                <img src="<%= produto.img %>"alt="Contact us.">
+                            </div>
+                                <span class="span1"><%= produto.nome %></span>
+                                <span class="span2">Preço: <%= produto.preco_unit %></span>
+                            <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
+                        </section>
+                    <% } %>
+                <% }); %>
+            </div>  
+        <% }else{ %>
+            <div class="cards">
+                <h1 style="color: black; position: relative; left: 40%;">Nenhum produto encontrado!</h1>
+            </div>
+        <% } %>
     </main>
     <footer></footer>
     <script src="./assets/js/bundle.js"></script>

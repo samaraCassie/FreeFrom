@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style_Cadst.css">
+        <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!--Conteúdo do FORMULÁRIO-->
+        <% if(vendedor){ %>
+        <main class="container">
+            <form method="post" id="form" action="/upload" enctype="multipart/form-data">
+                <% if(errado){ %>
+                    <%- include('./includes/messages.ejs') %>
+                <% } %>
+                <h2>Cadastrar Produto</h2> 
+
+
+                <section class="campo">
+                    <input type="text" name="nome" id="nome"
+                        placeholder="Nome do produto*" required>
+                    <div class="underline"></div>
+                </section>  
+
+
+                <section class="campo">
+                    <input type="text" name="descricao" id="descricao"
+                        placeholder="Descricao do produto*" required>
+                    <div class="underline"></div>
+                </section>
+
+
+                <section class="campo">
+                    <input type="number" name="preco" id="preco"
+                        placeholder="Preco*" required>
+                    <div class="underline"></div>
+                </section> 
+
+
+                <section class="campo">
+                    <input type="number" name="estoque" 
+                    placeholder="Quantidade no estoque*" id="estoque" required>
+                    <div class="underline"></div>
+                </section>
+                <br>
+                <label for="categoria" style="color: white; left: 28.5%; position: absolute; top: 63%;">Categoria:</label>
+                <div class="select-uf">
+                    <select class="" name="categoria" id="categoria">
+                        <option value="Sem Gluten">Sem Glúten</option>
+                        <option value="Sem Trigo">Sem Trigo</option>
+                        <option value="Sem Lactose">Sem Lactose</option>
+                        <option value="Sem Leite de Vaca">Sem leite de Vaca</option>
+                        <option value="Sem Ovo">Sem Ovo</option>
+                        <option value="Sem Amendoin">Sem Amendoin</option>
+                        <option value="Sem Castanhas">Sem Castanhas</option>
+                        <option value="Sem Soja">Sem Soja</option>
+                        <option value="Sem Peixe">Sem Peixe</option>
+                        <option value="Sem Frutos do Mar">Sem Frutos do Mar</option>
+                        <option value="Sem Açucar">Sem Açucar</option>
+                        <option value="Sem Aditivos alimentares">Sem Aditivos alimentares</option>
+                        <option value="Vegetariano">Vegetariano</option>
+                        <option value="Vegano">Vegano</option>
+                        <option value="Fitness">Fitness</option>
+                    </select>
+                </div>
+
+                <label for="img" style="color: white;">Imagem do produto</label>
+                <input type="file" name="file">
+                <br>
+                
+                <input type="reset" value="Resetar">
+                <input type="submit" value="Enviar">
+            
+                <% }else{ %>
+                    <%- include('./includes/permição.ejs') %>
+                <% } %>
+            </form>
+        </main>
+        <!--Rodapé-->
+        <!-- <footer>
+        </footer> -->
+        <script src="./assets/js/bundle.js"></script>
+    </body>
+</html>

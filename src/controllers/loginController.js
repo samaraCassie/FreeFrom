@@ -15,10 +15,10 @@ exports.loginPagina = (req, res) => {
 }
 
 exports.loginPost = async (req, res) => {
-    const usuario = req.body.usuario;
+    const email = req.body.email;
     const senha = md5(req.body.senha);
   
-    connection.query('SELECT * FROM usuario WHERE usuario = ? AND senha = ?', [usuario, senha], (error, results, fields) => {
+    connection.query('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha], (error, results, fields) => {
       if (error) {
         // se ocorrer um erro, exibir mensagem de erro
         res.render('_Login', { error: 'Ocorreu um erro ao fazer login. Tente novamente.', errado: true});

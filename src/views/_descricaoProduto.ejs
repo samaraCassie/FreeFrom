@@ -3,49 +3,85 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" type="text/css" href="css/style_slide.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" type="text/css" href="css/demo.css" />
-    <link rel="stylesheet" href="css/style_desc.css">
-    <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
+    <link rel="stylesheet" href="/css/style_slide.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/demo.css" />
+    <link rel="stylesheet" href="/css/style_desc.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>    
 </head>
 <body>
     <div class="modal">
         <div class="modal-content">
-          <h1 style="color: lime; font-size: 35px;"><b>Produto comprado com sucesso</b></h1>
-          <button class="close-btn">Fechar</button>
+          <h1 style="color: black; font-size: 35px;"><b>Realmente deseja comprar esse produto?</b></h1>
+          <form action="/_addCarrinho" method="POST">
+            <input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>">
+            <input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>">
+            <input type="hidden" name="produto" value="<%- produtos[0].id_produto %>">
+            <h6><b>Quantidade</b></h6>
+            <select class="select" name="qtd">
+                <% if(produtos[0].qtd_estoque <= 100){ %>
+                    <% for(let i =1; i<=produtos[0].qtd_estoque; i++){ %> 
+                        <option value="<%- i %>"><%= i %></option> 
+                    <%}%>
+                <% }else{ %>
+                        <% for(let i =1; i<=100; i++){ %> 
+                            <option value="<%- i %>"><%= i %></option> 
+                        <%}%>
+                <% } %>
+            </select>
+                
+                
+                <button id="comprar" type="submit">Adicionar</button>
+            </form>
+          <button class="close-btn">Cancelar</button>
         </div>
     </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <h1 style="color: limegreen; font-size: 20px;">Produto comprado com sucesso!!</h1>
+                <button id="close">fechar</button>
+            </div> 
+        </div>
     <article class="container">
+        <% if(!produtos[0].qtd_estoque == 0){ %>
 
-<<<<<<< master
-=======
         <!-------------- [INICO] FOTO DE DEMONSTRAÇÃO DO PRODUTO--------------->
         <section>
-            <img src="#" alt="...">
+            <h1>.</h1>
+            <!--<img src="/#" alt="...">-->
         </section>
         <!---------- [FIM] FOTO DE DEMONSTRAÇÃO DO PRODUTO------------->
 
->>>>>>> master
         <!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->
         <section class="info" id="box">
-            <h3><%= produtos[0].nome %></h3>
-            <img src="<%= produtos[0].img %>">
-            <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
-            <div class="star">
-                <ul class="avaliacao" id="info">
-                    <li class="star-icon ativo" data-avaliacao="1"></li>
-                    <li class="star-icon" data-avaliacao="2"></li>
-                    <li class="star-icon" data-avaliacao="3"></li>
-                    <li class="star-icon" data-avaliacao="4"></li>
-                    <li class="star-icon" data-avaliacao="5"></li>
-                </ul>
-            </div>
-            <p>0 Avaliações</p>
-            <p>0 Vendidos</p>
-            <div class="btn">
-            <button id="open-modal-btn">Comprar</button>  
-            </div>
+            
+                <h3><%= produtos[0].nome %></h3>
+                <div class="demonstracao">
+                    <img class="produto" src="/<%= produtos[0].img %>">
+                </div>
+                <h3 class="valor"><b>R$<%= produtos[0].preco_unit %></b></h3>
+                <!-- <div class="star">
+                    <ul class="avaliacao" id="info">
+                        <li class="star-icon ativo" data-avaliacao="1"></li>
+                        <li class="star-icon" data-avaliacao="2"></li>
+                        <li class="star-icon" data-avaliacao="3"></li>
+                        <li class="star-icon" data-avaliacao="4"></li>
+                        <li class="star-icon" data-avaliacao="5"></li>
+                    </ul>
+                </div>
+                <p>0 Avaliações</p> -->
+                <p>Estoque: <%= produtos[0].qtd_estoque %></p>
+                <% if(vendidos != null){ %>
+                <p><%= vendidos %> Vendidos</p>
+                <% }else{ %>
+                    <p>0 Vendidos</p>
+                <% } %>
+                <div class="btn">
+                <button id="open-modal-btn">Adicionar ao carrinho</button>  
+                </div>
+            <% }else{ %>
+                <h1 style="color: black; font-size: 50px;">Produto esgotado!!</h1>
+            <% } %>
             <!--
             <button id="like">
                 <div class="label">
@@ -64,14 +100,15 @@
             -->
         </section>
         <!-- [FIM] SESSÃO DE INFORMAÇÕES DO PRODUTO-->
+        <% if(!produtos[0].qtd_estoque == 0){ %>
         
         <!-- [INICO] SESSÃO DE LOGISTA-->
         <section class="loja" id="box">
             <div class="idem">
-                <a href="_PerfilLoja">
-                <img class="mini-ft-perfil" src="Img/is14667-image.jpg"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
-                <h5>Nome Da Loja</h5>
-                <h6>Slogan</h6>
+                <a href="/_PerfilLoja/<%- vendedor[0].id_vendedor %>">
+                <img class="mini-ft-perfil" src="/<%- vendedor[0].img %>"><!--COLOCAR FOTO DE PERFIL DA LOJA-->
+                <h5><%= vendedor[0].nome_loja %></h5>
+                <h6><%= vendedor[0].slogan %></h6>
                 </a>
             </div>
             <!--<div class="reputacao">
@@ -93,7 +130,7 @@
         <!-- [FIM] SESSÃO DE LOGISTA-->
 
         <!-- [INICO] SESSÃO DE DETALHES DO PRODUTO-->
-        <section class="detalhe" id="box">
+        <!-- <section class="detalhe" id="box">
             <h4>Detalhes do Produto</h4>
             <div class="box">
                     <table> 
@@ -132,15 +169,15 @@
                         </tr>
                     </table>
             </div>
-        </section>
+        </section> -->
         <!-- [FIM] SESSÃO DE DETALHES DO PRODUTO-->
 
         <!-- [INICO] SESSÃO DE DESCRIÇÃO DO PRODUTO-->
-        <section class="desc" id="box">
+        <section class="detalhe" id="box">
             <h4>Descrição do Produto</h4>
             <div class="box">
                 <p><%= produtos[0].descricao %></p>
-                    <div class="ingrd">
+                    <!-- <div class="ingrd">
                     <dl>
                         <dt>INGREDIENTES:</dt>
                             <dd>Amido de milho</dd>
@@ -151,7 +188,7 @@
                             <dd>Sal</dd>
                             <dd>Aromatizante</dd>
                     </dl>
-                </div>
+                </div> -->
             </div>
         </section>
         <!-- 
@@ -252,10 +289,13 @@
     
          [fim] SESSÃO DE AVALIAÇÃO DO PRODUTO-----------------------------------COMENTARIO-->
     </article>
+    <% }else{ %>
+        
+    <% } %>
 
     <!--<footer>
     </footer>-->
-    <script src="./assets/js/bundle.js"></script>
+    <script src="/assets/js/bundle.js"></script>
     <script>
         const openModalBtn = document.querySelector('#open-modal-btn');
         const closeModalBtn = document.querySelector('.close-btn');
