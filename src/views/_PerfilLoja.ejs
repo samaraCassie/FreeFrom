@@ -11,10 +11,10 @@
         <div class="modal">
             <div class="modal-content">
               <form method="post" action="/_fotoCapa" enctype="multipart/form-data">
-                <h1 style="color: black;">Foto de capa:</h1>
                 <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
                 <input type="file" name="back_img">
-                <button type="submit">Enviar</button>
+                <input type="submit" value="enviar">
+                <h1 style="color: black;">Foto de capa:</h1>          
               </form>
               <button class="close-btn">Cancelar</button>
             </div>
@@ -23,10 +23,10 @@
         <div class="modal2">
             <div class="modal-content">
               <form method="post" action="/_fotoPerfil" enctype="multipart/form-data">
-                <h1 style="color: black;">Foto de perfil:</h1>
+                <h1 style="color: black;">OI</h1>
                 <input type="hidden" value="<%- vendedor[0].id_vendedor %>" name="id">
                 <input type="file" name="img">
-                <button type="submit">Enviar</button>
+                <input type="submit" value="enviar">
               </form>
               <button class="close-btn" id="fechar">Cancelar</button>
             </div>
@@ -45,17 +45,20 @@
                 <img class="capa" src="/<%- vendedor[0].back_img %>" alt="imagem"> <!--FOTO DE CAPA-->
             </div>
 
-            <div class="idem">     
-                <img class="ft-perfil" src="/<%- vendedor[0].img %>">  <!--//COLOCAR FOTO DE PERFIL DA LOJA-->
+            <div class="idem">
                 <% if(user){ %>
                     <% if(resultado != ""){ %>
                         <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
-                            <div class="foto">
-                                <div class="change-img" id="abrirModal">Alterar</div>
-                            </div>
+                            <div class="ft-perfil" id="open-modal-btn" onclick="openModal()">Alterar foto</div>
                         <% } %>
                     <% } %>
                 <% } %>
+                <img class="ft-perfil" src="/<%- vendedor[0].img %>">  <!--//COLOCAR FOTO DE PERFIL DA LOJA-->
+            
+                <div class="foto">
+                    <div class="change-img" id="abrirModal">modal</div>
+                </div>
+
                 <h5><%= vendedor[0].nome_loja%></h5>
                 <h6><%= vendedor[0].slogan %></h6>
             </div>
