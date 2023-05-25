@@ -49,14 +49,14 @@
                 <% if(user){ %>
                     <% if(resultado != ""){ %>
                         <% if(vendedor[0].id_vendedor == resultado[0].id_vendedor){ %>
-                            <div class="ft-perfil" id="open-modal-btn" onclick="openModal()">Alterar foto</div>
+                            <div class="ft-perfil" id="open-modal-btn" onclick="openModal()"></div>
                         <% } %>
                     <% } %>
                 <% } %>
                 <img class="ft-perfil" src="/<%- vendedor[0].img %>">  <!--//COLOCAR FOTO DE PERFIL DA LOJA-->
             
                 <div class="foto">
-                    <div class="change-img" id="abrirModal">modal</div>
+                    <div class="change-img" id="abrirModal">Alterar Foto</div>
                 </div>
 
                 <h5><%= vendedor[0].nome_loja%></h5>
