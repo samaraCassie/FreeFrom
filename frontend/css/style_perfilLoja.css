@@ -210,10 +210,16 @@ section.card img {
   height: 100%;
 }
 /*Espaço do conteudo no cartão*/
-section.card span{
+section.card .span1{
   position: absolute;
   font-size: 3vmin;
-  top: 73%;
+  top: 72%;
+  width: 95%;
+}
+section.card .span2{
+  position: absolute;
+  font-size: 3vmin;
+  top: 80%;
   width: 95%;
 }
 section.card a {/**********TENTAR TROCAR PARA BUTTON*/

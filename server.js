@@ -30,10 +30,10 @@ const meuMiddleware = require('./src/middlewares/middleware.js');
 
 app.use(express.urlencoded({extended: true}));
 // app.use(express.static(path.join(__dirname, 'frontend')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.get('/imagem', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', '.jpg'));
+    res.sendFile(path.join(__dirname, 'frontend', '.jpg'));
   });
   
 app.set('views', path.resolve(__dirname, 'src', 'views'));

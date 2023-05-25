@@ -15,7 +15,7 @@
         padding: .5vmin;
         left: 0px;
         top: 0px;
-        z-index: 2;
+        z-index: 4;
     }
     .barra{
         position: fixed;
@@ -26,7 +26,7 @@
         box-shadow: -3px 3px 25px rgba(0, 0, 0, 0.497);
         transition: all .2s linear;
         left: -15%;
-        z-index: 1;    
+        z-index: 3;    
     }
     #check{
         display: none;
@@ -35,6 +35,7 @@
         transform: translateX(100%);
     }
     .menu{
+        font-family: 'Playfair', serif;
         position: relative;
         background: linear-gradient(to right, rgb(204, 188, 169), rgba(40, 31, 28, 0.9));
         box-shadow: -5px 5px 35px rgba(0, 0, 0, 0.425);
@@ -42,7 +43,7 @@
         width: 100%;
         top: 7%;
         left: 0%;  
-        z-index: 1;
+        z-index: 3;
     }
     .menu ul{
         position: relative;
