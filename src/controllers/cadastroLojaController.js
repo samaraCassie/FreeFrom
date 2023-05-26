@@ -45,8 +45,8 @@ exports.postcadastroloja = (req, res) => {
     }
     
 
-    let img = path.slice(7);
-    let img2 = path2.slice(7);
+    let img = path.slice(9);
+    let img2 = path2.slice(9);
 
     connection.query("INSERT INTO vendedor (nome_loja, slogan, cnpj, sobre, img, back_img, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)", [nome, slogan, cnpj, sobre, img, img2, id], (error, result, fields) => {
         if(error) throw error;
