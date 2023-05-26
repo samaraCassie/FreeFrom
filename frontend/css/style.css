@@ -20,10 +20,9 @@
     .barra{
         position: fixed;
         top: 0px;
-        background: rgba(32, 26, 24, 0.9);
+        background: rgba(32, 26, 24);
         width: 15%;
         height: 100%;
-        box-shadow: -3px 3px 25px rgba(0, 0, 0, 0.497);
         transition: all .2s linear;
         left: -15%;
         z-index: 3;    
@@ -37,8 +36,6 @@
     .menu{
         font-family: 'Playfair', serif;
         position: relative;
-        background: linear-gradient(to right, rgb(204, 188, 169), rgba(40, 31, 28, 0.9));
-        box-shadow: -5px 5px 35px rgba(0, 0, 0, 0.425);
         text-align: center;
         width: 100%;
         top: 7%;
@@ -60,13 +57,14 @@
     }
     .menu a {
         color:rgb(255, 255, 255);
-        background-color: rgba(0, 0, 0, 0.34);
         font-size: 4vmin;
         text-align: center;
         text-decoration: none;
         display: block;
         padding: 1vmin;
         transition: all .2s linear;
+        border-top: 0.5px solid rgba(247, 247, 247, 0.568);
+        border-bottom: 0.5x solid rgba(247, 247, 247, 0.562);
         z-index: 1;
     }
     .menu button{
