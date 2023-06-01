@@ -58,8 +58,6 @@ exports.postCadastro = (req, res) => {
     senhaErro = "Senha invalida!";
   }
   
-  console.log(data);
-  console.log(dataAtual)
   if(dataNascimento == null || dataNascimento == "" || dataNascimento == undefined || data >= dataAtual || data > dataLimite){
     validaData = false;
   }
