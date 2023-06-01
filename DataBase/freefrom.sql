@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2023 às 22:04
+-- Tempo de geração: 01-Jun-2023 às 22:11
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 7.4.23
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `compra` (
   `id_compra` int(3) NOT NULL,
   `data` date DEFAULT NULL,
-  `total_compra` decimal(10,0) DEFAULT NULL,
+  `total_compra` decimal(15,2) DEFAULT NULL,
   `quantidade` int(4) NOT NULL,
   `id_produto` int(3) DEFAULT NULL,
   `id_usuario` int(3) DEFAULT NULL
@@ -49,15 +49,6 @@ CREATE TABLE `itens_produto` (
   `id_usuario` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `itens_produto`
---
-
-INSERT INTO `itens_produto` (`id_itens_produto`, `quantidade`, `id_produto`, `id_usuario`) VALUES
-(16, 5, 4, 40),
-(20, 1, 3, 38),
-(21, 1, 3, 38);
-
 -- --------------------------------------------------------
 
 --
@@ -68,7 +59,7 @@ CREATE TABLE `produto` (
   `id_produto` int(5) NOT NULL,
   `descricao` varchar(100) DEFAULT NULL,
   `qtd_estoque` int(100) DEFAULT NULL,
-  `preco_unit` decimal(10,0) DEFAULT NULL,
+  `preco_unit` decimal(5,2) DEFAULT NULL,
   `id_vendedor` int(5) DEFAULT NULL,
   `categoria` varchar(100) DEFAULT NULL,
   `img` varchar(250) NOT NULL,
@@ -81,14 +72,14 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `id_vendedor`, `categoria`, `img`, `nome`, `imagem`) VALUES
-(0, 'Sem lactose mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie', NULL),
-(1, 'Produto vegano com lascas de carne', 10, '40', 1, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne', NULL),
-(2, 'Sem lactobacilos mais com glutemn', 10, '50', 2, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal', NULL),
-(3, 'COM lactose mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons', NULL),
-(4, 'gelatina mais com glutemn', 10, '50', 1, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado', NULL),
-(5, 'leite lactose mais com glutemn', 10, '50', 2, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza', NULL),
-(6, 'Com leite mais sem queijo', 10, '50', 2, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo', NULL),
-(7, 'saudaveu', 10, '50', 1, 'Saudavel', 'img/paes.jpg', 'Maçã', NULL);
+(0, 'Sem lactose mais com glutemn', 10, '51.50', 1, 'Sem lactose', 'img/PomeloBolinho.jpg', 'Brownie', NULL),
+(1, 'Produto vegano com lascas de carne', 10, '40.00', 1, 'Vegano', 'img/cupCake.jpg', 'Escondidinho de carne', NULL),
+(2, 'Sem lactobacilos mais com glutemn', 10, '50.00', 2, 'Sem lactose', 'img/pomeloCereal.jpg', 'Cereal', NULL),
+(3, 'COM lactose mais com glutemn', 10, '50.00', 1, 'Sem lactose', 'img/PomeloMacarrons.jpg', 'Macarrons', NULL),
+(4, 'gelatina mais com glutemn', 10, '50.00', 1, 'Sem lactose', 'img/PomeloFolhado.jpg', 'Folhado', NULL),
+(5, 'leite lactose mais com glutemn', 10, '50.00', 2, 'Sem lactose', 'img/PomeloMiniPizza.jpg', 'Pizza', NULL),
+(6, 'Com leite mais sem queijo', 10, '50.00', 2, 'Sem lactose', 'img/PomeloOvos.jpg', 'Pao de queijo', NULL),
+(7, 'saudaveu', 10, '50.00', 1, 'Saudavel', 'img/paes.jpg', 'Maçã', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,10 +106,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `numero`, `cidade`, `data_nascimento`, `usuario`, `uf`, `CPF`) VALUES
-(38, 'julianalvesinstinto@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '312', 312, '312', '0000-00-00', 'ju', '', 2147483647),
-(39, 'jujuba@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Masculino', 'jyuuj', 564645, '423', '2023-04-04', 'jujuba', ' PA ', 2147483647),
-(40, 'Kelcia@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Feminino', 'Rua sim', 1589, 'Jaraguá do Sul', '2006-10-17', 'Kélcia', ' SC ', 0),
-(41, 'nefi@gmail.com', 'c370daca2aebfc52cb1cfa6ccb7df526', 'Masculino', 'Rua nefi', 123, 'Nefilandia', '2023-05-18', 'Nefi', ' MS ', 0);
+(38, 'julianalvesinstinto@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Masculino', '312', 312, '312', '0000-00-00', 'ju', 'SC', 2147483647),
+(39, 'jujuba@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Masculino', 'jyuuj', 564645, '423', '2023-04-04', 'jujuba', ' PA ', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -211,7 +200,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de tabela `vendedor`
