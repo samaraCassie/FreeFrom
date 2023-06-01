@@ -24,7 +24,11 @@ exports.postCadastro = (req, res) => {
   const numero = req.body.Numero;
   const cidade = req.body.Cidade;
   const uf = req.body.UF;
+  const cpf = req.body.cpf;
 
+  var data = new Date(dataNascimento);
+  var dataAtual = new Date();
+  var dataLimite = new Date(dataAtual.getFullYear() - 16, dataAtual.getMonth(), dataAtual.getDate());
   var validaEmail;
   var validaSenha;
   var senhaErro;
@@ -54,7 +58,9 @@ exports.postCadastro = (req, res) => {
     senhaErro = "Senha invalida!";
   }
   
-  if(dataNascimento == null || dataNascimento == "" || dataNascimento == undefined){
+  console.log(data);
+  console.log(dataAtual)
+  if(dataNascimento == null || dataNascimento == "" || dataNascimento == undefined || data >= dataAtual || data > dataLimite){
     validaData = false;
   }
   else if(!dataNascimento){
@@ -75,8 +81,8 @@ exports.postCadastro = (req, res) => {
   }
 
   if(validaEmail && validaSenha && validaData && validaUF){
-    const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf];
+    const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf, cpf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
             if (error) res.render('_Cadastro', {errado: true, error: 'Algo deu errado no seu cadastro!! Tente novamente'});
 
@@ -111,7 +117,14 @@ exports.postCadastro = (req, res) => {
           res.render('_Cadastro', {errado: true, error: senhaErro});
         }
         if(!validaData){
-          res.render('_Cadastro', {errado: true, error: 'Data de nascimento não pode ser nula!!'});
+          var msg = "Data de nascimento não pode ser nula!!";
+          if (data > dataAtual) {
+            msg = 'A data selecionada é maior do que a data atual!!';
+          }
+          else if(data > dataLimite) {
+            msg = 'Você tem menos de 16 anos!! Não pode se cadastrar até ter 16!.'
+          }
+          res.render('_Cadastro', {errado: true, error: msg});
         }
         if(!validaUF){
           res.render('_Cadastro', {errado: true, error: 'UF não pode ser nulo!!'});
