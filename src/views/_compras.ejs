@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos comprados</title>
+    <link rel="stylesheet" href="css/style_compras.css">
+</head>
+<body>
+    <section class="principal">
+        <h1>Compras:</h1>
+        <div class="compras">
+            <% if(user){ %>
+                <div class="produtos">
+                    <hr>
+                    <h1>produto 1</h1>
+                    <h1>produto 2</h1>
+                    <hr>
+                    <hr>
+                    <h1>compra 2</h1>
+                    <hr>
+                </div>
+            <% }else{ %>
+                <div class="produtos">
+                    <h1>Você não esta logado!!</h1>
+                </div>
+            <% } %>
+        </div>
+    </section>
+</body>
+</html>

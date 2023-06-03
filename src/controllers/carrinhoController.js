@@ -61,6 +61,7 @@ function atualizarQuantidadeEmEstoque(qtd, produtoId) {
 
 exports.confirmarCompra = (req, res) => {
     let feito = 0;
+    var result = [];
     const total = req.body.total;
     const i = req.body.i;
     const user = req.session.user;
@@ -73,6 +74,16 @@ exports.confirmarCompra = (req, res) => {
 
       connection.query('INSERT INTO compra (data, total_compra, quantidade, id_produto, id_usuario) VALUES (?, ?, ?, ?, ?)', [new Date, total, qtd, id_produto, id_user], (error, results) => {
         if(error) throw error;
+        result.push(results);
+        console.log(result);
+
+        console.log(results.insertId);
+
+        connection.query('UPDATE compra SET id_pacote = ? WHERE id_produto = ?', [result[0].insertId, results.insertId], (erro, result) => {
+          if(erro) throw erro;
+
+          console.log(result);
+        });
         
         connection.query('DELETE FROM itens_produto WHERE id_itens_produto = ?', [id_itens], (err, result) => {
           atualizarQuantidadeEmEstoque(qtd, id_produto);

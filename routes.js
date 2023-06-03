@@ -30,6 +30,7 @@ const addCarrinhoController = require('./src/controllers/addCarrinhoController')
 const cadastroLojaController = require('./src/controllers/cadastroLojaController');
 const editarCapaController = require('./src/controllers/mudarCapaController');
 const editarFotoController = require('./src/controllers/mudarFotoController');
+const comprasController = require('./src/controllers/comprasController');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -84,5 +85,8 @@ route.post('/_fotoPerfil', upload.single('img'), editarFotoController.mudaFoto);
 //Rotas para editar a loja
 route.get('/_editar/:id', editarLojaController.editarPage);
 route.post('/_editar/:id', editarLojaController.postEditar);
+
+//Rotas para pagina de compras
+route.get('/_compras', comprasController.compras);
 
 module.exports = route;
