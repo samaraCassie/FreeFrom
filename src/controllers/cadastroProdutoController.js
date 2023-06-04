@@ -39,7 +39,7 @@ exports.postProduto = (req, res) => {
 
     
 
-    let imagem = path.slice(7);
+    let imagem = path.slice(9);
     const user = req.session.user;
     if(user){
         connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {

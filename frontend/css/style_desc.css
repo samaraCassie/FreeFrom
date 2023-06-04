@@ -392,3 +392,19 @@ h6{
   font-size: 25px;
   margin-top: 2%;
 }
+
+.aa{
+    background: #2c2c2c;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 8vmin;
+    margin-top: 1.5vmin;
+    margin-bottom: 1.5vmin;
+    height: 2.2rem;
+    width: 100%;
+    font-size: 2vmin;
+    padding: 0.5vmax 1vmax;
+    transition: all .2s ease-in-out;
+}

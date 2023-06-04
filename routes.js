@@ -31,6 +31,8 @@ const cadastroLojaController = require('./src/controllers/cadastroLojaController
 const editarCapaController = require('./src/controllers/mudarCapaController');
 const editarFotoController = require('./src/controllers/mudarFotoController');
 const comprasController = require('./src/controllers/comprasController');
+const editRemovePorudutosController = require('./src/controllers/funcoesProdutosController');
+const pageController = require('./src/controllers/404Controller');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -88,5 +90,13 @@ route.post('/_editar/:id', editarLojaController.postEditar);
 
 //Rotas para pagina de compras
 route.get('/_compras', comprasController.compras);
+
+//Rotas para edição e exclusão de produtos
+route.get('/_editProd/:id', editRemovePorudutosController.pageEdit);
+route.get('/_removeProd/:id', editRemovePorudutosController.deleteProduto);
+route.post('/_editProd', editRemovePorudutosController.editProduto);
+
+//Rota para paginas não encontradas
+route.get('/_404', pageController.page);
 
 module.exports = route;

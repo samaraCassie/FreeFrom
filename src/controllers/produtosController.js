@@ -14,8 +14,6 @@ exports.paginaProdutos = (req, res) => {
             if (req.session.user) {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
-                console.log('Novo user--')
-                console.log(user);
 
                 connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
                     if(err) throw err;

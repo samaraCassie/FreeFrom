@@ -77,7 +77,15 @@
                     <p>0 Vendidos</p>
                 <% } %>
                 <div class="btn">
-                <button id="open-modal-btn">Adicionar ao carrinho</button>  
+                    <button id="open-modal-btn">Adicionar ao carrinho</button> 
+                    <br>
+                    <br>
+                    <% if(user){ %>
+                        <% if(vendedor[0].id_usuario == user[0].id_usuario){ %>
+                            <a class="aa" href="/_editProd/<%- produtos[0].id_produto %>">Editar Produto</a>  
+                            <a class="aa" href="/_removeProd/<%- produtos[0].id_produto %>">Remover Produto</a>
+                        <% } %>
+                    <% } %>
                 </div>
             <% }else{ %>
                 <h1 style="color: black; font-size: 50px;">Produto esgotado!!</h1>
