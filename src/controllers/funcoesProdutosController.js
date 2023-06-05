@@ -9,12 +9,13 @@ const connection = mysql.createConnection({
 
 exports.pageEdit = (req, res) => {
     const user = req.session.user;
+    const id = req.params.id;
 
     if(user){
         connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
             if(erro) throw erro;
             if(result.length > 0){
-                res.render('_editProduto', {user: true, vendedor: true, errado: false});
+                res.render('_editProduto', {user: true, vendedor: true, errado: false, id: id});
             }
             else{
                 res.render('_editProduto', {user: true, vendedor: false});
@@ -27,14 +28,18 @@ exports.pageEdit = (req, res) => {
 }
 
 exports.editProduto = (req, res) => {
-    const id = req.params.id;
+    const id = req.body.id_produto;
+    console.log(id);
     const nome = req.body.nome;
+    console.log('Nome: ' + nome);
     const categoria = req.body.categoria;
     const descricao = req.body.descricao;
     const estoque = req.body.estoque;
     const path = req.file ? req.file.path : null;
     const preco = req.body.preco;
     const user = req.session.user;
+
+
 
     if(path != null){
         let imagem = path.slice(9);
@@ -50,7 +55,7 @@ exports.editProduto = (req, res) => {
                         res.redirect('/_produtos');
                     });
                 }else{
-                    res.render('_editProduto', {user: true, vendedor: true, errado: true, error: 'Envie a imagem do produto!!'});
+                    res.render('_editProduto', {user: true, vendedor: true, errado: true, error: 'Envie a imagem do produto!!', id: id});
                 }
             }else{
                 res.render('_editProduto', {user: true, vendedor: false});
@@ -74,7 +79,7 @@ exports.deleteProduto = (req, res) => {
             res.send('Você não pode excluir este produto!! Pois ele ja foi comprado por uma pessoa');
         }else{
             connection.query('DELETE FROM produto WHERE id_produto = ?', [id], (erro, results) => {
-                res.send('Produto Removido com sucesso!');
+                res.redirect('/_produtos');
             });
         }
     });
