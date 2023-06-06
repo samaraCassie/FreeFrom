@@ -34,7 +34,9 @@
                                 <button class="remove">Remover do carrinho</button>
                             </form>
                     </section>
-                    <% preco += produto.preco_unit * results[i].quantidade;%>
+                    <% let valorVarchar = produto.preco_unit; %>
+                    <% let precoFloat = parseFloat(valorVarchar); %>
+                    <% preco += precoFloat * results[i].quantidade;%>
                     <% i++ %>
                     <% } %>
                 <% }); %>
@@ -42,6 +44,7 @@
         </div>
         <br>
         <hr>
+        <% preco = parseFloat(preco.toFixed(2));%>
         <% if(produtos != ""){%>
             <h1>Total: R$<%= preco %></h1>
         <% }else{ %>
