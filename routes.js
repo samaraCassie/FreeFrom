@@ -33,6 +33,7 @@ const editarFotoController = require('./src/controllers/mudarFotoController');
 const comprasController = require('./src/controllers/comprasController');
 const editRemovePorudutosController = require('./src/controllers/funcoesProdutosController');
 const pageController = require('./src/controllers/404Controller');
+const editarProdutoController = require('./src/controllers/editarProdutoController');
 
 //Rotas da home
 route.get('/', homeController.paginaInicial);
@@ -94,9 +95,12 @@ route.get('/_compras', comprasController.compras);
 //Rotas para edição e exclusão de produtos
 route.get('/_editProd/:id', editRemovePorudutosController.pageEdit);
 route.get('/_removeProd/:id', editRemovePorudutosController.deleteProduto);
-route.post('/_editProd', editRemovePorudutosController.editProduto);
+route.post('/_editProduto/:id', upload.single('file'), editarProdutoController.editProduto);
 
 //Rota para paginas não encontradas
 route.get('/_404', pageController.page);
+
+//Rota para proibição
+route.get('/_proibido', )
 
 module.exports = route;

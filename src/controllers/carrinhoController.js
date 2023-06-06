@@ -78,12 +78,6 @@ exports.confirmarCompra = (req, res) => {
         console.log(result);
 
         console.log(results.insertId);
-
-        connection.query('UPDATE compra SET id_pacote = ? WHERE id_produto = ?', [result[0].insertId, results.insertId], (erro, result) => {
-          if(erro) throw erro;
-
-          console.log(result);
-        });
         
         connection.query('DELETE FROM itens_produto WHERE id_itens_produto = ?', [id_itens], (err, result) => {
           atualizarQuantidadeEmEstoque(qtd, id_produto);

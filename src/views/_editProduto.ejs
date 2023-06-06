@@ -15,37 +15,37 @@
         <!--Conteúdo do FORMULÁRIO-->
         <% if(vendedor){ %>
         <main class="container">
-            <form method="post" id="form" action="/_editProd" enctype="multipart/form-data">
+            <form method="post" id="form" action="/_editProduto/<%- id %>" enctype="multipart/form-data">
                 <% if(errado){ %>
                     <%- include('./includes/messages.ejs') %>
                 <% } %>
-                <h2>Cadastrar Produto</h2> 
+                <h2>Editar Produto</h2> 
 
 
                 <section class="campo">
                     <input type="text" name="nome" id="nome"
-                        placeholder="Nome do produto*" required>
+                        placeholder="Nome do produto*" value="<%- results[0].nome %>" required>
                     <div class="underline"></div>
                 </section>  
 
 
                 <section class="campo">
                     <input type="text" name="descricao" id="descricao"
-                        placeholder="Descricao do produto*" required>
+                        placeholder="Descricao do produto*" value="<%- results[0].descricao %>" required>
                     <div class="underline"></div>
                 </section>
 
 
                 <section class="campo">
                     <input type="number" name="preco" id="preco"
-                        placeholder="Preco*" required>
+                        placeholder="Preco*" value="<%- results[0].preco_unit %>" required>
                     <div class="underline"></div>
                 </section> 
 
 
                 <section class="campo">
                     <input type="number" name="estoque" 
-                    placeholder="Quantidade no estoque*" id="estoque" required>
+                    placeholder="Quantidade no estoque*" id="estoque" value="<%- results[0].qtd_estoque %>" required>
                     <div class="underline"></div>
                 </section>
                 <br>
@@ -72,7 +72,6 @@
 
                 <label for="img" style="color: white;">Imagem do produto</label>
                 <input type="file" name="file">
-                <input type="hidden" value="<%- id %>" name="id_produto">
                 <br>
                 
                 <input type="reset" value="Resetar">

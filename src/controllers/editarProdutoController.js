@@ -7,47 +7,44 @@ const connection = mysql.createConnection({
     database: 'freefrom'
 });
 
-exports.paginaEdicaoProduto = (req, res) => {
-    res.render('_editProdutos');
-}
-
-exports.postEdicaoProdutos = (req, res) => {
-    const nome = req.body.name;
-    const categoria = req.body.categoria;
-    const descricao = req.body.descricao;
-    const estoque = req.body.qtdEstoque;
-    const img = req.body.img;
-    const preco = req.body.preco;
-
-    const sql = 'UPDATE produto SET nome = ?, descricao = ?, preco_unit = ?, qtd_estoque = ?, img = ?, categoria = ? WHERE id = ?';
-    const values = [nome, descricao, preco, estoque, img, categoria, id];
-    connection.query(sql, values, (err, result) => {
-        if (err) {
-            console.error('Erro ao atualizar dados no banco de dados: ' + err.stack);
-            return;
-        }
-
-        console.log('Dados atualizados com sucesso no banco de dados');
-        res.redirect('/_PerfilLoja');
-    });
-}
-
-exports.getId = (req, res) => {
-    const query = 'SELECT * FROM produto WHERE id_produto = ?';
-    const id = req.params.id;
-  
-    connection.query(query, id, function(error, results, fields) {
-      if (error) throw error;
-      res.json(results);
-    });
-};
-
-exports.deleteProd = (req, res) => {
-  const query = 'DELETE FROM tabela WHERE id = ?';
+exports.editProduto = (req, res) => {
   const id = req.params.id;
 
-  connection.query(query, id, function(error, results, fields) {
-    if (error) throw error;
-    res.json(results);
-  });
+  const nome = req.body.nome;
+  const categoria = req.body.categoria;
+  const descricao = req.body.descricao;
+  const estoque = req.body.estoque;
+  const path = req.file ? req.file.path : null;
+  const preco = req.body.preco;
+  const user = req.session.user;
+
+  let imagem;
+
+  if(path != null){
+       imagem = path.slice(9);
+  }
+
+  if(user){
+      connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
+          if(erro) throw erro;
+          if(result.length > 0){
+              if(path != null){
+                  connection.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ?, img = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, imagem, id], (err, results) => {
+                      if(err) throw err;
+                      res.redirect('/_produtos');
+                  });
+              }else{
+                connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (err, results) => {
+                    if(err) throw err;
+
+                    res.render('_editProduto', {user: true, vendedor: true, errado: true, error: 'Envie a imagem do produto!!', id: id, results: results});
+                })
+              }
+          }else{
+              res.render('_editProduto', {user: true, vendedor: false});
+          }     
+      });
+  }else{
+      res.render('_editProduto', {user: false, vendedor: false});
+  }
 }
