@@ -39,11 +39,18 @@ exports.deleteProduto = (req, res) => {
 
 
         if(result.length > 0){
-            res.render('_proibido', {error: 'Você não pode excluir este produto!! Pois ele ja foi comprado por uma pessoa'});
-            // res.send('Você não pode excluir este produto!! Pois ele ja foi comprado por uma pessoa');
+            res.render('_proibido', {error: 'Você não pode excluir este produto!! Pois ele ja foi ou esta sendo comprado por uma pessoa'});
         }else{
-            connection.query('DELETE FROM produto WHERE id_produto = ?', [id], (erro, results) => {
-                res.redirect('/_produtos');
+            connection.query('SELECT * FROM itens_produto WHERE id_produto = ?', [id], (erro, results) => {
+                if(erro) throw erro;
+
+                if(results.length > 0){
+                    res.render('_proibido', {error: 'Você não pode excluir este produto!! Pois ele ja foi ou esta sendo comprado por uma pessoa'});
+                }else{
+                    connection.query('DELETE FROM produto WHERE id_produto = ?', [id], (erro, results) => {
+                        res.redirect('/_produtos');
+                    });
+                }
             });
         }
     });
