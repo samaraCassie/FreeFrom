@@ -11,13 +11,7 @@
 </head>
 <body>
     <!--Menu-->
-    <header>
-
-        <input type="checkbox" id="check">
-        <label id="icone" for="check">
-            <img style="background-color: rgba(40, 31, 28, 0.9); border-radius: 5px;" src="Img/iconeMenu.png">
-        </label>
-        <div class="barra">
+    <header class="barra">
             <nav class="menu">
                 <ul>   
                     <li><div class="menu"><a href="/">Início</a></div></li>
@@ -35,8 +29,23 @@
                     </li>
 
                     <li>
-                        <div class="menu"><a href="#">Conta▾</a></div>
-                        <ul>
+                        <div class="menu">
+                            <a href="#">
+                                <label id="icone" for="conta">
+                                    <div class="user">
+                                        <% if(usuario){ %>
+                                            <span><%= user[0].usuario %></span>
+                                        <% }else{ %>
+                                            <span>Log In </span>
+                                        <% } %>
+                                    </div>
+                                    <img src="Img/profile-user.png">
+                                </label>
+                                <!--<i class="fas fa-user" style="color: #ededed;"></i>
+                                <label id="icon-user" for="conta"></label>-->
+                            </a>
+                        </div>
+                        <ul id="conta">
                             <% if(usuario){ %>
                                 <% if(vendedor){ %>
                                     <li class="subMenu"><a href="_PerfilLoja/<%- idLoja %>">Minha Loja</a></li>
@@ -50,90 +59,9 @@
                     </li>
                 </ul>
             </nav>
-        </div>
-        <!--
-        <section class="cat">
-                    <div class="fileira" id="f1">
-                        <div class="check">
-                            <input type="checkbox" name="categoria" class="categoria">
-                            <label for="gluten"> Glúten</label>                                
-                        </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Trigo"> Trigo</label>
         
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Lactose"> Lactose</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="LeiteVaca"> Leite de Vaca</label>
-                    </div>
-                </div>
-                <div class="fileira" id="f2">
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Ovo"> Ovo</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Amendoin"> Amendoin</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Castanhas"> Castanhas</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Soja"> Soja</label>
-                    </div>
-                </div>
-                <div class="fileira" id="f3">
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Peixe"> Peixe</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="FrutosMar"> Frutos do Mar</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Acucar"> Açucar</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="AditivosAlimentares"> Aditivos alimentares</label>
-                    </div>
-                </div>
-                <div class="fileira" id="f4">
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Vegetariano"> Carne/Vegetariano</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Vegano"> De origem animal/Vegano</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Fitness"> Fitness</label>
-                    </div>
-                    <div class="check">
-                        <input type="checkbox" name="categoria" class="categoria">
-                        <label for="Outros"> Outros</label>
-                    </div>
-                </div>
-                </section>-->
     </header>
     <main>   
-        <% if(usuario){ %>
-            <h1 style="color: black;"><%= user[0].usuario %></h1>
-        <% }else{ %>
-            <h1 style="color: black;">Nenhum usuario logado</h1>
-        <% } %>
         <div class="busca">
             <form class="formBusca" method="POST">
                 <div>

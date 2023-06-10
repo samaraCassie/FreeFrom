@@ -7,8 +7,13 @@
     text-decoration: none;
 }
 
-
+header{
+    width: 100%;
+    height: 25%;
+    background-color: aquamarine;
+}
 /***** ESTILIZAÇÃO DO MENU *****/
+<<<<<<< Updated upstream:public/css/style.css
     #icone{
         position: fixed;
         cursor: pointer;
@@ -27,12 +32,16 @@
         transition: all .2s linear;
         left: -15%;
         z-index: 1;    
-    }
-    #check{
-        display: none;
-        z-index: 2;
-    }#check:checked ~ .barra{
-        transform: translateX(100%);
+=======
+
+    .barra{
+        position: fixed;
+        top: 0px;
+        background: rgba(32, 26, 24);
+        width: 100%;
+        height: 10%;
+        z-index: 3;    
+>>>>>>> Stashed changes:frontend/css/style.css
     }
     .menu{
         position: relative;
@@ -40,19 +49,24 @@
         box-shadow: -5px 5px 35px rgba(0, 0, 0, 0.425);
         text-align: center;
         width: 100%;
-        top: 7%;
+        height: 100%;
         left: 0%;  
         z-index: 1;
     }
     .menu ul{
+        display: flex;
+        flex-direction: row;
         position: relative;
         list-style: none;
-        text-align: center;
         z-index: 1;
+        top: 7%;
+        height: 90%;
+        width: 100%;
     }
     .menu ul li{
         position: relative;
         width: 100%;
+<<<<<<< Updated upstream:public/css/style.css
         float: left;
         text-align: center;
         z-index: 1;
@@ -103,34 +117,85 @@
         width: 100%;
         top: 0px;
         z-index: 1;
+=======
+>>>>>>> Stashed changes:frontend/css/style.css
     }
     .menu li:hover ul, .menu li.over ul {
-        position: absolute;
-        text-align: center;
-        display:block;
-        left: 100%;
+        display: block;
+        top : 0px;
+    }
+    .menu a {
+        height: 100%;
+        width: 100%;
+        color:rgb(255, 255, 255);
+        font-size: 4vmin;
+        display: block;
+        padding: 1vmin;
+        border-left: 0.5px solid rgba(247, 247, 247, 0.568);
+        border-right: 0.5x solid rgba(247, 247, 247, 0.562);
+    }
+    .menu li a:hover{
+        color: rgb(90, 57, 35);
+        background: rgba(255, 252, 252);
+        font-size: 5vmin;
+        transition: all .2s linear;
+    }
+    .menu li ul{
+        display:none;
+        width: 100%;
+        top: 10%;
         z-index: 1;
     }
     .subMenu{
         background: rgb(0, 0, 0);
-        position: relative;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.361);
-        text-align: center;
-        bottom:0px;
-        left: 0px;
-        z-index: 1;
     }
+    .aq{
+        height: 100%;
+        width: 100%;
+        background: rgba(255, 252, 252);
+    }
+
     .aq a{
         color: rgb(90, 57, 35);
-        background: rgba(255, 252, 252);
-        display: block;
-        text-align: center;
-        text-decoration: none;
         font-size: 5vmin;
-        padding: 1vmin;
-        transition: all .2s linear;
-        z-index: 1;
     }
+
+    #icone{
+        position: relative;
+        display: flex;
+        justify-content: end;
+        align-content: center;
+        height: 70%;
+        width: 90%;
+    }
+
+    img:hover{
+        display: flex;
+        align-items: center;
+        justify-items: center;        
+        border-radius: 30px;
+        transition: all .2s linear;
+        box-shadow: 2px 2px 5px #2c2c2c;
+        background: rgb(10,10,10);
+        background: radial-gradient(circle, rgba(10,10,10,1) 0%, rgba(10,10,10,1) 55%, rgba(255,255,255,1) 75%);
+    }
+
+    .user{
+        display: flex;
+        width: 90%;
+        height: 90%;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: auto;
+        margin-right: 10%;
+    }
+
+    .user span{
+        font-size: 50%;
+    }
+
+    
 /***** [fim] ESTILIZAÇÃO DO MENU *****/
 
 /***** BUSCA *****/
