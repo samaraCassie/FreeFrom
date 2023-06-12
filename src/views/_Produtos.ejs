@@ -12,13 +12,13 @@
 <body>
     <!--Menu-->
     <header class="barra">
-            <nav class="menu">
+            <nav class="bar-menu">
                 <ul>   
-                    <li><div class="menu"><a href="/">Início</a></div></li>
-                    <li><div class="aq"><a href="#">Produtos</a></div></li>
-                    <li><div class="menu"><a href="_carrinho">Carrinho</a></div></li>
+                    <li><a class="menu" href="/">Início</a></li>
+                    <li><a class="aq" href="#">Produtos</a></li>
+                    <li><a class="menu" href="_carrinho">Carrinho</a></li>
                     <li>
-                        <div class="menu"><a href="#">Mais▾</a></div>
+                        <a class="menu" href="#">Mais▾</a></div>
                         <ul>
                             <% if(!vendedor){ %>
                                 <li class="subMenu"><a href="/_cadastroLoja">Vender</a></li>
@@ -29,22 +29,18 @@
                     </li>
 
                     <li>
-                        <div class="menu">
-                            <a href="#">
-                                <label id="icone" for="conta">
-                                    <div class="user">
-                                        <% if(usuario){ %>
-                                            <span><%= user[0].usuario %></span>
-                                        <% }else{ %>
-                                            <span>Log In </span>
-                                        <% } %>
-                                    </div>
-                                    <img src="Img/profile-user.png">
-                                </label>
-                                <!--<i class="fas fa-user" style="color: #ededed;"></i>
-                                <label id="icon-user" for="conta"></label>-->
-                            </a>
-                        </div>
+                        <a class="menu" href="#">
+                            <label id="icone" for="conta">
+                                <div class="user">
+                                    <% if(usuario){ %>
+                                        <span><%= user[0].usuario %></span>
+                                    <% }else{ %>
+                                        <span>Log In </span>
+                                    <% } %>
+                                </div>
+                                <img src="Img/profile-user.png" width="30" height="30">
+                            </label>
+                        </a>
                         <ul id="conta">
                             <% if(usuario){ %>
                                 <% if(vendedor){ %>
@@ -59,17 +55,17 @@
                     </li>
                 </ul>
             </nav>
-        
+            <div class="busca">
+                <form class="formBusca" method="POST">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>
     <main>   
-        <div class="busca">
-            <form class="formBusca" method="POST">
-                <div>
-                    <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
-                    <button type="submit">Buscar</button>
-                </div>
-            </form>
-        </div>
+        
         <% if(resultado){ %>
             <div class="cards"><!----------------FILEIRA DE CARTÕES-->
                 <% produtos.forEach(function(produto){ %>
