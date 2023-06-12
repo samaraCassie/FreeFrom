@@ -17,8 +17,8 @@ main{
 /*Fileiras de cartões*/
 .cards {
     display: flex;
-    max-width: 75vw;
-    width: 75vw;
+    max-width: 90vw;
+    width: 90vw;
     flex-wrap: wrap;
 }
 /*Cartão individual*/
@@ -28,12 +28,12 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: flex-end;
     padding: 1rem 1.5rem;
     margin-left: 1.5vw;
     margin-top: 5vh;
-    height: 55vh;
-    width: 22vw;
+    height: 50vh;
+    width: 20vw;
     border: .5px solid rgba(83, 59, 49, 0.46);
     box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
 }
@@ -62,18 +62,11 @@ section.card .span1{
     top: 80%;
     width: 95%;
   }
-section.card a {/**********TENTAR TROCAR PARA BUTTON*/
-    position: absolute;
-    background: #2c2c2c;
-    color: rgb(255, 255, 255);
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 2vmin;
-    padding: 0.5vmax 1vmax;
-    border-radius: 32vmin;
+section.card button {/**********TENTAR TROCAR PARA BUTTON*/
     bottom: 1.5vh;
-    height: 10%;
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: 1vmin;
 }
 /*Rodapé*/
 footer{

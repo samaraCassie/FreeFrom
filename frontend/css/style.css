@@ -148,7 +148,8 @@ header{
     width: auto;
     height: auto;
     padding: 0.5vmax 1vmax;
-    margin-left: auto;
+    margin-top: 1.5vmin;
+    margin-bottom: 1.5vmin;
 }
 /***** [fim] ESTILIZAÇÃO DA BUSCA *****/
 /***** BOTÕES *****/
@@ -159,10 +160,6 @@ button {
     cursor: pointer;
     border: none;
     border-radius: 8vmin;
-    margin-top: 1.5vmin;
-    margin-bottom: 1.5vmin;
-    height: 2.2rem;
-    width: 100%;
     font-size: 2vmin;
     padding: 0.5vmax 1vmax;
     transition: all .2s ease-in-out;
