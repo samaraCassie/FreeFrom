@@ -12,7 +12,7 @@ body{
   background: transparent;
   box-shadow: 0px 6px 9px rgba(54, 46, 42, 0.371);
   border: .5px solid rgba(83, 59, 49, 0.46);
-  margin-top: 10%;
+  margin-top: 2.5%;
   margin-right: 5%;
   margin-left: 5%;
   margin-bottom: 10%;
@@ -37,6 +37,30 @@ section .box{
   top: 75px;
   width: 90%;
   margin-bottom: 15vmin;
+}
+
+a span:hover{
+  height: 7.5vmin;
+  width: 7.5vmin;
+  transition: all .2s linear;
+  box-shadow: 2px 2px 5px #2c2c2c;
+  background:  rgb(255, 255, 255);
+}
+
+span{
+  cursor: pointer;
+  position: fixed;
+  z-index: 2;
+  font-size: 3vmax;
+  width: 6.5vmin;
+  height: 6.5vmin ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2.5%;  
+  border-radius: 150%;
+  box-shadow: 2px 2px 5px #2c2c2cb6;
+  background:  rgba(255, 255, 255, 0.664);
 }
 
 /*Fotos de Demonstração do Produto*/
