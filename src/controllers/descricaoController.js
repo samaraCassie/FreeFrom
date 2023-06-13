@@ -21,10 +21,10 @@ exports.paginaDesc = (req, res) => {
             connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
               if(resultado == undefined){
                 resultado == null;
-                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: user});
+                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: user, id: id});
               }
               else{
-                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user});
+                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id});
               }
             });
           });
@@ -42,10 +42,10 @@ exports.paginaDesc = (req, res) => {
           connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
             if(resultado == undefined){
               resultado == null;
-              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: false});
+              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: false, id: id});
             }
             else{
-              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: false});
+              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: false, id: id});
             }
           });
         });

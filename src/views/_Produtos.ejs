@@ -9,7 +9,7 @@
     <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'/>
     <title>Free From ⋆ Um Sabor Seguro</title>
 </head>
-<body>
+<body class="body">
     <!--Menu-->
     <header class="barra">
             <nav class="bar-menu">
@@ -76,7 +76,7 @@
                             </div>
                                 <span class="span1"><%= produto.nome %></span>
                                 <span class="span2">Preço: <%= produto.preco_unit %></span>
-                            <button href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</button> 
+                            <a href="_descricaoProduto/<%= produto.id_produto %>">Veja Mais</a> 
                         </section>
                     <% } %>
                 <% }); %>

@@ -23,26 +23,26 @@
 
                 <!--CAMPO PARA PREENCHER COM E-MAIL-->
                 <section class="campo">
-                    <input type="number" name="cnpj" placeholder="cnpj*" required>
+                    <input type="number" name="cnpj" placeholder="cnpj*" value="<%- results[0].cnpj  %>" required>
                     <div class="underline"></div>
                 </section>  
 
                 <!--CAMPO PARA PREENCHER COM NOME DA LOJA-->
                 <section class="campo">
-                    <input type="text" name="loja" id="loja" placeholder="Nome da loja*" required>
+                    <input type="text" name="loja" id="loja" placeholder="Nome da loja*" value="<%- results[0].nome_loja %>" required>
                     <div class="underline"></div>
                 </section>
 
 
                 <section class="campo">
                     <input type="text" name="slogan" id="slogan"
-                        placeholder="Slogan da loja*" required>
+                        placeholder="Slogan da loja*" value="<%- results[0].slogan %>" required>
                     <div class="underline"></div>
                 </section>
 
                 <section class="campo">
                     <input type="text" name="sobre" id="sobre"
-                        placeholder="Sobre a loja*" required>
+                        placeholder="Sobre a loja*" value="<%- results[0].sobre %>" required>
                     <div class="underline"></div>
                 </section>
                 

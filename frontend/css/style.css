@@ -5,7 +5,7 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-body {
+.body {
     position: relative;
     display: flex;
     justify-content: center;

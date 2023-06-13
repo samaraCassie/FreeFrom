@@ -17,6 +17,7 @@
             <input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>">
             <input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>">
             <input type="hidden" name="produto" value="<%- produtos[0].id_produto %>">
+            <input type="hidden" name="id" value="<%- id %>">
             <h6><b>Quantidade</b></h6>
             <select class="select" name="qtd">
                 <% if(produtos[0].qtd_estoque <= 100){ %>

@@ -35,6 +35,8 @@ exports.postCadastro = (req, res) => {
   var validaData;
   var validaUF;
 
+  var validaCpf = validarCPF(cpf);
+
   if(validator.isEmail(email)){
     validaEmail = true;
   }
@@ -78,7 +80,7 @@ exports.postCadastro = (req, res) => {
     validaUF = true;
   }
 
-  if(validaEmail && validaSenha && validaData && validaUF){
+  if(validaEmail && validaSenha && validaData && validaUF && validaCpf){
     const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf, cpf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
@@ -127,5 +129,52 @@ exports.postCadastro = (req, res) => {
         if(!validaUF){
           res.render('_Cadastro', {errado: true, error: 'UF não pode ser nulo!!'});
         }
+        if(!validaCpf){
+          res.render('_Cadastro', {errado: true, error: 'CPF invalido!!'});
+        }
     }
+}
+
+function validarCPF(cpf) {
+  // Remover caracteres não numéricos
+  cpf = cpf.replace(/\D/g, '');
+
+  // Verificar se o CPF possui 11 dígitos
+  if (cpf.length !== 11) {
+    return false;
+  }
+
+  // Verificar se todos os dígitos são iguais
+  if (/^(\d)\1+$/.test(cpf)) {
+    return false;
+  }
+
+  // Validar o primeiro dígito verificador
+  let soma = 0;
+  for (let i = 0; i < 9; i++) {
+    soma += parseInt(cpf.charAt(i)) * (10 - i);
+  }
+  let resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) {
+    resto = 0;
+  }
+  if (resto !== parseInt(cpf.charAt(9))) {
+    return false;
+  }
+
+  // Validar o segundo dígito verificador
+  soma = 0;
+  for (let i = 0; i < 10; i++) {
+    soma += parseInt(cpf.charAt(i)) * (11 - i);
+  }
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) {
+    resto = 0;
+  }
+  if (resto !== parseInt(cpf.charAt(10))) {
+    return false;
+  }
+
+  // CPF válido
+  return true;
 }

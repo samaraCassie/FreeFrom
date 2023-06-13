@@ -14,13 +14,14 @@ exports.addCarrinho = (req, res) => {
         res.redirect('/_login');
     }
     else{
-        const usuario = user[0].id_usuario
+        const usuario = user[0].id_usuario;
         const produto = req.body.produto;
         const qtd = req.body.qtd;
+        const id = req.body.id;
         connection.query('INSERT INTO itens_produto (id_usuario, id_produto, quantidade) VALUES (?, ?, ?)', [usuario, produto, qtd], (error, result) => {
             if(error) throw error
 
-            res.redirect(`/_Carrinho`);
+            res.redirect('/_descricaoProduto/' + id);
         });
     }   
 }
