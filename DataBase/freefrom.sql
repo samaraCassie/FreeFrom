@@ -1,24 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
+-- version 4.0.9
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 01-Jun-2023 às 22:11
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 7.4.23
+-- Máquina: 127.0.0.1
+-- Data de Criação: 13-Jun-2023 às 17:33
+-- Versão do servidor: 5.5.34
+-- versão do PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `freefrom`
+-- Base de Dados: `freefrom`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +26,17 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `compra`
 --
 
-CREATE TABLE `compra` (
-  `id_compra` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `compra` (
+  `id_compra` int(3) NOT NULL AUTO_INCREMENT,
   `data` date DEFAULT NULL,
   `total_compra` decimal(15,2) DEFAULT NULL,
   `quantidade` int(4) NOT NULL,
   `id_produto` int(3) DEFAULT NULL,
-  `id_usuario` int(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_usuario` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id_compra`),
+  KEY `fk_produto` (`id_produto`),
+  KEY `fk_idusuario` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=65 ;
 
 -- --------------------------------------------------------
 
@@ -42,12 +44,15 @@ CREATE TABLE `compra` (
 -- Estrutura da tabela `itens_produto`
 --
 
-CREATE TABLE `itens_produto` (
-  `id_itens_produto` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `itens_produto` (
+  `id_itens_produto` int(3) NOT NULL AUTO_INCREMENT,
   `quantidade` int(3) NOT NULL,
   `id_produto` int(3) NOT NULL,
-  `id_usuario` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_usuario` int(3) NOT NULL,
+  PRIMARY KEY (`id_itens_produto`),
+  KEY `fk_id_produto` (`id_produto`),
+  KEY `fk_id_usuario` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 -- --------------------------------------------------------
 
@@ -55,8 +60,8 @@ CREATE TABLE `itens_produto` (
 -- Estrutura da tabela `produto`
 --
 
-CREATE TABLE `produto` (
-  `id_produto` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `produto` (
+  `id_produto` int(5) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(100) DEFAULT NULL,
   `qtd_estoque` int(100) DEFAULT NULL,
   `preco_unit` decimal(5,2) DEFAULT NULL,
@@ -64,8 +69,10 @@ CREATE TABLE `produto` (
   `categoria` varchar(100) DEFAULT NULL,
   `img` varchar(250) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
-  `imagem` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `imagem` blob,
+  PRIMARY KEY (`id_produto`),
+  KEY `ct_fk_vendedor` (`id_vendedor`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=19 ;
 
 --
 -- Extraindo dados da tabela `produto`
@@ -87,8 +94,8 @@ INSERT INTO `produto` (`id_produto`, `descricao`, `qtd_estoque`, `preco_unit`, `
 -- Estrutura da tabela `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `id_usuario` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id_usuario` int(5) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   `sexo` varchar(10) DEFAULT NULL,
@@ -98,8 +105,9 @@ CREATE TABLE `usuario` (
   `data_nascimento` date DEFAULT NULL,
   `usuario` varchar(150) NOT NULL,
   `uf` varchar(100) NOT NULL,
-  `CPF` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `CPF` int(11) NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=53 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -107,7 +115,11 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `numero`, `cidade`, `data_nascimento`, `usuario`, `uf`, `CPF`) VALUES
 (38, 'julianalvesinstinto@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Masculino', '312', 312, '312', '0000-00-00', 'ju', 'SC', 2147483647),
-(39, 'jujuba@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Masculino', 'jyuuj', 564645, '423', '2023-04-04', 'jujuba', ' PA ', 2147483647);
+(39, 'jujuba@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Masculino', 'jyuuj', 564645, '423', '2023-04-04', 'jujuba', ' PA ', 2147483647),
+(49, 'kel@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Feminino', 'jujuyg', 12, 'uyguhy', '2006-10-17', 'kel', ' MG ', 2147483647),
+(50, 'samara@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Feminino', 'Sim', 123, 'Jaras', '2003-05-04', 'Samara', ' PA ', 2147483647),
+(51, 'keilha@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Feminino', 'rua alagoa', 432, 'Jaras', '1994-05-13', 'Keilah', ' PR ', 371772907),
+(52, 'siM@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Masculino', '432', 432, '432', '0323-05-31', 'sim', ' MS ', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -115,101 +127,33 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `sexo`, `endereco`, `nume
 -- Estrutura da tabela `vendedor`
 --
 
-CREATE TABLE `vendedor` (
-  `id_vendedor` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vendedor` (
+  `id_vendedor` int(5) NOT NULL AUTO_INCREMENT,
   `cnpj` int(20) DEFAULT NULL,
   `nome_loja` varchar(100) DEFAULT NULL,
   `slogan` varchar(200) DEFAULT NULL,
   `img` varchar(200) DEFAULT NULL,
   `sobre` varchar(200) DEFAULT NULL,
   `back_img` varchar(200) DEFAULT NULL,
-  `id_usuario` int(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_usuario` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id_vendedor`),
+  KEY `fk_usuario` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `vendedor`
 --
 
 INSERT INTO `vendedor` (`id_vendedor`, `cnpj`, `nome_loja`, `slogan`, `img`, `sobre`, `back_img`, `id_usuario`) VALUES
-(1, 12345678000190, 'Suco do vale', 'Direto da fruta', 'Img/is14667-image.jpg', 'Loja de sucos naturais, feitos na hora com salgados e doces feitos na loja, sempre aqui para atender você da melhor maneira sempre!!', 'img/fundo.jpg', 38),
-(2, 85462514, 'Yalla esfiharia', 'Só o melhor', 'img/esphirraria.jpg', 'Lojas de esphirras muito boa', 'Img/2022-07-29.png', 39);
+(1, 2147483647, 'Suco do vale', 'Direto da fruta', 'Img/is14667-image.jpg', 'Loja de sucos naturais, feitos na hora com salgados e doces feitos na loja, sempre aqui para atender você da melhor maneira sempre!!', 'img/fundo.jpg', 38),
+(2, 85462514, 'Yalla esfiharia', 'Só o melhor', 'img/esphirraria.jpg', 'Lojas de esphirras muito boa', 'Img/2022-07-29.png', 39),
+(4, 123, 'Kel loja', 'Melhor loja', 'Img\\1686668587632857681.png', 'Feita por mim', 'Img\\1686668628895e535317715110bfe8248fd6abc017314.jpg', 49),
+(5, 132442342, 'Loja Sam', 'A loja do poço', 'Img\\168666882905702_2210251357377676_20221025135745-650x650.jpg', 'Veja uma fita e você tem APENAS 7 DIAS para conseguir a SUPER PROMOÇÃO DE NOSSOS PRODUTOS', 'Img\\16866688290585490026-legumes-desenhados-a-mao-padrao-sem-costura-fundo-de-alimento-vegano-em-estilo-esboco-gratis-vetor.jpg', 50),
+(6, 432434342, 'Sul doce mania', 'Doces de qualidade do SulMania', 'Img\\1686669305519logo.png', 'Melhor loja de doces do sul!!', 'Img\\1686669327371images.jfif', 51),
+(7, 432432, '432432', '43242', 'Img\\1686670218858DOCE MANIA (@suldocemania) _ Instagram.png', '32432', 'Img\\168667021886702_2210251357377676_20221025135745-650x650.jpg', 52);
 
 --
--- Índices para tabelas despejadas
---
-
---
--- Índices para tabela `compra`
---
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`id_compra`),
-  ADD KEY `fk_produto` (`id_produto`),
-  ADD KEY `fk_idusuario` (`id_usuario`);
-
---
--- Índices para tabela `itens_produto`
---
-ALTER TABLE `itens_produto`
-  ADD PRIMARY KEY (`id_itens_produto`),
-  ADD KEY `fk_id_produto` (`id_produto`),
-  ADD KEY `fk_id_usuario` (`id_usuario`);
-
---
--- Índices para tabela `produto`
---
-ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id_produto`),
-  ADD KEY `ct_fk_vendedor` (`id_vendedor`);
-
---
--- Índices para tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
--- Índices para tabela `vendedor`
---
-ALTER TABLE `vendedor`
-  ADD PRIMARY KEY (`id_vendedor`),
-  ADD KEY `fk_usuario` (`id_usuario`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `compra`
---
-ALTER TABLE `compra`
-  MODIFY `id_compra` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
-
---
--- AUTO_INCREMENT de tabela `itens_produto`
---
-ALTER TABLE `itens_produto`
-  MODIFY `id_itens_produto` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT de tabela `produto`
---
-ALTER TABLE `produto`
-  MODIFY `id_produto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de tabela `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT de tabela `vendedor`
---
-ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
@@ -237,7 +181,6 @@ ALTER TABLE `produto`
 --
 ALTER TABLE `vendedor`
   ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
