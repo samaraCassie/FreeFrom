@@ -75,9 +75,6 @@ exports.confirmarCompra = (req, res) => {
       connection.query('INSERT INTO compra (data, total_compra, quantidade, id_produto, id_usuario) VALUES (?, ?, ?, ?, ?)', [new Date, total, qtd, id_produto, id_user], (error, results) => {
         if(error) throw error;
         result.push(results);
-        console.log(result);
-
-        console.log(results.insertId);
         
         connection.query('DELETE FROM itens_produto WHERE id_itens_produto = ?', [id_itens], (err, result) => {
           atualizarQuantidadeEmEstoque(qtd, id_produto);

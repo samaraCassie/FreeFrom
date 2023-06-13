@@ -11,7 +11,7 @@ exports.mudarCapa = (req, res) => {
     const path = req.file.path;
     const id = req.body.id;
 
-    let imagem = path.slice(7);
+    let imagem = path.slice(9);
 
     connection.query('UPDATE vendedor SET back_img = ? WHERE id_vendedor = ?', [imagem, id], (err, result) => {
         if(err) throw err;

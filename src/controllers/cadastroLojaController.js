@@ -45,6 +45,7 @@ exports.postcadastroloja = (req, res) => {
             const erro = "Envie uma imagem de fundo da loja!! não pode ser nulo!";
             res.render('_cadastroLoja', {errado: true, error: erro, logado: true});
         }
+
         
 
         let img = path.slice(9);
@@ -54,7 +55,6 @@ exports.postcadastroloja = (req, res) => {
         connection.query("INSERT INTO vendedor (nome_loja, slogan, cnpj, sobre, img, back_img, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)", [nome, slogan, cnpj, sobre, img, img2, id], (error, result, fields) => {
             if(error) throw error;
 
-            console.log(result);
             
             res.redirect(`/_PerfilLoja/${result.insertId}`);
         });

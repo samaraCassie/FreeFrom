@@ -59,7 +59,6 @@ exports.postProduto = (req, res) => {
                             console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
                             return;
                         }
-                        console.log('Dados inseridos com sucesso no banco de dados');
                         res.redirect('/_Produtos');
                     });
                 }
