@@ -1,5 +1,12 @@
 @import url('reset.css');
 
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*Conteúdo*/
 main{
     height: 100%;
@@ -62,9 +69,18 @@ section.card .span1{
     top: 80%;
     width: 95%;
   }
-section.card button {/**********TENTAR TROCAR PARA BUTTON*/
+section.card a {
     bottom: 1.5vh;
     position: absolute;
+    background: #2c2c2c;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 8vmin;
+    font-size: 2vmin;
+    padding: 0.5vmax 1vmax;
+    transition: all .2s ease-in-out;
 }
 /*Rodapé*/
 footer{

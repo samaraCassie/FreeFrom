@@ -5,12 +5,7 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-body {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 header{
     width: 100%;
