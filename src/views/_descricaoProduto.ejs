@@ -15,28 +15,6 @@
 <body>
     <div class="modal">
         <div class="modal-content">
-<<<<<<< Updated upstream
-          <h1 style="color: black; font-size: 35px;"><b>Realmente deseja comprar esse produto?</b></h1>
-          <form action="/_addCarrinho" method="POST">
-            <input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>">
-            <input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>">
-            <input type="hidden" name="produto" value="<%- produtos[0].id_produto %>">
-            <input type="hidden" name="id" value="<%- id %>">
-            <h6><b>Quantidade</b></h6>
-            <select class="select" name="qtd">
-                <% if(produtos[0].qtd_estoque <= 100){ %>
-                    <% for(let i =1; i<=produtos[0].qtd_estoque; i++){ %> 
-                        <option value="<%- i %>"><%= i %></option> 
-                    <%}%>
-                <% }else{ %>
-                        <% for(let i =1; i<=100; i++){ %> 
-                            <option value="<%- i %>"><%= i %></option> 
-                        <%}%>
-                <% } %>
-            </select>
-                
-                
-=======
             <h1 style="color: black; font-size: 35px;"><b>Realmente deseja comprar esse produto?</b></h1>
             <form action="/_addCarrinho" method="POST">
                 <input type="hidden" name="vendedor" value="<%- vendedor[0].id_vendedor %>">
@@ -58,7 +36,6 @@
                                         <%}%>
                                             <% } %>
                 </select>
->>>>>>> Stashed changes
                 <button id="comprar" type="submit">Adicionar</button>
             </form>
             <button class="close-btn">Cancelar</button>

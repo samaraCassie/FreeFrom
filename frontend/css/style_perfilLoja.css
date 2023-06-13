@@ -17,6 +17,29 @@ header{
   top: 0;
 }
 
+a .back:hover{
+  height: 7.5vmin;
+  width: 7.5vmin;
+  transition: all .2s linear;
+  box-shadow: 2px 2px 5px #2c2c2c;
+  background:  rgb(255, 255, 255);
+}
+
+.back{
+  cursor: pointer;
+  position: fixed;
+  z-index: 5;
+  font-size: 3vmax;
+  width: 6.5vmin;
+  height: 6.5vmin ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2.5%;  
+  border-radius: 150%;
+  box-shadow: 2px 2px 5px #2c2c2cb6;
+  background:  rgba(255, 255, 255, 0.664);
+}
 
 .container{
   position: absolute;
@@ -102,7 +125,6 @@ header{
         margin-top: 6vmax;
         padding: 1vmax 1vmax;
     }
-
 
 /***** AVALIAÇÃO *****/
 .avaliacao{
@@ -335,4 +357,17 @@ p{
 
 .close-btn {
   margin-top: 10px;
+}
+
+.span1{
+  position: absolute;
+  font-size: 3vmin;
+  top: 72%;
+  width: 95%;
+}
+.span2{
+  position: absolute;
+  font-size: 3vmin;
+  top: 80%;
+  width: 95%;
 }
