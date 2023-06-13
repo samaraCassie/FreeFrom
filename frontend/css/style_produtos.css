@@ -65,8 +65,6 @@ section.card .span1{
 section.card button {/**********TENTAR TROCAR PARA BUTTON*/
     bottom: 1.5vh;
     position: absolute;
-    margin-top: auto;
-    margin-bottom: 1vmin;
 }
 /*Rodapé*/
 footer{

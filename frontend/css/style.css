@@ -5,10 +5,17 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 header{
     width: 100%;
     height: auto;
+    z-index: 1;
 }
 /***** ESTILIZAÇÃO DO MENU *****/
     .bar-menu nav{
