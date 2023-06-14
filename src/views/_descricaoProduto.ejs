@@ -21,22 +21,27 @@
                 <input type="hidden" name="valor" value="<%- produtos[0].preco_unit %>">
                 <input type="hidden" name="produto" value="<%- produtos[0].id_produto %>">
                 <h6><b>Quantidade</b></h6>
-                <select class="select" name="qtd">
-                    <% if(produtos[0].qtd_estoque <=100){ %>
-                        <% for(let i=1; i<=produtos[0].qtd_estoque; i++){ %>
-                            <option value="<%- i %>">
-                                <%= i %>
-                            </option>
-                            <%}%>
-                                <% }else{ %>
-                                    <% for(let i=1; i<=100; i++){ %>
-                                        <option value="<%- i %>">
-                                            <%= i %>
-                                        </option>
+                <% if(!compredo){ %>
+                    <select class="select" name="qtd">
+                        <% let max = produtos[0].qtd_estoque - resulta%>
+                        <% if(produtos[0].qtd_estoque <= 100){ %>
+                            <% for(let i=1; i<=max; i++){ %>
+                                <option value="<%- i %>">
+                                    <%= i %>
+                                </option>
+                                <%}%>
+                                    <% }else{ %>
+                                        <% for(let i=1; i<=max; i++){ %>
+                                            <option value="<%- i %>">
+                                                <%= i %>
+                                            </option>
                                         <%}%>
-                                            <% } %>
-                </select>
-                <button id="comprar" type="submit">Adicionar</button>
+                                    <% } %>
+                    </select>
+                    <button id="comprar" type="submit">Adicionar</button>
+                <% }else{ %>
+                    <h6>Você ja adicionou este produto ao carrinho!!</h6>
+                <% } %>
             </form>
             <button class="close-btn">Cancelar</button>
         </div>

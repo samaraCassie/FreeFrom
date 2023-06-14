@@ -36,10 +36,10 @@ exports.postProduto = (req, res) => {
     const preco = req.body.preco;
 
     
-
+    if(path != null){
+        let imagem = path.slice(9);
+    }
     
-
-    let imagem = path.slice(9);
     const user = req.session.user;
     if(user){
         connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
@@ -48,7 +48,7 @@ exports.postProduto = (req, res) => {
                 const erro = "Para cadastrar um produto você precisa ter no minímo 1 no estoque!!";
                 res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
             }else{
-                if(!path){
+                if(path == null){
                     const erro = "Envie uma imagem do produto!!";
                     res.render("_CadastroProdutos", {errado: true, error: erro, vendedor: true})
                 }else{
