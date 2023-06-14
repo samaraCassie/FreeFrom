@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const navbarController = require('./navBarController');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -8,6 +9,7 @@ const connection = mysql.createConnection({
 });
 
 exports.paginaDesc = (req, res) => {
+    const navBar = navbarController(req);
     const id = req.params.id;
     const user = req.session.user;
     if(user){
@@ -21,7 +23,7 @@ exports.paginaDesc = (req, res) => {
             connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
               if(resultado == undefined){
                 resultado == null;
-                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: user, id: id, compredo: false, resulta: 0});
+                res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: user, id: id, compredo: false, resulta: 0, navBar: navBar});
               }
               else{
                 connection.query("SELECT SUM(quantidade) AS total FROM itens_produto WHERE id_usuario = ? AND id_produto = ?", [user[0].id_usuario, id], (er, resulta) => {
@@ -34,13 +36,13 @@ exports.paginaDesc = (req, res) => {
                   }
                   
                   if(resulta[0].total >= results[0].qtd_estoque){
-                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: true, resulta: total});
+                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: true, resulta: total, navBar: navBar});
                   }
                   else if(resulta[0].total > 0){
-                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: false, resulta: total});
+                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: false, resulta: total, navBar: navBar});
                   }
                   else{
-                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: false, resulta: total});
+                    res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: user, id: id, compredo: false, resulta: total, navBar: navBar});
                   }
                 });
               }
@@ -60,10 +62,10 @@ exports.paginaDesc = (req, res) => {
           connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
             if(resultado == undefined){
               resultado == null;
-              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: false, id: id, compredo: false, resulta: 0});
+              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: false, id: id, compredo: false, resulta: 0, navBar: navBar});
             }
             else{
-              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: false, id: id, compredo: false, resulta: 0});
+              res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado[0].total, comprado: false, user: false, id: id, compredo: false, resulta: 0, navBar: navBar});
             }
           });
         });
