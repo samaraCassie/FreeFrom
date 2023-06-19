@@ -149,6 +149,98 @@ const navbarController = (req, callback, page) => {
         </nav>
     </header>`;
     }
+    else if('sobre'){
+        template = `<header class="barra">
+        <nav class="bar-menu">
+            <ul>   
+                <li><a class="menu" href="/">Início</a></li>
+                <li><a class="menu" href="/_produtos">Produtos</a></li>
+                <li><a class="menu" href="/_carrinho">Carrinho</a></li>
+                <li>
+                    <a class="menu" href="#">Mais▾</a>
+                    <ul>
+                        <% if(!vendedor){ %>
+                            <li class="subMenu"><a href="/_cadastroLoja">Vender</a></li>
+                        <% } %>
+                        <li class="subMenu"><a href="/_Sobre">Sobre Nós</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="menu" href="#">
+                        <label id="icone" for="conta">
+                            <div class="user">
+                                <% if(usuario){ %>
+                                    <span><%= user[0].usuario %></span>
+                                <% }else{ %>
+                                    <span>Log In</span>
+                                <% } %>
+                            </div>
+                            <img src="/Img/profile-user.png" width="30" height="30">
+                        </label>
+                    </a>
+                    <ul id="conta">
+                        <% if(usuario){ %>
+                            <% if(vendedor){ %>
+                                <li class="subMenu"><a href="/_PerfilLoja/<%- idLoja %>">Minha Loja</a></li>
+                            <% } %>
+                            <li class="subMenu"><a href="/_logOut">Sair</a></li>
+                        <% }else{ %>
+                            <li class="subMenu"><a href="/_Cadastro">Cadastrar</a></li>
+                            <li class="subMenu"><a href="/_Login">Entrar</a></li>
+                        <% } %>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>`;
+    }
+    else{
+        template = `<header class="barra">
+        <nav class="bar-menu">
+            <ul>   
+                <li><a class="menu" href="/">Início</a></li>
+                <li><a class="menu" href="/_produtos">Produtos</a></li>
+                <li><a class="menu" href="/_carrinho">Carrinho</a></li>
+                <li>
+                    <a class="menu" href="#">Mais▾</a>
+                    <ul>
+                        <% if(!vendedor){ %>
+                            <li class="subMenu"><a href="/_cadastroLoja">Vender</a></li>
+                        <% } %>
+                        <li class="subMenu"><a href="/_Sobre">Sobre Nós</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="menu" href="#">
+                        <label id="icone" for="conta">
+                            <div class="user">
+                                <% if(usuario){ %>
+                                    <span><%= user[0].usuario %></span>
+                                <% }else{ %>
+                                    <span>Log In</span>
+                                <% } %>
+                            </div>
+                            <img src="/Img/profile-user.png" width="30" height="30">
+                        </label>
+                    </a>
+                    <ul id="conta">
+                        <% if(usuario){ %>
+                            <% if(vendedor){ %>
+                                <li class="subMenu"><a href="/_PerfilLoja/<%- idLoja %>">Minha Loja</a></li>
+                            <% } %>
+                            <li class="subMenu"><a href="/_logOut">Sair</a></li>
+                        <% }else{ %>
+                            <li class="subMenu"><a href="/_Cadastro">Cadastrar</a></li>
+                            <li class="subMenu"><a href="/_Login">Entrar</a></li>
+                        <% } %>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>`;
+    }
   
     let user = req.session.user;
     let usuario;
@@ -169,7 +261,6 @@ const navbarController = (req, callback, page) => {
           idLoja = null;
         }
   
-        console.log(usuario, vendedor, idLoja);
         const context = { user: user, usuario: usuario, vendedor: vendedor, idLoja: idLoja };
         const navBar = ejs.render(template, context);
         callback(navBar);
@@ -179,7 +270,6 @@ const navbarController = (req, callback, page) => {
       vendedor = false;
       idLoja = null;
   
-      console.log(usuario, vendedor, idLoja);
       const context = { user: user, usuario: usuario, vendedor: vendedor, idLoja: idLoja };
       const navBar = ejs.render(template, context);
       callback(navBar);
