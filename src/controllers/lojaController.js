@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const navbarController = require('./navBarController');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -8,6 +9,7 @@ const connection = mysql.createConnection({
 });
 
 exports.paginaLoja = (req, res) => {
+    navbarController(req, (navBar) => {
     if(req.session.user){
         const id = req.params.id;
         const user = req.session.user;
@@ -18,10 +20,10 @@ exports.paginaLoja = (req, res) => {
                 connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, resultado) => {
                     if(erro) throw erro
                     if(resultado != "" || resultado != null){
-                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true, usuario: user, resultado: resultado});
+                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true, usuario: user, resultado: resultado, navBar: navBar});
                     }
                     else{
-                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, usuario: user, resultado: null});
+                        res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, usuario: user, resultado: null, navBar: navBar});
                     }
                 });
             });
@@ -33,8 +35,9 @@ exports.paginaLoja = (req, res) => {
             if(error) throw error
             connection.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
                     if(err) throw err
-                    res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false});
+                    res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, navBar: navBar});
                 });
             });
     }
+}, 'loja')
 }

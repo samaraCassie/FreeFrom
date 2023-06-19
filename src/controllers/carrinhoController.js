@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const navbarController = require('./navBarController');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -9,6 +10,7 @@ const connection = mysql.createConnection({
 
 exports.paginaCarrinho = (req, res) => {
     const user = req.session.user;
+    navbarController(req, (navBar) => {
     if(user){
         connection.query('SELECT * FROM itens_produto WHERE id_usuario = ?', [user[0].id_usuario], (err, results, fields) => {
             if(err) throw err;
@@ -32,7 +34,7 @@ exports.paginaCarrinho = (req, res) => {
                   
                     Promise.all(promises)
                       .then((produtos) => {
-                        res.render('_Carrinho', {produtin: true, produtos: produtos, results: results, user: true});
+                        res.render('_Carrinho', {produtin: true, produtos: produtos, results: results, user: true, navBar: navBar});
                       })
                       .catch((erro) => {
                         throw erro;
@@ -40,13 +42,14 @@ exports.paginaCarrinho = (req, res) => {
                   });
             }
             else{
-                res.render('_Carrinho', {produtos: "", produtin: false, user: true});
+                res.render('_Carrinho', {produtos: "", produtin: false, user: true, navBar: navBar});
             }
         });
     }
     else{
-        res.render('_Carrinho', {produtos: "", produtin: false, user: false});
+        res.render('_Carrinho', {produtos: "", produtin: false, user: false, navBar: navBar});
     }
+}, 'carrinho')
 }
 
 function atualizarQuantidadeEmEstoque(qtd, produtoId) {
