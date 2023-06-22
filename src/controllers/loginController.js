@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-const md5 = require('md5');
 const crypto = require('crypto');
 
 function cripitografar(dados) {
