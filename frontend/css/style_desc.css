@@ -5,6 +5,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  margin-top: 8%;
 }
 
 .container{
@@ -16,6 +17,7 @@ body{
   margin-right: 5%;
   margin-left: 5%;
   margin-bottom: 10%;
+  font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
 }
 
 section{
@@ -37,30 +39,6 @@ section .box{
   top: 75px;
   width: 90%;
   margin-bottom: 15vmin;
-}
-
-a span:hover{
-  height: 7.5vmin;
-  width: 7.5vmin;
-  transition: all .2s linear;
-  box-shadow: 2px 2px 5px #2c2c2c;
-  background:  rgb(255, 255, 255);
-}
-
-span{
-  cursor: pointer;
-  position: fixed;
-  z-index: 2;
-  font-size: 3vmax;
-  width: 6.5vmin;
-  height: 6.5vmin ;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 2.5%;  
-  border-radius: 150%;
-  box-shadow: 2px 2px 5px #2c2c2cb6;
-  background:  rgba(255, 255, 255, 0.664);
 }
 
 /*Fotos de Demonstração do Produto*/
@@ -93,11 +71,8 @@ span{
   .valor{
     background: rgba(83, 59, 49, 0.505);
     color: rgb(255, 255, 255);
-    border: none;
     border-radius: 8vmin;
-    font-size: 30px;
     width: 100%;
-    padding: 0 30px;
   }
 /*<!-- [INICO] SESSÃO DE **INFORMAÇÕES** DO PRODUTO-->*/
 
@@ -172,7 +147,6 @@ span{
       position: absolute;
       margin-left: 2%;
     }dl, p, table{  
-      font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,sans-serif,Arial;
       font-size: 16px;
       font-weight: 30;
       line-height: 1.35;
