@@ -52,21 +52,9 @@
                 <label for="categoria" style="color: white; left: 23.5%; position: absolute; top: 68%;">Categoria:</label>
                 <div class="select-uf">
                     <select class="" name="categoria" id="categoria">
-                        <option value="Sem Gluten">Sem Glúten</option>
-                        <option value="Sem Trigo">Sem Trigo</option>
-                        <option value="Sem Lactose">Sem Lactose</option>
-                        <option value="Sem Leite de Vaca">Sem leite de Vaca</option>
-                        <option value="Sem Ovo">Sem Ovo</option>
-                        <option value="Sem Amendoin">Sem Amendoin</option>
-                        <option value="Sem Castanhas">Sem Castanhas</option>
-                        <option value="Sem Soja">Sem Soja</option>
-                        <option value="Sem Peixe">Sem Peixe</option>
-                        <option value="Sem Frutos do Mar">Sem Frutos do Mar</option>
-                        <option value="Sem Açucar">Sem Açucar</option>
-                        <option value="Sem Aditivos alimentares">Sem Aditivos alimentares</option>
-                        <option value="Vegetariano">Vegetariano</option>
-                        <option value="Vegano">Vegano</option>
-                        <option value="Fitness">Fitness</option>
+                        <% categorias.forEach(function(categoria){%>
+                            <option value="<%- categoria.id_categoria %>"><%= categoria.categoria %></option>
+                        <%})%>
                     </select>
                 </div>
 
