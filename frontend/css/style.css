@@ -15,7 +15,7 @@
 header{
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 6;
 }
 /***** ESTILIZAÇÃO DO MENU *****/
     .bar-menu nav{
@@ -27,6 +27,7 @@ header{
         position: fixed;
         top: 0px;
         background: rgba(32, 26, 24);
+        z-index: 20;
     }
     nav{
         box-shadow: -5px 5px 35px rgba(0, 0, 0, 0.425);
