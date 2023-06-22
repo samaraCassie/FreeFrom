@@ -80,3 +80,19 @@ footer{
     bottom: -15vmin;
     height: 25vmin;
 }
+
+.esgotado{
+    color: white;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.575);
+    padding: 10px;
+    border: 1px solid black;
+    user-select: none;
+}

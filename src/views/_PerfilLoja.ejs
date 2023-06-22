@@ -116,6 +116,9 @@
                     <% produtos.forEach(function(produto){ %>
                         <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                             <div class="icon"><!--ESPAÇO DA CAPA-->
+                                <% if(produto.qtd_estoque <= 0){ %>
+                                    <div class="esgotado">Esgotado</div>
+                                <% } %>
                                 <img src="/<%= produto.img %>"alt="Contact us.">
                             </div>
                                 <span class="span1"><%= produto.nome %></span>
