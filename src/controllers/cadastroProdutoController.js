@@ -15,15 +15,19 @@ exports.paginaCadastroProduto = (req, res) => {
             if(err) throw err;
             // Renderiza a página do dashboard com as informações do usuário
             if(results != ""){
-                res.render('_CadastroProdutos', {errado: false, vendedor: true});
+                connection.query("SELECT * FROM categoria", (error, result) => {
+                    if(error) throw error;
+
+                    res.render('_CadastroProdutos', {errado: false, vendedor: true, categorias: result});
+                })
             }
             else{
-                res.render('_CadastroProdutos', {errado: false, vendedor: false});
+                res.render('_CadastroProdutos', {errado: false, vendedor: false, categorias: null});
             }
         });
     }
     else{
-        res.render('_CadastroProdutos', {errado: false, vendedor: false});
+        res.render('_CadastroProdutos', {errado: false, vendedor: false, categorias: null});
     }
 }
 

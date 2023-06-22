@@ -36,7 +36,7 @@ exports.produtosPost = (req, res) => {
     const pesquisa = req.body.pesquisa;
 
 
-    connection.query(`SELECT * FROM produto where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}%" OR categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
+    connection.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}%" OR c.categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
         if (error) throw error
         if(result == ""){
             if (req.session.user) {

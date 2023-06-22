@@ -18,7 +18,9 @@ exports.pageEdit = (req, res) => {
                 connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results) => {
                     if(error) throw error;
 
-                    res.render('_editProduto', {user: true, vendedor: true, errado: false, id: id, results: results});
+                    connection.query('SELECT * FROM categoria', (er, resultado) => {
+                        res.render('_editProduto', {user: true, vendedor: true, errado: false, id: id, results: results, categorias: resultado});
+                    })
                 });
             }
             else{

@@ -34,11 +34,10 @@ exports.editProduto = (req, res) => {
                       res.redirect('/_produtos');
                   });
               }else{
-                connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (err, results) => {
+                connection.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, id], (err, results) => {
                     if(err) throw err;
-
-                    res.render('_editProduto', {user: true, vendedor: true, errado: true, error: 'Envie a imagem do produto!!', id: id, results: results});
-                })
+                    res.redirect('/_produtos');
+                });
               }
           }else{
               res.render('_editProduto', {user: true, vendedor: false});
