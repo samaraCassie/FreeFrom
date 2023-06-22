@@ -1,6 +1,14 @@
 const mysqls = require('mysql2');
-const md5 = require('md5');
 const validator = require('validator');
+
+const crypto = require('crypto');
+
+function cripitografar(dados) {
+  const hash = crypto.createHash('sha256');
+  hash.update(dados);
+  return hash.digest('hex');
+}
+
 
 const connection = mysqls.createConnection({
     host: 'localhost',
@@ -17,14 +25,16 @@ exports.paginaCadastro = (req, res) =>{
 exports.postCadastro = (req, res) => {
   const usuario = req.body.usuario;
   const email = req.body.email;
-  const senha = md5(req.body.senha);
+  const senha = cripitografar(req.body.senha);
   const dataNascimento = req.body.data;
   const sexo = req.body.sexo;
-  const endereço = req.body.Endereço;
+  const cep = req.body.cep;
+  const endereco = req.body.endereco;
   const numero = req.body.Numero;
   const cidade = req.body.Cidade;
   const uf = req.body.UF;
   const cpf = req.body.cpf;
+  const bairro = req.body.bairro;
 
   var data = new Date(dataNascimento);
   var dataAtual = new Date();
@@ -81,8 +91,8 @@ exports.postCadastro = (req, res) => {
   }
 
   if(validaEmail && validaSenha && validaData && validaUF && validaCpf){
-    const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, endereco, numero, cidade, uf, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [email, usuario, senha, dataNascimento, sexo, endereço, numero, cidade, uf, cpf];
+    const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, cpf) VALUES (?, ?, ?, ?, ?, ?)';
+    const values = [email, usuario, senha, dataNascimento, sexo, cpf];
         connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
             if (error) res.render('_Cadastro', {errado: true, error: 'Algo deu errado no seu cadastro!! Tente novamente'});
 
@@ -95,13 +105,14 @@ exports.postCadastro = (req, res) => {
                   res.render('_Cadastro', {errado: true, error: 'Este nome ja esta sendo usado!!'});
                 }else{
                   connection.query(sql, values, (err, result) => {
-                    if (err) {
-                        console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
-                        return;
-                    }
+                    if (err) throw err
                     connection.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
-                      req.session.user = results;
-                      res.redirect('/_Produtos');
+                      connection.query('INSERT INTO endereco (cep, cidade, numero, uf, rua, bairro, id_usuario) VALUES(?, ?, ?, ?, ?, ?, ?)', [cep, cidade, numero, uf, endereco, bairro, result.insertId], (errado, resultado) => {
+                        if(errado) throw errado;
+
+                        req.session.user = results;
+                        res.redirect('/_Produtos');
+                      });
                     })
                     });
                 }
