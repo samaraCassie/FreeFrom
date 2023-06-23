@@ -32,11 +32,14 @@ exports.paginaProdutos = (req, res) => {
         });
     }
 
+    
+
 exports.produtosPost = (req, res) => {
     const pesquisa = req.query.pesquisa;
 
+    let pesquisa2 = removeQuotes(pesquisa);
 
-    connection.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}%" OR c.categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {
+    connection.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa2}%" OR descricao LIKE "%${pesquisa2}%" OR c.categoria LIKE "%${pesquisa2}%"`, (error, result, fields) => {
         if (error) throw error
         if(result == ""){
             if (req.session.user) {
@@ -81,3 +84,11 @@ exports.produtosPost = (req, res) => {
         
     });
 }
+
+function removeQuotes(variable) {
+    if (typeof variable === 'string') {
+      return variable.replace(/["';]/g, '');
+    } else {
+      return variable;
+    }
+  }
