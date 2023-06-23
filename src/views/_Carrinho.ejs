@@ -12,10 +12,10 @@
     <%- navBar %>
     <section class="principal">
         <div class="cabecalho">
-            <a href="_Produtos"><img style="border-radius: 5px; width: 35px; height: 35px;" src="Img/house-solid.svg"></a>
-            <h1>Produtos no carrinho:</h1>
-            <hr>
+            <a href="_Produtos"><img src="Img/house-solid.svg"></a>
+            <h2>Produtos no carrinho:</h2>
         </div>
+        <div class="underline"></div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
             <% let preco = 0; %>
             <% let qtd = 0; %>
@@ -44,12 +44,12 @@
             <% } %>
         </div>
         <br>
-        <hr>
+        <div class="underline"></div>
         <% preco = parseFloat(preco.toFixed(2));%>
         <% if(produtos != ""){%>
-            <h1>Total: R$<%= preco %></h1>
+            <span>Total: R$<%= preco %></span>
         <% }else{ %>
-            <h1>Total: R$00,00</h1>
+            <span>Total: R$00,00</span>
         <% } %>
         <% if(user && produtos != ""){ %>
             <form action="/_confirmarCompra" method="POST">
