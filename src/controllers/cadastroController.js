@@ -107,7 +107,7 @@ exports.postCadastro = (req, res) => {
                   connection.query(sql, values, (err, result) => {
                     if (err) throw err
                     connection.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
-                      connection.query('INSERT INTO endereco (cep, cidade, numero, uf, rua, bairro, id_usuario) VALUES(?, ?, ?, ?, ?, ?, ?)', [cep, cidade, numero, uf, endereco, bairro, result.insertId], (errado, resultado) => {
+                      connection.query('INSERT INTO endereco (cep, cidade, numero, uf, endereco, bairro, id_usuario) VALUES(?, ?, ?, ?, ?, ?, ?)', [cep, cidade, numero, uf, endereco, bairro, result.insertId], (errado, resultado) => {
                         if(errado) throw errado;
 
                         req.session.user = results;
