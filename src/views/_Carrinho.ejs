@@ -17,6 +17,7 @@
         </div>
         <div class="underline"></div>
         <div class="cards"><!----------------FILEIRA DE CARTÕES-->
+            <% let pode = true %>
             <% let preco = 0; %>
             <% let qtd = 0; %>
             <% let i = 0; %>
@@ -39,6 +40,21 @@
                     <% let precoFloat = parseFloat(valorVarchar); %>
                     <% preco += precoFloat * results[i].quantidade;%>
                     <% i++ %>
+                    <% }else{ %>
+                        <% pode = false %>
+                        <section class="card contact"><!--CARTÃO INDIVIDUAL-->
+                            <div class="icon"><!--ESPAÇO DA CAPA-->
+                                <div class="esgotado">Esgotado</div>
+                                <img src="<%- produto.img %>"alt="Contact us.">
+                            </div>
+                                <span class="span1"><%= produto.nome %></span>
+                                <span class="span2">Quantidade: <%= results[i].quantidade; %></span>
+                                <span class="span3">Preço unidade: <%= produto.preco_unit %></span>
+                                <form action="/_remove" method="POST">
+                                    <input type="hidden" value="<%- results[i].id_itens_produto %>" name="id_itens">
+                                    <button class="remove">Remover do carrinho</button>
+                                </form>
+                        </section>
                     <% } %>
                 <% }); %>
             <% } %>
@@ -60,7 +76,9 @@
                     <input type="hidden" name="id<%- index %>" value="<%- results[index].id_itens_produto %>">
                     <input type="hidden" name="id_produto<%- index %>" value="<%- results[index].id_produto %>">
                 <% } %>
-                <button class="btn">Confirmar</button>
+                <% if(pode){ %>
+                    <button class="btn">Confirmar</button>
+                <% } %>
             </form>
         <% }else{ %>
             <button class="btn">Confirmar</button>
