@@ -55,6 +55,14 @@ const navbarController = (req, callback, page) => {
                 </li>
             </ul>
         </nav>
+        <div class="busca">
+                <form class="formBusca" method="GET" action="/_pesquisa">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>`;
     }
     else if(page == 'produto'){
@@ -101,6 +109,14 @@ const navbarController = (req, callback, page) => {
                 </li>
             </ul>
         </nav>
+        <div class="busca">
+                <form class="formBusca" method="GET" action="/_pesquisa">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>`;
     }
     else if(page == 'loja'){
@@ -147,6 +163,14 @@ const navbarController = (req, callback, page) => {
                 </li>
             </ul>
         </nav>
+        <div class="busca">
+                <form class="formBusca" method="GET" action="/_pesquisa">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>`;
     }
     else if('sobre'){
@@ -193,6 +217,14 @@ const navbarController = (req, callback, page) => {
                 </li>
             </ul>
         </nav>
+        <div class="busca">
+                <form class="formBusca" method="GET" action="/_pesquisa">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>`;
     }
     else{
@@ -239,6 +271,14 @@ const navbarController = (req, callback, page) => {
                 </li>
             </ul>
         </nav>
+        <div class="busca">
+                <form class="formBusca" method="GET" action="/_pesquisa">
+                    <div>
+                        <input type="text" name="pesquisa" placeholder="Pesquise o que você deseja">
+                        <button class="buscar" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
     </header>`;
     }
   

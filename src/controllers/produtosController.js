@@ -33,7 +33,7 @@ exports.paginaProdutos = (req, res) => {
     }
 
 exports.produtosPost = (req, res) => {
-    const pesquisa = req.body.pesquisa;
+    const pesquisa = req.query.pesquisa;
 
 
     connection.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa}%" OR descricao LIKE "%${pesquisa}%" OR c.categoria LIKE "%${pesquisa}%"`, (error, result, fields) => {

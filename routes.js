@@ -40,7 +40,7 @@ route.get('/', homeController.paginaInicial);
 
 //Rotas da pagina de produtos
 route.get('/_Produtos', produtoController.paginaProdutos);
-route.post('/_Produtos', produtoController.produtosPost);
+route.get('/_pesquisa', produtoController.produtosPost);
 
 //Rotas do login
 route.get('/_Login', loginController.loginPagina);
