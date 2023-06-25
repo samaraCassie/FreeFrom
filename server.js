@@ -50,6 +50,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(meuMiddleware.middleWare);
 app.use(routes);
 
+app.use((req, res) => {
+  res.status(404).render('_404');
+});
+
 app.on('Pronto', () => {
     app.listen(3000, () => {
       console.log('Acessar http://localhost:3000');
