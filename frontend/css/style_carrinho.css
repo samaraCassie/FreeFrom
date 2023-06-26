@@ -7,7 +7,8 @@
   border-radius: 10px;
   padding: 20px;
   margin: 15vmin auto;
-  
+  position: absolute;
+  top: 12%;
 }
 
 .cabecalho {
@@ -125,9 +126,9 @@ section.card a {
   padding: 0.5vmax 1vmax;
   border-radius: 32vmin;
   bottom: 1.5vh;
-  right: 0%;
   height: 10%;
   top: 85%;
+  margin-top: 5%;
   max-width: 75%;
-  right: 12%;
+  right: 20%;
 }

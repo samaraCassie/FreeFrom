@@ -12,7 +12,6 @@
     <%- navBar %>
     <section class="principal">
         <div class="cabecalho">
-            <a href="_Produtos"><img src="Img/house-solid.svg"></a>
             <h2>Produtos no carrinho:</h2>
         </div>
         <div class="underline"></div>
@@ -26,7 +25,7 @@
                     <% if(!produto.qtd_estoque == 0){ %>
                     <section class="card contact"><!--CARTÃO INDIVIDUAL-->
                         <div class="icon"><!--ESPAÇO DA CAPA-->
-                            <img src="<%- produto.img %>"alt="Contact us.">
+                            <img src="<%- produto.img %>">
                         </div>
                             <span class="span1"><%= produto.nome %></span>
                             <span class="span2">Quantidade: <%= results[i].quantidade; %></span>
