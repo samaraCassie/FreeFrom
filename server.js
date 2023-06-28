@@ -50,13 +50,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(meuMiddleware.middleWare);
 app.use(routes);
 
+
+const port = process.env.PORT || 3000;
 app.use((req, res) => {
   res.status(404).render('_404');
 });
 
-app.on('Pronto', () => {
-    app.listen(3000, () => {
-      console.log('Acessar http://localhost:3000');
-      console.log('Servidor executando na porta 3000');
+// app.on('Pronto', () => {
+    app.listen(port, () => {
+      console.log('Acessar http://localhost:' + port);
+      console.log('Servidor executando na porta ' + port);
   });
-});
+// });
