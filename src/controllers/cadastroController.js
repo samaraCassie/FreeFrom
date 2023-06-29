@@ -19,7 +19,7 @@ function cripitografar(dados) {
 
 
 exports.paginaCadastro = (req, res) =>{
-    res.render('_cadastro', {errado: false});
+    res.render('_Cadastro', {errado: false});
 }
 
 exports.postCadastro = (req, res) => {
