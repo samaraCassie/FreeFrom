@@ -36,9 +36,7 @@ const pageController = require('./src/controllers/404Controller');
 const editarProdutoController = require('./src/controllers/editarProdutoController');
 
 //Rotas da home
-route.get('/', (req, res) => {
-  res.send('Ola');
-});
+route.get('/', homeController.paginaInicial);
 
 //Rotas da pagina de produtos
 route.get('/_Produtos', produtoController.paginaProdutos);

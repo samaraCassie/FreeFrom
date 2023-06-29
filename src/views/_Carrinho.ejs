@@ -62,9 +62,9 @@
         <div class="underline"></div>
         <% preco = parseFloat(preco.toFixed(2));%>
         <% if(produtos != ""){%>
-            <span>Total: R$<%= preco %></span>
+            <span style="font-size: 200%;">Total: R$<%= preco %></span>
         <% }else{ %>
-            <span>Total: R$00,00</span>
+            <span style="font-size: 200%;">Total: R$00,00</span>
         <% } %>
         <% if(user && produtos != ""){ %>
             <form action="/_confirmarCompra" method="POST">

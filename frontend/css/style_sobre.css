@@ -9,7 +9,8 @@
     border-radius: 20px;
     justify-content: center;
     padding: 20px;
-    margin: 40px auto;
+    margin: 15% auto;
+    margin-bottom: 0%;
 }
 .principal h1{
     color: rgb(90, 57, 35);
@@ -20,11 +21,4 @@ p{
 }
 .principal h2{
     color: rgb(110, 95, 85);
-}
-a{
-    font-size: 25px;
-    padding: 10px;
-    color: white;
-    background-color: rgba(40, 31, 28);
-    border-radius: 20px;
 }
