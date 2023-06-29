@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "heroku-postbuild": "npm install --dev",
-    "start": "nodemon server.js --ignore public --ignore frontend",
+    "start": "node server.js",
     "dev": "webpack -w"
   },
   "keywords": [],
