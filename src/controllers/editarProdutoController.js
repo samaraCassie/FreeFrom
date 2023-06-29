@@ -1,11 +1,11 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'freefrom'
-});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'freefrom'
+// });
 
 exports.editProduto = (req, res) => {
   const id = req.params.id;

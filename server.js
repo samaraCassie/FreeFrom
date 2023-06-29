@@ -5,7 +5,7 @@ const flash = require("connect-flash")
 const session = require('express-session');
 
 //conexão com banco de dados
-const mysql = require('mysql2');
+// const mysql = require('mysql2');
 
 // const connection = mysql.createConnection({
 //   host: 'us-cdbr-east-06.cleardb.net',

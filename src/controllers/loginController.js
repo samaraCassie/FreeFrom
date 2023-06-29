@@ -13,12 +13,12 @@ function verificarSenha(senha, hashCriptografado) {
 }
 
 
-const connection =  mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'freefrom'
-    });
+// const connection =  mysql.createConnection({
+//       host: 'localhost',
+//       user: 'root',
+//       password: '',
+//       database: 'freefrom'
+//     });
 
 
 exports.loginPagina = (req, res) => {

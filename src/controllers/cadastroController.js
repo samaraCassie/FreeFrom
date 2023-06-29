@@ -10,12 +10,12 @@ function cripitografar(dados) {
 }
 
 
-const connection = mysqls.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'freefrom'
-  });
+// const connection = mysqls.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'freefrom'
+//   });
 
 
 exports.paginaCadastro = (req, res) =>{

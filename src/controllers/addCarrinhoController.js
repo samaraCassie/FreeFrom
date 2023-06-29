@@ -1,11 +1,11 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'freefrom'
-});
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'freefrom'
+// });
 
 exports.addCarrinho = (req, res) => {
     const user = req.session.user

@@ -1,12 +1,12 @@
 const mysql = require('mysql');
 const navbarController = require('./navBarController');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'freefrom'
-});
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'freefrom'
+// });
 
 exports.paginaLoja = (req, res) => {
     navbarController(req, (navBar) => {

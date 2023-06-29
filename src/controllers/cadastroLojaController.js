@@ -2,12 +2,12 @@ const mysqls = require('mysql2');
 const md5 = require('md5');
 const validator = require('validator');
 
-const connection = mysqls.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'freefrom'
-  });
+// const connection = mysqls.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'freefrom'
+//   });
 
 
 exports.cadastroLoja = (req, res) => {

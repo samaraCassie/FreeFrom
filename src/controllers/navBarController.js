@@ -1,12 +1,12 @@
 const ejs = require('ejs');
 const mysqls = require('mysql2');
 
-const connection = mysqls.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'freefrom'
-});
+// const connection = mysqls.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'freefrom'
+// });
 
 const navbarController = (req, callback, page) => {
     var template;
