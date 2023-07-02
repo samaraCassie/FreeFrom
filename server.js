@@ -56,9 +56,9 @@ app.use((req, res) => {
   res.status(404).render('_404');
 });
 
-// app.on('Pronto', () => {
+app.on('Pronto', () => {
     app.listen(port, () => {
       console.log('Acessar http://localhost:' + port);
       console.log('Servidor executando na porta ' + port);
   });
-// });
+});

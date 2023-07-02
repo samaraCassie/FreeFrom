@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `categoria`
 --
 
+use heroku_f1c7f7f6459dca3;
+
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id_categoria` int(3) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(100) DEFAULT NULL,

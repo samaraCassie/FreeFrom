@@ -1,11 +1,11 @@
 const mysqls = require('mysql2');
 
-// const connection = mysqls.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'freefrom'
-// });
+const connection = mysqls.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'freefrom'
+});
 
 exports.paginaProdutos = (req, res) => {
 
