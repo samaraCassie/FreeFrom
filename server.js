@@ -4,25 +4,25 @@ const bodyParser = require('body-parser');
 const flash = require("connect-flash")
 const session = require('express-session');
 
-//conexão com banco de dados
-// const mysql = require('mysql2');
+// conexão com banco de dados
+const mysql = require('mysql2');
 
-// const connection = mysql.createConnection({
-//   host: 'us-cdbr-east-06.cleardb.net',
-//   user: 'be5f53017f38ab',
-//   password: '0a3c77ee',
-//   database: 'heroku_f1c7f7f6459dca3'
-// });
+const connection = mysql.createConnection({
+  host: 'us-cdbr-east-06.cleardb.net',
+  user: 'be5f53017f38ab',
+  password: '0a3c77ee',
+  database: 'heroku_f1c7f7f6459dca3'
+});
 
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('Erro ao conectar com o banco de dados: ' + err.stack);
-//     return;
-//   }
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar com o banco de dados: ' + err.stack);
+    return;
+  }
 
-//   console.log('Conexão bem-sucedida com o banco de dados');
-//   app.emit('Pronto');
-// });
+  console.log('Conexão bem-sucedida com o banco de dados');
+  app.emit('Pronto');
+});
 
 const routes = require('./routes');
 const path = require('path');
