@@ -1,10 +1,10 @@
 const mysqls = require('mysql2');
 
 const connection = mysqls.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'freefrom'
+    host: 'us-cdbr-east-06.cleardb.net',
+    user: 'be5f53017f38ab',
+    password: '0a3c77ee',
+    database: 'heroku_f1c7f7f6459dca3'
 });
 
 exports.paginaProdutos = (req, res) => {
