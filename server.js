@@ -52,6 +52,7 @@ app.use((err, req, res, next) => {
     console.error('Internal Server Error:', err);
     // Send an appropriate response to the client
     res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).send('Deu erro kkk');
   } else {
     // Pass the error to the next error handling middleware
     next(err);
