@@ -1,15 +1,11 @@
-const mysql = require('mysql');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
+
 exports.editarPage = (req, res) => {
     const user = req.session.user;
     if(user){
-    connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results) => {
+    db.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results) => {
         if(err) throw err;
         if(results != ""){
             if(results[0].id_vendedor == req.params.id){
@@ -35,7 +31,7 @@ exports.postEditar = (req, res) => {
     const slogan = req.body.slogan;
     const sobre = req.body.sobre;
 
-    connection.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ? WHERE id_vendedor = ?', [nome, cnpj, slogan, sobre, id], (erro, result) => {
+    db.query('UPDATE vendedor SET nome_loja = ?, cnpj = ?, slogan = ?, sobre = ? WHERE id_vendedor = ?', [nome, cnpj, slogan, sobre, id], (erro, result) => {
         if(erro) throw erro
         
         res.redirect('/_Perfilloja/' + id);

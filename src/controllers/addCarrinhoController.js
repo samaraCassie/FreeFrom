@@ -1,11 +1,6 @@
-const mysql = require('mysql');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.addCarrinho = (req, res) => {
     const user = req.session.user
@@ -18,7 +13,7 @@ exports.addCarrinho = (req, res) => {
         const produto = req.body.produto;
         const qtd = req.body.qtd;
         const id = req.body.produto;
-        connection.query('INSERT INTO itens_produto (id_usuario, id_produto, quantidade) VALUES (?, ?, ?)', [usuario, produto, qtd], (error, result) => {
+        db.query('INSERT INTO itens_produto (id_usuario, id_produto, quantidade) VALUES (?, ?, ?)', [usuario, produto, qtd], (error, result) => {
             if(error) throw error
 
             res.redirect('/_descricaoProduto/' + id);

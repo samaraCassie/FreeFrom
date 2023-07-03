@@ -1,5 +1,7 @@
-const mysql = require('mysql');
 const crypto = require('crypto');
+const db = require('../models/dbModel');
+
+db.connect();
 
 function cripitografar(dados) {
   const hash = crypto.createHash('sha256');
@@ -12,15 +14,6 @@ function verificarSenha(senha, hashCriptografado) {
   return novoHash === hashCriptografado;
 }
 
-
-const connection =  mysql.createConnection({
-  host: 'us-cdbr-east-06.cleardb.net',
-  user: 'be5f53017f38ab',
-  password: '0a3c77ee',
-  database: 'heroku_f1c7f7f6459dca3'
-    });
-
-
 exports.loginPagina = (req, res) => {
     res.render('_Login', {errado: false});
 }
@@ -29,7 +22,7 @@ exports.loginPost = async (req, res) => {
     const email = req.body.email;
     const senha = req.body.senha;
   
-    connection.query('SELECT * FROM usuario WHERE email = ?', [email ], (error, results, fields) => {
+    db.query('SELECT * FROM usuario WHERE email = ?', [email ], (error, results, fields) => {
       if (error) {
         // se ocorrer um erro, exibir mensagem de erro
         res.render('_Login', { error: 'Ocorreu um erro ao fazer login. Tente novamente.', errado: true});

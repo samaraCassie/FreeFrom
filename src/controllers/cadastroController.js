@@ -1,4 +1,4 @@
-const mysqls = require('mysql2');
+const db = require('../models/dbModel');
 const validator = require('validator');
 
 const crypto = require('crypto');
@@ -9,14 +9,7 @@ function cripitografar(dados) {
   return hash.digest('hex');
 }
 
-
-const connection = mysqls.createConnection({
-  host: 'us-cdbr-east-06.cleardb.net',
-  user: 'be5f53017f38ab',
-  password: '0a3c77ee',
-  database: 'heroku_f1c7f7f6459dca3'
-  });
-
+db.connect();
 
 exports.paginaCadastro = (req, res) =>{
     res.render('_Cadastro', {errado: false});
@@ -93,21 +86,21 @@ exports.postCadastro = (req, res) => {
   if(validaEmail && validaSenha && validaData && validaUF && validaCpf){
     const sql = 'INSERT INTO usuario (email, usuario, senha, data_nascimento, sexo, cpf) VALUES (?, ?, ?, ?, ?, ?)';
     const values = [email, usuario, senha, dataNascimento, sexo, cpf];
-        connection.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
+        db.query('SELECT * FROM usuario WHERE email = ?', email, (error, results, fields) => {
             if (error) res.render('_Cadastro', {errado: true, error: 'Algo deu errado no seu cadastro!! Tente novamente'});
 
             if (results.length > 0) {
                 // Usuário já existe no banco de dados
                 res.render('_Cadastro', {errado: true, error: 'Usuario já cadastrado'})
             } else {
-              connection.query('SELECT * FROM usuario WHERE usuario = ?', usuario, (erro, result, field) => {
+              db.query('SELECT * FROM usuario WHERE usuario = ?', usuario, (erro, result, field) => {
                 if(result.length > 0){
                   res.render('_Cadastro', {errado: true, error: 'Este nome ja esta sendo usado!!'});
                 }else{
-                  connection.query(sql, values, (err, result) => {
+                  db.query(sql, values, (err, result) => {
                     if (err) throw err
-                    connection.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
-                      connection.query('INSERT INTO endereco (cep, cidade, numero, uf, endereco, bairro, id_usuario) VALUES(?, ?, ?, ?, ?, ?, ?)', [cep, cidade, numero, uf, endereco, bairro, result.insertId], (errado, resultado) => {
+                    db.query("SELECT * FROM usuario WHERE id_usuario = ?", [result.insertId], (errors, results) => {
+                      db.query('INSERT INTO endereco (cep, cidade, numero, uf, endereco, bairro, id_usuario) VALUES(?, ?, ?, ?, ?, ?, ?)', [cep, cidade, numero, uf, endereco, bairro, result.insertId], (errado, resultado) => {
                         if(errado) throw errado;
 
                         req.session.user = results;

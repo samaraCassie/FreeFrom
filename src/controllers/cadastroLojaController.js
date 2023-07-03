@@ -1,14 +1,6 @@
-const mysqls = require('mysql2');
-const md5 = require('md5');
-const validator = require('validator');
+const db = require('../models/dbModel');
 
-const connection = mysqls.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-  });
-
+db.connect();
 
 exports.cadastroLoja = (req, res) => {
     const user = req.session.user;
@@ -52,7 +44,7 @@ exports.postcadastroloja = (req, res) => {
         let img2 = path2.slice(9);
 
 
-        connection.query("INSERT INTO vendedor (nome_loja, slogan, cnpj, sobre, img, back_img, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)", [nome, slogan, cnpj, sobre, img, img2, id], (error, result, fields) => {
+        db.query("INSERT INTO vendedor (nome_loja, slogan, cnpj, sobre, img, back_img, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)", [nome, slogan, cnpj, sobre, img, img2, id], (error, result, fields) => {
             if(error) throw error;
 
             

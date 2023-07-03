@@ -1,24 +1,19 @@
-const mysql = require('mysql');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.pageEdit = (req, res) => {
     const user = req.session.user;
     const id = req.params.id;
 
     if(user){
-        connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
+        db.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
             if(erro) throw erro;
             if(result.length > 0){
-                connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results) => {
+                db.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results) => {
                     if(error) throw error;
 
-                    connection.query('SELECT * FROM categoria', (er, resultado) => {
+                    db.query('SELECT * FROM categoria', (er, resultado) => {
                         res.render('_editProduto', {user: true, vendedor: true, errado: false, id: id, results: results, categorias: resultado});
                     })
                 });
@@ -36,20 +31,20 @@ exports.pageEdit = (req, res) => {
 exports.deleteProduto = (req, res) => {
     const id = req.params.id;
 
-    connection.query('SELECT * FROM compra WHERE id_produto = ?', [id], (err, result, rows) => {
+    db.query('SELECT * FROM compra WHERE id_produto = ?', [id], (err, result, rows) => {
         if(err) throw err;
 
 
         if(result.length > 0){
             res.render('_proibido', {error: 'Você não pode excluir este produto!! Pois ele ja foi ou esta sendo comprado por uma pessoa'});
         }else{
-            connection.query('SELECT * FROM itens_produto WHERE id_produto = ?', [id], (erro, results) => {
+            db.query('SELECT * FROM itens_produto WHERE id_produto = ?', [id], (erro, results) => {
                 if(erro) throw erro;
 
                 if(results.length > 0){
                     res.render('_proibido', {error: 'Você não pode excluir este produto!! Pois ele ja foi ou esta sendo comprado por uma pessoa'});
                 }else{
-                    connection.query('DELETE FROM produto WHERE id_produto = ?', [id], (erro, results) => {
+                    db.query('DELETE FROM produto WHERE id_produto = ?', [id], (erro, results) => {
                         res.redirect('/_produtos');
                     });
                 }

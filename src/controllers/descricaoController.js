@@ -1,12 +1,7 @@
-const mysql = require('mysql');
 const navbarController = require('./navBarController');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-  host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.paginaDesc = (req, res) => {
   const id = req.params.id;
@@ -14,19 +9,19 @@ exports.paginaDesc = (req, res) => {
 
   navbarController(req, (navBar) => {
     if (user) {
-      connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results, fields) => {
+      db.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results, fields) => {
         if (error) throw error;
         if (results == "") {
           res.redirect('/_404');
         } else {
-          connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
+          db.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
             if (error) throw error;
-            connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
+            db.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
               if (resultado == undefined) {
                 resultado = null;
                 res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: user, id: id, compredo: false, resulta: 0, navBar: navBar });
               } else {
-                connection.query("SELECT SUM(quantidade) AS total FROM itens_produto WHERE id_usuario = ? AND id_produto = ?", [user[0].id_usuario, id], (er, resulta) => {
+                db.query("SELECT SUM(quantidade) AS total FROM itens_produto WHERE id_usuario = ? AND id_produto = ?", [user[0].id_usuario, id], (er, resulta) => {
                   if (er) throw er;
 
                   let total = resulta[0].total;
@@ -49,14 +44,14 @@ exports.paginaDesc = (req, res) => {
         }
       });
     } else {
-      connection.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results, fields) => {
+      db.query('SELECT * FROM produto WHERE id_produto = ?', [id], (error, results, fields) => {
         if (error) throw error;
         if (results == "") {
           res.redirect('/_404');
         } else {
-          connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
+          db.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [results[0].id_vendedor], (error, result, fields) => {
             if (error) throw error;
-            connection.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
+            db.query('SELECT SUM(quantidade) AS total FROM compra WHERE id_produto = ?', [id], (err, resultado) => {
               if (resultado == undefined) {
                 resultado = null;
                 res.render('_descricaoProduto', { produtos: results, vendedor: result, vendidos: resultado, comprado: false, user: false, id: id, compredo: false, resulta: 0, navBar: navBar });

@@ -1,21 +1,16 @@
-const mysqls = require('mysql2');
+const db = require('../models/dbModel');
 
-const connection = mysqls.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.paginaProdutos = (req, res) => {
 
-        connection.query('SELECT * FROM produto', (error, result, fields) => {
+        db.query('SELECT * FROM produto', (error, result, fields) => {
         if (error) throw error;
             if (req.session.user) {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
 
-                connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                db.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){
@@ -39,14 +34,14 @@ exports.produtosPost = (req, res) => {
 
     let pesquisa2 = removeQuotes(pesquisa);
 
-    connection.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa2}%" OR descricao LIKE "%${pesquisa2}%" OR c.categoria LIKE "%${pesquisa2}%"`, (error, result, fields) => {
+    db.query(`SELECT * FROM produto AS p INNER JOIN categoria AS c ON p.categoria = c.id_categoria where nome LIKE "%${pesquisa2}%" OR descricao LIKE "%${pesquisa2}%" OR c.categoria LIKE "%${pesquisa2}%"`, (error, result, fields) => {
         if (error) throw error
         if(result == ""){
             if (req.session.user) {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
                 // Renderiza a página do dashboard com as informações do usuário
-                connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                db.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){
@@ -66,7 +61,7 @@ exports.produtosPost = (req, res) => {
                 // Recupera as informações do usuário da sessão
                 const user = req.session.user;
                 // Renderiza a página do dashboard com as informações do usuário
-                connection.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+                db.query('SELECT id_usuario FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){

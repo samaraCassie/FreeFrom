@@ -1,23 +1,18 @@
-const mysql = require('mysql');
 const navbarController = require('./navBarController');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.paginaLoja = (req, res) => {
     navbarController(req, (navBar) => {
     if(req.session.user){
         const id = req.params.id;
         const user = req.session.user;
-        connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [id], (error, result, fields) => {
+        db.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [id], (error, result, fields) => {
             if(error) throw error
-            connection.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
+            db.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
                 if(err) throw err
-                connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, resultado) => {
+                db.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, resultado) => {
                     if(erro) throw erro
                     if(resultado != "" || resultado != null){
                         res.render('_PerfilLoja', {vendedor: result, produtos: results, user: true, usuario: user, resultado: resultado, navBar: navBar});
@@ -31,9 +26,9 @@ exports.paginaLoja = (req, res) => {
     }
     else{
         const id = req.params.id;
-        connection.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [id], (error, result, fields) => {
+        db.query('SELECT * FROM vendedor WHERE id_vendedor = ?', [id], (error, result, fields) => {
             if(error) throw error
-            connection.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
+            db.query('SELECT * FROM produto WHERE id_vendedor = ?', [id], (err, results, field) => {
                     if(err) throw err
                     res.render('_PerfilLoja', {vendedor: result, produtos: results, user: false, navBar: navBar});
                 });

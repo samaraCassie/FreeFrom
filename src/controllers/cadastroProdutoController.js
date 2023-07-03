@@ -1,21 +1,15 @@
-const mysql = require('mysql2');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
-
+db.connect();
 
 exports.paginaCadastroProduto = (req, res) => {
     const user = req.session.user;
     if(user){
-        connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+        db.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
             if(err) throw err;
             // Renderiza a página do dashboard com as informações do usuário
             if(results != ""){
-                connection.query("SELECT * FROM categoria", (error, result) => {
+                db.query("SELECT * FROM categoria", (error, result) => {
                     if(error) throw error;
 
                     res.render('_CadastroProdutos', {errado: false, vendedor: true, categorias: result});
@@ -46,7 +40,7 @@ exports.postProduto = (req, res) => {
     
     const user = req.session.user;
     if(user){
-        connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+        db.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
             if(err) throw err;
             if(estoque <= 0){
                 const erro = "Para cadastrar um produto você precisa ter no minímo 1 no estoque!!";
@@ -58,7 +52,7 @@ exports.postProduto = (req, res) => {
                 }else{
                     const sql = 'INSERT INTO produto (nome, descricao, preco_unit, qtd_estoque, img, categoria, id_vendedor) VALUES (?, ?, ?, ?, ?, ?, ?)';
                     const values = [nome, descricao, preco, estoque, imagem, categoria, results[0].id_vendedor];
-                    connection.query(sql, values, (err, result) => {
+                    db.query(sql, values, (err, result) => {
                         if (err) {
                             console.error('Erro ao inserir dados no banco de dados: ' + err.stack);
                             return;

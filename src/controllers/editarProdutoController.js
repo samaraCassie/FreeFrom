@@ -1,11 +1,6 @@
-const mysql = require('mysql2');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.editProduto = (req, res) => {
   const id = req.params.id;
@@ -25,16 +20,16 @@ exports.editProduto = (req, res) => {
   }
 
   if(user){
-      connection.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
+      db.query('SELECT * FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (erro, result) => {
           if(erro) throw erro;
           if(result.length > 0){
               if(path != null){
-                  connection.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ?, img = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, imagem, id], (err, results) => {
+                  db.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ?, img = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, imagem, id], (err, results) => {
                       if(err) throw err;
                       res.redirect('/_produtos');
                   });
               }else{
-                connection.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, id], (err, results) => {
+                db.query('UPDATE produto SET nome = ?, categoria = ?, descricao = ?, qtd_estoque = ?, preco_unit = ? WHERE id_produto = ?', [nome, categoria, descricao, estoque, preco, id], (err, results) => {
                     if(err) throw err;
                     res.redirect('/_produtos');
                 });

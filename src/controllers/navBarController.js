@@ -1,12 +1,7 @@
 const ejs = require('ejs');
-const mysqls = require('mysql2');
+const db = require('../models/dbModel');
 
-const connection = mysqls.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 const navbarController = (req, callback, page) => {
     var template;
@@ -288,7 +283,7 @@ const navbarController = (req, callback, page) => {
     let idLoja;
   
     if (user) {
-      connection.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
+      db.query('SELECT id_usuario, id_vendedor FROM vendedor WHERE id_usuario = ?', [user[0].id_usuario], (err, results, field) => {
         if (err) throw err;
   
         if (results != "") {

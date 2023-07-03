@@ -1,11 +1,6 @@
-const mysql = require('mysql');
+const db = require('../models/dbModel');
 
-const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'be5f53017f38ab',
-    password: '0a3c77ee',
-    database: 'heroku_f1c7f7f6459dca3'
-});
+db.connect();
 
 exports.mudarCapa = (req, res) => {
     const path = req.file.path;
@@ -13,7 +8,7 @@ exports.mudarCapa = (req, res) => {
 
     let imagem = path.slice(9);
 
-    connection.query('UPDATE vendedor SET back_img = ? WHERE id_vendedor = ?', [imagem, id], (err, result) => {
+    db.query('UPDATE vendedor SET back_img = ? WHERE id_vendedor = ?', [imagem, id], (err, result) => {
         if(err) throw err;
 
         res.redirect('/_PerfilLoja/' + id);
