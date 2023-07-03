@@ -45,6 +45,19 @@ app.use((req, res) => {
   res.status(404).render('_404');
 });
 
+app.use((err, req, res, next) => {
+  // Check if the error is an internal server error
+  if (err instanceof Error && err.status === 500) {
+    // Handle the internal server error
+    console.error('Internal Server Error:', err);
+    // Send an appropriate response to the client
+    res.status(500).json({ error: 'Internal Server Error' });
+  } else {
+    // Pass the error to the next error handling middleware
+    next(err);
+  }
+});
+
 app.on('Pronto', () => {
     app.listen(port, () => {
       console.log('Acessar http://localhost:' + port);
