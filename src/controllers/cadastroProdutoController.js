@@ -33,9 +33,9 @@ exports.postProduto = (req, res) => {
     const path = req.file ? req.file.path : null;
     const preco = req.body.preco;
 
-    
+    let imagem;
     if(path != null){
-        let imagem = path.slice(9);
+        imagem = path.slice(9);
     }
     
     const user = req.session.user;

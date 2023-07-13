@@ -60,7 +60,7 @@ const navbarController = (req, callback, page) => {
             </div>
     </header>`;
     }
-    else if(page == 'produto'){
+    else if(page == 'produtos'){
         template = `<header class="barra">
         <nav class="bar-menu">
             <ul>   

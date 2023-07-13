@@ -1,9 +1,10 @@
 const db = require('../models/dbModel');
+const navbarController = require('./navBarController');
 
 db.connect();
 
 exports.paginaProdutos = (req, res) => {
-
+        navbarController(req, (navBar) => {
         db.query('SELECT * FROM produto', (error, result, fields) => {
         if (error) throw error;
             if (req.session.user) {
@@ -14,22 +15,24 @@ exports.paginaProdutos = (req, res) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){
-                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, navBar: navBar});
                     }
                     else{
-                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false});
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false, navBar: navBar});
                     }
                 });
               }
             else{
-                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false, navBar: navBar});
               }
         });
+    }, 'produtos');
     }
 
     
 
 exports.produtosPost = (req, res) => {
+    navbarController(req, (navBar) => {
     const pesquisa = req.query.pesquisa;
 
     let pesquisa2 = removeQuotes(pesquisa);
@@ -45,15 +48,15 @@ exports.produtosPost = (req, res) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){
-                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: false, vendedor: true, idLoja: results[0].id_vendedor});
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: false, vendedor: true, navBar: navBar});
                     }
                     else{
-                        res.render('_Produtos', { produtos: null, user: user, usuario: true, resultado: false, vendedor: false, idLoja: results[0].id_vendedor});
+                        res.render('_Produtos', { produtos: null, user: user, usuario: true, resultado: false, vendedor: false, navBar: navBar});
                     }
                 });
             }
             else{
-                res.render('_Produtos', { produtos: result, usuario: false, resultado: false, vendedor: false});
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: false, vendedor: false, navBar: navBar});
             }
         }
         else{
@@ -65,19 +68,20 @@ exports.produtosPost = (req, res) => {
                     if(err) throw err;
                     // Renderiza a página do dashboard com as informações do usuário
                     if(results != ""){
-                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, idLoja: results[0].id_vendedor});
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: true, navBar: navBar});
                     }
                     else{
-                        res.render('_Produtos', { produtos: null, user: user, usuario: true, resultado: true, vendedor: false, idLoja: results[0].id_vendedor});
+                        res.render('_Produtos', { produtos: result, user: user, usuario: true, resultado: true, vendedor: false, navBar: navBar});
                     }
                 });
             }
             else{
-                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false});
+                res.render('_Produtos', { produtos: result, usuario: false, resultado: true, vendedor: false, navBar: navBar});
             }
         }
         
     });
+}, 'produtos');
 }
 
 function removeQuotes(variable) {
