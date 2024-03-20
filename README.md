@@ -1,4 +1,4 @@
-<a link="https://samaracassie.github.io/FreeFrom/">Link</a>
+[LINK](https://samaracassie.github.io/FreeFrom/)
 
 
 <h1>FreeFrom</h1> 
